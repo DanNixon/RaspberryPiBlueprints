@@ -17,7 +17,7 @@ def play_file(filename, frequency):
 
     print 'Broadcasting %s at %f MHz' % (filename, frequency)
 
-    command = 'ffmpeg -i "%s" -f s16le -ar 22.05k -ac 1 - | sudo ./pifm - %f' % (filename, frequency)
+    command = 'ffmpeg -i "%s" -f s16le -ar 22.05k -ac 2 - | sudo ./pifm - %f 22050 stereo' % (filename, frequency)
     subprocess.call(command, shell=True)
 
 
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     parser.add_argument(
             '-f', '--frequency',
-            default=100.0,
+            default=101.1,
             type=float,
             help='Frequency on which to broadcast')
 
