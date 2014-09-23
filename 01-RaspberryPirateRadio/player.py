@@ -1,5 +1,3 @@
-#!/bin/python
-
 import argparse
 import os
 import random
