@@ -14,7 +14,7 @@ DAEMON_USER=pi
 PIDFILE=/var/run/squeezelite.pid
 DAEMON=/usr/bin/squeezelite-armv6hf
 
-DAEMON_OPTS=""
+DAEMON_OPTS="-n Pi"
 
 do_start()
 {
