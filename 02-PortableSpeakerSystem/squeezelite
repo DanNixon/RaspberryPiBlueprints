@@ -1,0 +1,42 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          squeezelite
+# Required-Start:
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Squeezelite client
+# Description:       Logitech media server client
+### END INIT INFO
+
+DAEMON_USER=pi
+PIDFILE=/var/run/squeezelite.pid
+DAEMON=/usr/bin/squeezelite-armv6hf
+
+DAEMON_OPTS=""
+
+do_start()
+{
+	start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
+}
+
+do_stop()
+{
+	start-stop-daemon --stop --pidfile $PIDFILE --retry 10
+}
+
+case $1 in
+  start)
+    do_start
+    ;;
+  stop)
+  	do_stop
+    ;;
+  restart)
+  	do_start
+	  do_stop
+    ;;
+  *)
+    ;;
+esac
