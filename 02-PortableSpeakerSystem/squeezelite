@@ -18,12 +18,12 @@ DAEMON_OPTS="-n Pi"
 
 do_start()
 {
-	start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
+  start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
 }
 
 do_stop()
 {
-	start-stop-daemon --stop --pidfile $PIDFILE --retry 10
+  start-stop-daemon --stop --pidfile $PIDFILE --retry 10
 }
 
 case $1 in
@@ -31,11 +31,11 @@ case $1 in
     do_start
     ;;
   stop)
-  	do_stop
+    do_stop
     ;;
   restart)
-  	do_start
-	  do_stop
+    do_stop
+    do_start
     ;;
   *)
     ;;
