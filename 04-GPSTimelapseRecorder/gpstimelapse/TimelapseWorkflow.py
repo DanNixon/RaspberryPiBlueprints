@@ -17,6 +17,8 @@ class TimelapseWorkflow(threading.Thread):
 
         self._camera = camera_manager
         self._gps = gps_manager
+
+        self._run = True
         self._min_distance = None
         self._timer_interval = 1
 
@@ -62,11 +64,20 @@ class TimelapseWorkflow(threading.Thread):
         Main timer loop
         """
 
-        while True:
+        while self._run:
             logging.getLogger(__name__).debug('Timer has ticked')
             self._timer_handle()
 
             time.sleep(self._timer_interval)
+
+
+    def stop(self):
+        """
+        Stops the current timelapse recording.
+        """
+
+        logging.getLogger(__name__).info('Stopping timelapse')
+        self._run = False
 
 
     def _timer_handle(self):

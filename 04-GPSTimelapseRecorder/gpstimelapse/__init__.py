@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import signal
 import sys
 import time
 
@@ -137,6 +138,21 @@ def get_image_filename_pattern(save_folder, filename_pattern):
     return image_file_pattern
 
 
+GPS = None
+TIMELAPSE = None
+
+
+def stop_capture():
+    """
+    Stops capture and closes camera.
+    """
+
+    logging.getLogger(__name__).info('Got SIGINT, will now exit')
+
+    TIMELAPSE.stop()
+    GPS.stop()
+
+
 def start_capture(props):
     """
     Runs the timelapse capture.
@@ -144,13 +160,16 @@ def start_capture(props):
     @param props Application properties
     """
 
+    global GPS
+    global TIMELAPSE
+
     logging.getLogger(__name__).info('Starting GPS...')
     host, port = props.gps.split(':')
-    gps = GPSHandler(host, port)
-    gps.start()
+    GPS = GPSHandler(host, port)
+    GPS.start()
 
     logging.getLogger(__name__).info('Waiting for GPS fix...')
-    while not gps.has_fix():
+    while not GPS.has_fix():
         time.sleep(5)
 
     logging.getLogger(__name__).info('Setting up camera...')
@@ -160,9 +179,12 @@ def start_capture(props):
     camera.set_filename_pattern(filename_pattern)
 
     logging.getLogger(__name__).info('Setting up timelapse...')
-    timelapse = TimelapseWorkflow(camera, gps)
-    timelapse.set_interval(props.interval)
-    timelapse.set_min_distance(props.distance)
+    TIMELAPSE = TimelapseWorkflow(camera, GPS)
+    TIMELAPSE.set_interval(props.interval)
+    TIMELAPSE.set_min_distance(props.distance)
 
     logging.getLogger(__name__).info('Starting timelapse')
-    timelapse.start()
+    TIMELAPSE.start()
+
+    # Register the signal handler used to stop capture
+    signal.signal(signal.SIGINT, stop_capture)

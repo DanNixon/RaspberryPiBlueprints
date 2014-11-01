@@ -47,6 +47,7 @@ class GPSHandler(threading.Thread):
 
         threading.Thread.__init__(self)
 
+        self._run = True
         self._current_report = None
 
         logging.getLogger(__name__).info('Connecting to GPSD on host: %s, port %s'
@@ -62,7 +63,7 @@ class GPSHandler(threading.Thread):
         """
 
         try:
-            while True:
+            while self._run:
                 # Get a new report from GPSD
                 report = self._gps.next()
 
@@ -76,6 +77,15 @@ class GPSHandler(threading.Thread):
 
         except StopIteration:
             pass
+
+
+    def stop(self):
+        """
+        Stops polling for new data
+        """
+
+        logging.getLogger(__name__).info('Stopping GPS data polling')
+        self._run = False
 
 
     def has_fix(self):
