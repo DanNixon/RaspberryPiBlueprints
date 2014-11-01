@@ -86,14 +86,12 @@ class GPSHandler(threading.Thread):
         """
 
         if self._current_report is None:
-            raise RuntimeError('No report received yet')
+            return False
 
         try:
             fix = self._current_report['mode'] == 3
         except IndexError:
             fix = False
-
-        logging.getLogger(__name__).debug('has_fix: %s' % str(fix))
 
         return fix
 

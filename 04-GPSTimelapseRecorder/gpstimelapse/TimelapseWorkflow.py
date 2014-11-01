@@ -63,9 +63,10 @@ class TimelapseWorkflow(threading.Thread):
         """
 
         while True:
-            time.sleep(self._timer_interval)
             logging.getLogger(__name__).debug('Timer has ticked')
             self._timer_handle()
+
+            time.sleep(self._timer_interval)
 
 
     def _timer_handle(self):
