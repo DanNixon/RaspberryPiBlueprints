@@ -2,6 +2,9 @@ import argparse
 import logging
 import sys
 
+import time
+from gpstimelapse.GPSHandler import GPSHandler
+
 
 def run():
     """
@@ -82,5 +85,17 @@ def start_capture(props):
 
     @param props Application properties
     """
+
+    host, port = props.gps.split(':')
+    gps = GPSHandler(host, port)
+    gps.start()
+
+    while True:
+        try:
+            print gps.get_position()
+        except Exception as e:
+            print str(e)
+
+        time.sleep(1)
 
     print props

@@ -1,3 +1,4 @@
+import logging
 import time
 import thread
 
@@ -27,8 +28,12 @@ class CameraManager(object):
         Captures a new image.
         """
 
+        logging.getLogger(__name__).info('Capturing new still image')
+
         filename = self._get_image_filename()
         self._current_capture_number += 1
+
+        logging.getLogger(__name__).debug('Image filename is: %s' % filename)
 
         thread.start_new_thread(self._capture_routine, (filename))
 
@@ -40,11 +45,16 @@ class CameraManager(object):
         @param filename Filename to save as
         """
 
+        logging.getLogger(__name__).debug('Starting camera preview')
         self._camera.start_preview()
 
+        logging.getLogger(__name__).debug('Waiting for %f seconds' % self._preview_time)
         time.sleep(self._preview_time)
+
+        logging.getLogger(__name__).debug('Capturing image: %s' % filename)
         self._camera.capture(filename)
 
+        logging.getLogger(__name__).debug('Stopping camera preview')
         self._camera.stop_preview()
 
 
@@ -97,7 +107,7 @@ class CameraManager(object):
         return files
 
 
-    def _get_image_filename(self, index = -1):
+    def _get_image_filename(self, index=-1):
         """
         Gets the filename for a given index in the sequence.
 
@@ -106,7 +116,7 @@ class CameraManager(object):
         """
 
         if index == -1:
-            index = self._current_cature_number
+            index = self._current_capture_number
 
         if self._filename_pattern is None:
             raise RuntimeError('No filename pattern has been set')
