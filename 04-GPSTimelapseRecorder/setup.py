@@ -17,7 +17,7 @@ setup(
     license='Apache',
     packages=['gpstimelapse'],
     install_requires=[
-        'enum34',
+        'pexif',
     ],
     include_package_data=True,
     zip_safe=False)
