@@ -16,8 +16,5 @@ setup(
     author_email='dan@dan-nixon.com',
     license='Apache',
     packages=['gpstimelapse'],
-    install_requires=[
-        'pexif',
-    ],
     include_package_data=True,
     zip_safe=False)
