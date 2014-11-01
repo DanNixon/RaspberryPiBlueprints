@@ -1,4 +1,4 @@
-import logger
+import logging
 import threading
 import time
 
@@ -23,7 +23,7 @@ class TimelapseWorkflow(threading.Thread):
         self._position = self._gps.get_position()
 
 
-    def set_timer_interval(self, interval):
+    def set_interval(self, interval):
         """
         Sets the interval for the timer.
 
@@ -49,7 +49,11 @@ class TimelapseWorkflow(threading.Thread):
         if min_distance is not None and min_distance <= 0.0:
             raise ValueError('Minimum dtstance must be greater than 0')
 
-        logging.getLogger(__name__).debug('Min GPS distance between frames is now %f Km' % min_distance)
+        if min_distance is None:
+            logging.getLogger(__name__).debug('Min GPS distance restriction removed')
+        else:
+            logging.getLogger(__name__).debug('Min GPS distance between frames is now %f Km' % min_distance)
+
         self._min_distance = min_distance
 
 

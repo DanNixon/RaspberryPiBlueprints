@@ -52,6 +52,7 @@ def run():
         '-i', '--interval',
         action='store',
         type=float,
+        default=5.0,
         help='Time in seconds between captures'
     )
 
@@ -67,7 +68,7 @@ def run():
         '--height',
         action='store',
         type=int,
-        default=1024
+        default=1024,
         help='Width of captured images'
     )
 
