@@ -68,7 +68,11 @@ class TimelapseWorkflow(threading.Thread):
             logging.getLogger(__name__).debug('Timer has ticked')
             self._timer_handle()
 
-            time.sleep(self._timer_interval)
+            # Use 1 second timers to reduce time to wait on SIGINT
+            for _ in range(0, int(self._timer_interval)):
+                time.sleep(1)
+                if not self._run:
+                    return
 
 
     def stop(self):
