@@ -1,6 +1,5 @@
 import logging
 import time
-import thread
 
 import picamera
 
@@ -22,10 +21,24 @@ class CameraManager(object):
 
         self._camera = picamera.PiCamera()
 
+        logging.getLogger(__name__).debug('Starting camera preview')
+        self._camera.start_preview()
+
+
+    def __del__(self):
+        """
+        Closes camera preview.
+        """
+
+        logging.getLogger(__name__).debug('Stopping camera preview')
+        self._camera.stop_preview()
+
 
     def capture(self):
         """
         Captures a new image.
+
+        @returns The filename the image will be saved to
         """
 
         logging.getLogger(__name__).info('Capturing new still image')
@@ -33,29 +46,10 @@ class CameraManager(object):
         filename = self._get_image_filename()
         self._current_capture_number += 1
 
-        logging.getLogger(__name__).debug('Image filename is: %s' % filename)
-
-        thread.start_new_thread(self._capture_routine, (filename))
-
-
-    def _capture_routine(self, filename):
-        """
-        Handles the camera preview and image capture.
-
-        @param filename Filename to save as
-        """
-
-        logging.getLogger(__name__).debug('Starting camera preview')
-        self._camera.start_preview()
-
-        logging.getLogger(__name__).debug('Waiting for %f seconds' % self._preview_time)
-        time.sleep(self._preview_time)
-
         logging.getLogger(__name__).debug('Capturing image: %s' % filename)
         self._camera.capture(filename)
 
-        logging.getLogger(__name__).debug('Stopping camera preview')
-        self._camera.stop_preview()
+        return filename
 
 
     def set_filename_pattern(self, pattern):
