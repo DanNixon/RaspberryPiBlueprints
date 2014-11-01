@@ -2,6 +2,8 @@ import logging
 import threading
 import time
 
+from pexif import JpegFile
+
 
 class TimelapseWorkflow(threading.Thread):
     """
@@ -118,4 +120,6 @@ class TimelapseWorkflow(threading.Thread):
         @param position Location where the frame was captured
         """
 
-        pass
+        exif = JpegFile.fromFile(filename)
+        exif.set_geo(float(position[0]), float(position[1]))
+        exif.writeFile(filename)
