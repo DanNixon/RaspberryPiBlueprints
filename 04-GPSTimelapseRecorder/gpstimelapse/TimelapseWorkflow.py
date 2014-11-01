@@ -2,8 +2,6 @@ import logging
 import threading
 import time
 
-from gi.repository import GExiv2
-
 
 class TimelapseWorkflow(threading.Thread):
     """
@@ -104,6 +102,4 @@ class TimelapseWorkflow(threading.Thread):
         @param position Location where the frame was captured
         """
 
-        image = GExiv2.Metadata(filename)
-        image.set_gps_info(float(position[0]), float(position[1]), 0)
-        exif.save_file()
+        pass

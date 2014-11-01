@@ -1,5 +1,6 @@
 import argparse
 import logging
+import os
 import sys
 import time
 
@@ -37,7 +38,7 @@ def run():
     parser.add_argument(
         '-n', '--filename',
         action='store',
-        default='%N_%T_%n.jpg',
+        default='frame_%d.jpg',
         help='Filename pattern for image files'
     )
 
@@ -98,6 +99,44 @@ def run():
     start_capture(props)
 
 
+def get_image_filename_pattern(save_folder, filename_pattern):
+    """
+    Creates the save folders for timelapse recordings and returns the full image filename pattern.
+
+    @param save_folder Folder in which to save all timelapse recordings
+    @param filename_pattern Pattern for image filenames
+    @returns filename pattern
+    """
+
+    logging.getLogger(__name__).debug('Getting filename pattern for images')
+    logging.getLogger(__name__).debug('Save folder: %s. frame filename pattern: %s' % (save_folder, filename_pattern))
+
+    folder_number = 0
+
+    # If the folder already exists get the highest number and make the next folder one above that
+    if os.path.exists(save_folder):
+        sub_dirs = os.walk(save_folder).next()[1]
+        for sub_dir in sub_dirs:
+            try:
+                sub_dir_number = int(sub_dir)
+                if sub_dir_number > folder_number:
+                    folder_number = sub_dir_number
+            except ValueError:
+                pass
+        folder_number += 1
+
+    # Make the folder for the current capture
+    run_folder = os.path.join(save_folder, str(folder_number))
+    logging.getLogger(__name__).debug('Making run folder: %s' % run_folder)
+    os.makedirs(run_folder)
+
+    # Get the filename pattern for the camera manager
+    image_file_pattern = os.path.join(run_folder, filename_pattern)
+    logging.getLogger(__name__).debug('Image file pattern: %s' % image_file_pattern)
+
+    return image_file_pattern
+
+
 def start_capture(props):
     """
     Runs the timelapse capture.
@@ -110,12 +149,15 @@ def start_capture(props):
     gps = GPSHandler(host, port)
     gps.start()
 
-    # TODO: wait for GPS lock
+    logging.getLogger(__name__).info('Waiting for GPS fix...')
+    while not gps.has_fix():
+        time.sleep(5)
 
     logging.getLogger(__name__).info('Setting up camera...')
     camera = CameraManager()
     camera.set_resolution(props.width, props.height)
-    camera.set_filename_pattern(props.filename)
+    filename_pattern = get_image_filename_pattern(props.folder, props.filename)
+    camera.set_filename_pattern(filename_pattern)
 
     logging.getLogger(__name__).info('Setting up timelapse...')
     timelapse = TimelapseWorkflow(camera, gps)
