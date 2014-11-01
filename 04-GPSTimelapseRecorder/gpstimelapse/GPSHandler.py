@@ -114,7 +114,7 @@ class GPSHandler(threading.Thread):
         return position
 
 
-    def get_delta_position_scalar(self, position):
+    def get_distance_from(self, position):
         """
         Gets the distance between the current position and a given position
         as latitude and longitude in Km.

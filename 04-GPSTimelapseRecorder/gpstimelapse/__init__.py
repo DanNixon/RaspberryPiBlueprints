@@ -1,9 +1,11 @@
 import argparse
 import logging
 import sys
-
 import time
+
+from gpstimelapse.CameraManager import CameraManager
 from gpstimelapse.GPSHandler import GPSHandler
+from gpstimelapse.TimelapseWorkflow import TimelapseWorkflow
 
 
 def run():
@@ -19,7 +21,7 @@ def run():
     )
 
     parser.add_argument(
-        '-g', '--gps',
+        '--gps',
         action='store',
         default='localhost:2947',
         help='Specifies address to connect to cgps daemon (default localhost::2947)'
@@ -51,6 +53,22 @@ def run():
         action='store',
         type=float,
         help='Time in seconds between captures'
+    )
+
+    parser.add_argument(
+        '--width',
+        action='store',
+        type=int,
+        default=1248,
+        help='Height of captured images'
+    )
+
+    parser.add_argument(
+        '--height',
+        action='store',
+        type=int,
+        default=1024
+        help='Width of captured images'
     )
 
     parser.add_argument(
@@ -86,16 +104,22 @@ def start_capture(props):
     @param props Application properties
     """
 
+    logging.getLogger(__name__).info('Starting GPS...')
     host, port = props.gps.split(':')
     gps = GPSHandler(host, port)
     gps.start()
 
-    while True:
-        try:
-            print gps.get_position()
-        except Exception as e:
-            print str(e)
+    # TODO: wait for GPS lock
 
-        time.sleep(1)
+    logging.getLogger(__name__).info('Setting up camera...')
+    camera = CameraManager()
+    camera.set_resolution(props.width, props.height)
+    camera.set_filename_pattern(props.filename)
 
-    print props
+    logging.getLogger(__name__).info('Setting up timelapse...')
+    timelapse = TimelapseWorkflow(camera, gps)
+    timelapse.set_interval(props.interval)
+    timelapse.set_min_distance(props.distance)
+
+    logging.getLogger(__name__).info('Starting timelapse')
+    timelapse.start()
