@@ -151,9 +151,15 @@ def stop_capture(signal_number, frame):
     """
 
     logging.getLogger(__name__).info('Got signal %d, will exit' % signal_number)
+    print 'Stopping timelapse recording...'
 
-    TIMELAPSE.stop()
-    GPS.stop()
+    if TIMELAPSE is not None:
+        TIMELAPSE.stop()
+
+    if GPS is not None:
+        GPS.stop()
+
+    sys.exit(0)
 
 
 def start_capture(props):
@@ -165,6 +171,9 @@ def start_capture(props):
 
     global GPS
     global TIMELAPSE
+
+    # Register the signal handler used to stop capture
+    signal.signal(signal.SIGINT, stop_capture)
 
     logging.getLogger(__name__).info('Starting GPS...')
     host, port = props.gps.split(':')
@@ -188,9 +197,6 @@ def start_capture(props):
 
     logging.getLogger(__name__).info('Starting timelapse')
     TIMELAPSE.start()
-
-    # Register the signal handler used to stop capture
-    signal.signal(signal.SIGINT, stop_capture)
 
     # Need this so that Python handles signals on the main thread
     while True:
