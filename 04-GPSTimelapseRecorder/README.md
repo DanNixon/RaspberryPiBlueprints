@@ -21,8 +21,8 @@ Usage
 Run ```gpstimelapse -h``` to get a description of all commands.
 
 Example 1: ```gpstimelapse -i 5 -f captures -n frame_%d.jpg```
-will capture a frame every 5 seconds with the folder pattern
-```./captures/0/frame_0.jpg```
+will capture a frame every 5 seconds with the folder
+pattern ```./captures/0/frame_0.jpg```
 
 Example 2: ```gpstimelapse -i 5 -f captures -n frame_%d.jpg -d 0.05```
 will behave similar to example 1 but will only capture a new frame
