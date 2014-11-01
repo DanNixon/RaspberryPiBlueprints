@@ -142,12 +142,15 @@ GPS = None
 TIMELAPSE = None
 
 
-def stop_capture():
+def stop_capture(signal_number, frame):
     """
     Stops capture and closes camera.
+
+    @param signal_number Type of signal received
+    @param frame Unused
     """
 
-    logging.getLogger(__name__).info('Got SIGINT, will now exit')
+    logging.getLogger(__name__).info('Got signal %d, will exit' % signal_number)
 
     TIMELAPSE.stop()
     GPS.stop()
@@ -188,3 +191,7 @@ def start_capture(props):
 
     # Register the signal handler used to stop capture
     signal.signal(signal.SIGINT, stop_capture)
+
+    # Need this so that Python handles signals on the main thread
+    while True:
+        time.sleep(1)
