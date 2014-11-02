@@ -6,13 +6,15 @@ Note that CSV import to Google Maps has a 500 row limit (or 2000 for Maps Pro)
 
 
 import argparse
+import csv
+import sys
 
-import pexif
+from pexif import JpegFile
 
 
 def get_all_image_points(filename_format, first=0, last=None):
     """
-    Gets all GPS points for a given ste of images.
+    Gets all GPS points for a given set of images.
 
     Each point is a dict of {image_id, lat, lon, image_filename}
 
@@ -24,12 +26,36 @@ def get_all_image_points(filename_format, first=0, last=None):
 
     points = list()
 
-    # TODO
+    # If no end index was defined just continue the loop until we get an error
+    if last is None:
+        last = sys.maxint
+
+    print 'Getting points from images with format: %s' % filename_format
+    print '\t(first index = %d, last index = %d)' % (first, last)
+
+    for frame_no in xrange(first, last):
+        filename = filename_format % frame_no
+
+        # Try to open the image, if it fails assume this is the end of a range
+        try:
+            exif = JpegFile.fromFile(filename)
+        except IOError:
+            break
+
+        gps_pos = exif.get_geo()
+
+        point = dict()
+        point['index'] = frame_no
+        point['image_filename'] = filename
+        point['lat'] = gps_pos[0]
+        point['lon'] = gps_pos[1]
+
+        points.append(point)
 
     return points
 
 
-def reduce_points(input_points, max_points=500):
+def reduce_points(input_points, max_points=None):
     """
     Takes a list of points and reduces the number of points to no larger than max_points.
 
@@ -37,6 +63,12 @@ def reduce_points(input_points, max_points=500):
     @param max_points Number of points desired in output
     @returns List of points
     """
+
+    # Default to 500 points
+    if max_points is None:
+        max_points = 500
+
+    print 'Reducing point count (max %d)' % max_points
 
     # If input already has less points then there is nothing to do
     if len(input_points) <= max_points:
@@ -57,7 +89,18 @@ def save_csv(points, filename):
     @param filename Filename for CSV file
     """
 
-    pass
+    print 'Saving CSV file: %s' % filename
+
+    # Open the CSV file
+    with open(filename, 'wb') as csv_file:
+        writer = csv.writer(csv_file, delimiter=',')
+
+        # Write a header
+        writer.writerow(['frame_index', 'lat', 'lon', 'image_filename'])
+
+        # Write each point
+        for point in points:
+            writer.writerow([point['index'], point['lat'], point['lon'], point['image_filename']])
 
 
 def run(params):
@@ -67,7 +110,21 @@ def run(params):
     @param params Arguments
     """
 
-    print params
+    all_points = get_all_image_points(params.file_pattern, params.start_image, params.end_image)
+
+    if params.verbose:
+        print 'All points from file:'
+        for point in all_points:
+            print point
+
+    reduced_points = reduce_points(all_points, params.max_points)
+
+    if params.verbose:
+        print 'All reduced points:'
+        for point in reduced_points:
+            print point
+
+    save_csv(reduced_points, params.csv_file)
 
 
 def get_parameters():
@@ -82,7 +139,7 @@ def get_parameters():
     parser.add_argument(
         '-v', '--verbose',
         action='store_true',
-        help='Increases console verbosity'
+        help='Prints more output to console'
     )
 
     parser.add_argument(
@@ -112,6 +169,14 @@ def get_parameters():
         action='store',
         type=int,
         help='Index of last frame',
+        metavar='N'
+    )
+
+    parser.add_argument(
+        '--max-points',
+        action='store',
+        type=int,
+        help='Maximum number of data points in CSV outout',
         metavar='N'
     )
 
