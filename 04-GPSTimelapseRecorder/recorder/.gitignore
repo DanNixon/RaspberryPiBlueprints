@@ -1,0 +1,4 @@
+# Ignore Python setup info
+build/
+dist/
+rpi_gps_timelapse.egg-info/

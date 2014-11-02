@@ -74,11 +74,19 @@ def reduce_points(input_points, max_points=None):
     if len(input_points) <= max_points:
         return input_points
 
-    out_points = list()
+    # This is the number of original points to skip between output points
+    point_ratio = int(round(len(input_points) / max_points))
+    print '\tPoint ratio = %d' % point_ratio
 
-    # TODO
+    output_points = list()
 
-    return out_points
+    # Create list of output points
+    i = 0
+    while len(output_points) < max_points:
+        output_points.append(input_points[i])
+        i += point_ratio
+
+    return output_points
 
 
 def save_csv(points, filename):

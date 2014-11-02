@@ -1,4 +1,2 @@
-# Ignore Python setup info
-build/
-dist/
-rpi_gps_timelapse.egg-info/
+# Default name for CSV files
+gps_points.csv
