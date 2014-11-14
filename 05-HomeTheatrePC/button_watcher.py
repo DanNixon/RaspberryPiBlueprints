@@ -86,15 +86,32 @@ def poll_all_buttons(button_map):
     return states
 
 
+def send_command(command):
+    """
+    Sends a command to XBMC instance on localhost.
+
+    @param command Command to send
+    """
+
+    data = {'jsonrpc':'2.0', 'id': 1, 'method': command}
+
+    request = urllib2.Request('http://abc.com/api/posts/create')
+    request.add_header('Content-Type', 'application/json')
+
+    response = urllib2.urlopen(request, json.dumps(data))
+
+
+import json
 import signal
 import time
+import urllib2
 
 RUN = True
 
 # Time between each button poll
 POLL_INTERVAL = 1.0
 
-# DIct mapping button ID to BCM GPIO number
+# Dict mapping button ID to BCM GPIO number
 BUTTONS = dict()
 BUTTONS['enter'] = 4
 BUTTONS['back'] = 9
