@@ -99,7 +99,7 @@ def send_command(command):
     @param command Command to send
     """
 
-    data = {'jsonrpc':'2.0', 'id': 1, 'method': command}
+    data = {'jsonrpc':'4.0', 'method': command}
 
     request = urllib2.Request('http://127.0.0.1:80/jsonrpc')
     request.add_header('Content-Type', 'application/json')
@@ -128,12 +128,12 @@ POLL_INTERVAL = 0.1
 
 # Dict defining buttons by BCM GPIO number and XBMC command
 BUTTONS = dict()
-BUTTONS['enter'] =  (4,  'Input.Select')
-BUTTONS['back'] =   (9,  'Input.Back')
-BUTTONS['up'] =     (27, 'Input.Up')
-BUTTONS['down'] =   (22, 'Input.Down')
-BUTTONS['left'] =   (10, 'Input.Left')
-BUTTONS['right'] =  (11, 'Input.Right')
+BUTTONS['enter']  = (4,  'Input.Select')
+BUTTONS['back']   = (9,  'Input.Back')
+BUTTONS['up']     = (27, 'Input.Up')
+BUTTONS['down']   = (22, 'Input.Down')
+BUTTONS['left']   = (10, 'Input.Left')
+BUTTONS['right']  = (11, 'Input.Right')
 
 
 if __name__ == '__main__':
