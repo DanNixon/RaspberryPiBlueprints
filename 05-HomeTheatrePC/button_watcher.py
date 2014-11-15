@@ -1,7 +1,13 @@
 """
 Code to watch buttons attached to GPIO pins using sysfs
-abd send remote control signals to XBMC using the HTTP API.
+and send remote control signals to XBMC using the HTTP API.
 """
+
+import json
+import signal
+import time
+import urllib2
+
 
 def gpio_export(gpio):
     """
@@ -61,27 +67,27 @@ def setup_gpio_buttons(button_map):
     """
     Exports each button GPIO and sets it as an input.
 
-    @param button_map Dict mapping button ID to BCM GPIO number
+    @param button_map Dict defining buttons
     """
 
-    for gpio in button_map.values():
-        gpio_export(gpio)
-        active_low = gpio == 4
-        set_gpio_mode(gpio, 'in', active_low)
+    for button in button_map.values():
+        gpio_export(button[0])
+        active_low = button[0] == 4
+        set_gpio_mode(button[0], 'in', active_low)
 
 
 def poll_all_buttons(button_map):
     """
     Gets the states of each button GPIO.
 
-    @param button_map Dict mapping button ID to BCM GPIO number
+    @param button_map Dict defining buttons
     @returns Dict mapping button ID to state
     """
 
     states = dict()
 
-    for button_id, gpio in button_map.iteritems():
-        states[button_id] = get_gpio(gpio)
+    for button_id, button in button_map.iteritems():
+        states[button_id] = get_gpio(button[0])
 
     return states
 
@@ -95,35 +101,39 @@ def send_command(command):
 
     data = {'jsonrpc':'2.0', 'id': 1, 'method': command}
 
-    request = urllib2.Request('http://abc.com/api/posts/create')
+    request = urllib2.Request('http://127.0.0.1:80/jsonrpc')
     request.add_header('Content-Type', 'application/json')
 
     response = urllib2.urlopen(request, json.dumps(data))
 
 
-import json
-import signal
-import time
-import urllib2
+def stop(signal, frame):
+    """
+    Signal handler to stop the watcher.
+
+    @param signal Signal received
+    @param frame Unused
+    """
+
+    print 'Got signal %d, will exit.' % signal
+
+    global RUN
+    RUN = False
+
 
 RUN = True
 
 # Time between each button poll
-POLL_INTERVAL = 1.0
+POLL_INTERVAL = 0.1
 
-# Dict mapping button ID to BCM GPIO number
+# Dict defining buttons by BCM GPIO number and XBMC command
 BUTTONS = dict()
-BUTTONS['enter'] = 4
-BUTTONS['back'] = 9
-BUTTONS['up'] = 27
-BUTTONS['down'] = 22
-BUTTONS['left'] = 10
-BUTTONS['right'] = 11
-
-
-def stop(signal, frame):
-    global RUN
-    RUN = False
+BUTTONS['enter'] =  (4,  'Input.Select')
+BUTTONS['back'] =   (9,  'Input.Back')
+BUTTONS['up'] =     (27, 'Input.Up')
+BUTTONS['down'] =   (22, 'Input.Down')
+BUTTONS['left'] =   (10, 'Input.Left')
+BUTTONS['right'] =  (11, 'Input.Right')
 
 
 if __name__ == '__main__':
@@ -132,10 +142,31 @@ if __name__ == '__main__':
     setup_gpio_buttons(BUTTONS)
 
     print 'Running'
+
+    # Get the initial button state
+    last_button_state = poll_all_buttons(BUTTONS)
+
     while(RUN):
-        print poll_all_buttons(BUTTONS)
+        # Get the current button state
+        current_button_state = poll_all_buttons(BUTTONS)
+
+        # Check for any pressed buttons
+        for button_id in BUTTONS.keys():
+            current = current_button_state[button_id]
+            last = last_button_state[button_id]
+
+            # If button was pressed
+            if current and not last:
+                print '%s pressed' % button_id
+
+                # Handle it
+                send_command(BUTTONS[button_id][1])
+
+        # Set the last known state to the last poll
+        last_button_state = current_button_state
+
         time.sleep(POLL_INTERVAL)
 
     print 'Exiting'
-    for gpio in BUTTONS.values():
-        gpio_unexport(gpio)
+    for button in BUTTONS.values():
+        gpio_unexport(button[0])
