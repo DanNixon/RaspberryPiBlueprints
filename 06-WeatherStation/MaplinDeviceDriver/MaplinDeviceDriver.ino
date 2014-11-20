@@ -1,6 +1,8 @@
-// Rain sensor between GND and digital pin 2
-// Wind speed sensor between GND and digital pin 3
-// Wind direction sensor between +5V and A0 with 10K pull down
+/*
+ * Maplin Weather Instrument Driver
+ */
+
+#define SERIAL_BAUD 115200
 
 const uint8_t windSpeedHalfRevolutionsThreshold = 10;
 const uint16_t windDirectionLevels[] = {930, 830, 735, 390, 75, 135, 235, 560};
@@ -13,7 +15,7 @@ uint8_t lastWindDirection = 0;
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(SERIAL_BAUD);
 
   pinMode(2, INPUT_PULLUP);
   attachInterrupt(0, rainTrigger, FALLING);
