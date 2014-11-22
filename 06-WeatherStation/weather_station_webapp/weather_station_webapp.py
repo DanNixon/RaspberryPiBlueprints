@@ -87,7 +87,7 @@ def get_peak_wind_speed(time_from, time_to):
     # Get data from database
     db = get_db()
     db.row_factory = list_factory
-    cur = db.execute("SELECT peak_wind_speed FROM weather_history WHERE timestamp <= DATETIME(%d, 'unixepoch') AND timestamp > DATETIME(%d, 'unixepoch') ORDER BY timestamp DESC"
+    cur = db.execute("SELECT timestamp, peak_wind_speed FROM weather_history WHERE timestamp <= DATETIME(%d, 'unixepoch') AND timestamp > DATETIME(%d, 'unixepoch') ORDER BY timestamp DESC"
             % (time_to, time_from))
     rows = cur.fetchall()
 
@@ -175,7 +175,7 @@ def show_history():
         data.append([point[0], ','.join([str(val) for i, val in enumerate(point) if i > 0])])
 
     # Get max wind speed over the time range
-    max_wind_speed = get_peak_wind_speed(timestamp_to, timestamp_from)
+    max_wind_speed = get_peak_wind_speed(timestamp_from, timestamp_to)
 
     return render_template('show_history.html', data=data, labels=labels,
                            peak_wind_speed=max_wind_speed,
