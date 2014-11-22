@@ -98,10 +98,18 @@ def show_history():
     else:
         requested_from = time.strftime(request_format, time.gmtime(timestamp_from))
 
+    # Get data from database
     db = get_db()
     cur = db.execute("SELECT * FROM weather_history WHERE timestamp <= DATETIME(%d, 'unixepoch') AND timestamp > DATETIME(%d, 'unixepoch') ORDER BY timestamp DESC"
             % (timestamp_to, timestamp_from))
-
     data = cur.fetchall()
 
-    return render_template('show_history.html', data=data, time_to=requested_to, time_from=requested_from)
+    # Find the max wind speed for this time
+    max_wind_speed = 0;
+    for point in data:
+        if point['peak_wind_speed'] > max_wind_speed:
+            max_wind_speed = point['peak_wind_speed']
+
+    return render_template('show_history.html', data=data,
+                           time_to=requested_to, time_from=requested_from,
+                           peak_wind_speed=max_wind_speed)

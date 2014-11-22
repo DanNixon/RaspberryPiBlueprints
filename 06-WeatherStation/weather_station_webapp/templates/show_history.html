@@ -12,6 +12,10 @@
     <input type="submit" value="Submit">
   </form>
 
+  {% if peak_wind_speed %}
+    <p>Peak wind speed: {{ peak_wind_speed }}</p>
+  {% endif %}
+
   {% for point in data %}
     <p>{{ point.timestamp }}</p>
   {% else %}
