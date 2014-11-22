@@ -6,6 +6,9 @@
 <div class="page">
   <h1>rPi Weather Station</h1>
   <div class="metanav">
+    <a href="{{ url_for('show_current') }}">Current</a>
+    <a href="{{ url_for('show_history') }}">History</a>
   </div>
   {% block body %}{% endblock %}
+  <div class="clear"></div>
 </div>

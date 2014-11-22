@@ -4,34 +4,29 @@
   {% if data %}
     <script type="text/javascript">
       google.load('visualization', '1.0', {'packages':['gauge']});
-      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawAllCharts);
 
-      function drawChart() {
+      function drawChart(id, label, val, val_from, val_to) {
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Avg. Wind Speed', {{ data.average_wind_speed }}],
-          ['Peak Wind Speed', {{ data.peak_wind_speed }}],
-          ['Light Level', {{ data.light_level }}]
-        ]);
-
-        var data2 = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Temperature', {{ data.temperature }}],
-          ['Humidity', {{ data.humidity }}],
-          ['Pressure', {{ data.pressure }}]
+          [label, val]
         ]);
 
         var options = {
-          width: 500, height: 200,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
+          from: val_from, to: val_to,
           minorTicks: 5
         };
 
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div_2'));
-        chart.draw(data, options);
-        chart2.draw(data2, options);
+        var gauge = new google.visualization.Gauge(document.getElementById(id));
+        gauge.draw(data, options);
+      }
+
+      function drawAllCharts() {
+        drawChart('avg_wind_gauge', 'Avg. Wind Speed', {{ data.average_wind_speed  }}, 0, 100);
+        drawChart('light_level_gauge', 'Light Level', {{ data.light_level  }}, 0, 1000);
+        drawChart('temperature_gauge', 'Temperature', {{ data.temperature }}, 0, 100);
+        drawChart('humidity_gauge', 'Humidity', {{ data.humidity  }}, 0, 100);
+        drawChart('pressure_gauge', 'Pressure', {{ data.pressure  }}, 0, 50);
       }
     </script>
   {% endif %}
@@ -41,8 +36,11 @@
   {% if data %}
     <p>Data recorded at: {{ data.timestamp }}</p>
     <p>Wind direction: {{ data.wind_direction }}</p>
-    <div id="chart_div" style="width: 500px; height: 200px;"></div>
-    <div id="chart_div_2" style="width: 500px; height: 200px;"></div>
+    <div id="temperature_gauge" class="small_gauge"></div>
+    <div id="humidity_gauge" class="small_gauge"></div>
+    <div id="pressure_gauge" class="small_gauge"></div>
+    <div id="avg_wind_gauge" class="small_gauge"></div>
+    <div id="light_level_gauge" class="small_gauge"></div>
   {% else %}
     <em>No data recorded yet.</em>
   {% endif %}
