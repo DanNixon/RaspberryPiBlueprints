@@ -1,21 +1,21 @@
 {% extends "layout.html" %}
+
 {% block body %}
-  {% if session.logged_in %}
-    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
-      <dl>
-        <dt>Title:
-        <dd><input type="text" size="30" name="title">
-        <dt>Text:
-        <dd><textarea name="text" rows="5" cols="40"></textarea>
-        <dd><input type="submit" value="Share">
-      </dl>
-    </form>
-  {% endif %}
-  <ul class="entries">
-  {% for entry in entries %}
-    <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}
+
+  <form action="{{ url_for('show_history') }}" method="GET">
+    From:
+    <input type="datetime-local" name="from_time" value="{{ time_from }}">
+
+    To:
+    <input type="datetime-local" name="to_time" value={{ time_to }}>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for point in data %}
+    <p>{{ point.timestamp }}</p>
   {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
+    <em>No data recorded in this time range.</em>
   {% endfor %}
-  </ul>
+
 {% endblock %}
