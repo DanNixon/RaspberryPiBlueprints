@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+  {% if data %}
+    <script type="text/javascript">
+      google.load('visualization', '1.0', {'packages':['gauge']});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Avg. Wind Speed', {{ data.average_wind_speed }}],
+          ['Peak Wind Speed', {{ data.peak_wind_speed }}],
+          ['Light Level', {{ data.light_level }}]
+        ]);
+
+        var data2 = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Temperature', {{ data.temperature }}],
+          ['Humidity', {{ data.humidity }}],
+          ['Pressure', {{ data.pressure }}]
+        ]);
+
+        var options = {
+          width: 500, height: 200,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div_2'));
+        chart.draw(data, options);
+        chart2.draw(data2, options);
+      }
+    </script>
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+  {% if data %}
+    <p>Data recorded at: {{ data.timestamp }}</p>
+    <p>Wind direction: {{ data.wind_direction }}</p>
+    <div id="chart_div" style="width: 500px; height: 200px;"></div>
+    <div id="chart_div_2" style="width: 500px; height: 200px;"></div>
+  {% else %}
+    <em>No data recorded yet.</em>
+  {% endif %}
+{% endblock %}
