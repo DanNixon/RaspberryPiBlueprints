@@ -1,25 +1,60 @@
 {% extends "layout.html" %}
 
+{% block scripts %}
+  <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+            ["{{ '", "'.join(labels) | safe}}"],
+            {% for point in data %}
+            [new Date('{{ point[0] }}'), {{ point[1] }}],
+            {% endfor %}
+          ]);
+      var chart = new google.visualization.LineChart(document.getElementById('history_chart'));
+      chart.draw(data, {});
+    }
+  </script>
+{% endblock %}
+
 {% block body %}
-
   <form action="{{ url_for('show_history') }}" method="GET">
-    From:
-    <input type="datetime-local" name="from_time" value="{{ time_from }}">
-
-    To:
-    <input type="datetime-local" name="to_time" value={{ time_to }}>
-
-    <input type="submit" value="Submit">
+    <div>
+      <fieldset>
+        <legend>Time Range</legend>
+        From:
+        <input type="datetime-local" name="from_time" value="{{ time_from }}">
+        To:
+        <input type="datetime-local" name="to_time" value={{ time_to }}>
+      </fieldset>
+    </div>
+    <div>
+      <fieldset>
+        <legend>Metrics</legend>
+        <input type="checkbox" name="data_items" checked="checked" value="temperature"> Temperature
+        <input type="checkbox" name="data_items" value="humidity"> Humidity
+        <input type="checkbox" name="data_items" checked="checked" value="pressure"> Pressure
+        <input type="checkbox" name="data_items" value="average_wind_speed"> Avg. Wind Speed
+        <input type="checkbox" name="data_items" value="light_level"> Light Level
+      </fieldset>
+    </div>
+    <input type="submit" value="Submit" id="history_submit">
   </form>
 
   {% if peak_wind_speed %}
     <p>Peak wind speed: {{ peak_wind_speed }}</p>
   {% endif %}
 
-  {% for point in data %}
-    <p>{{ point.timestamp }}</p>
+
+  {% if data  %}
+    <div id="history_chart" style="width: 550px; height: 500px;"></div>
   {% else %}
     <em>No data recorded in this time range.</em>
+  {% endif %}
+
+  {% for point in data %}
+    <p>{{ point.timestamp }}</p>
   {% endfor %}
 
 {% endblock %}
