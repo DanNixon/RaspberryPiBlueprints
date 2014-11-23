@@ -45,9 +45,12 @@ def stop_sensor_recording(signal_number, frame):
     RUN = False
 
 
-def submit_reading_loop(database):
+def submit_reading_loop(database, interval):
     """
     Submits the readings taken to the SQLite database.
+
+    @param database Database file to submit to
+    @param interval Time interval in seconds to wait between submission
     """
 
     global RAIN_COUNTS
@@ -56,6 +59,8 @@ def submit_reading_loop(database):
     global LIGHT_LEVEL_READINGS
 
     while RUN:
+        time.sleep(interval)
+
         try:
             # Get avergae and peak wind speeds
             avg_wind_speed = 0.0
@@ -66,6 +71,8 @@ def submit_reading_loop(database):
                 avg_wind_speed += speed
             if len(WIND_SPEED_READINGS):
                 avg_wind_speed /= len(WIND_SPEED_READINGS)
+            logging.getLogger(__name__).debug('Average wind speed: %d' % avg_wind_speed)
+            logging.getLogger(__name__).debug('Peak wind speed: %d' % peak_wind_speed)
 
             # Get modal wind direction
             directions = Counter(WIND_DIRECTION_READINGS)
@@ -73,11 +80,17 @@ def submit_reading_loop(database):
             modal_direction = -1
             if len(modal_directions) > 0:
                 modal_direction = modal_directions[0][0]
+            logging.getLogger(__name__).debug('Wind direction: %d' % modal_direction)
+
+            # Get avaerage light level
+            average_light_level = 0
+            if len(LIGHT_LEVEL_READINGS) > 0:
+                average_light_level = sum(LIGHT_LEVEL_READINGS) / len(LIGHT_LEVEL_READINGS)
 
             connection = sqlite3.connect(database)
             cursor = connection.cursor()
-            sql = "INSERT INTO weather_history (wind_direction, average_wind_speed, peak_wind_speed, rain_frequency, temperature, humidity, pressure, light_level) VALUES ('%s', %f, %f, %f, %f, %f, %f, %f)" % (DIRECTION_ID_TO_NAME[modal_direction], avg_wind_speed, peak_wind_speed, RAIN_COUNTS, 0.0, 0.0, 0.0, 0.0)
-            print sql
+            sql = "INSERT INTO weather_history (wind_direction, average_wind_speed, peak_wind_speed, rain_frequency, temperature, humidity, pressure, light_level) VALUES ('%s', %f, %f, %f, %f, %f, %f, %f)" % (DIRECTION_ID_TO_NAME[modal_direction], avg_wind_speed, peak_wind_speed, RAIN_COUNTS, 0.0, 0.0, 0.0, average_light_level)
+            logging.getLogger(__name__).debug('SQL statement: ' + sql)
             cursor.execute(sql)
             connection.commit()
             connection.close()
@@ -89,8 +102,6 @@ def submit_reading_loop(database):
         WIND_SPEED_READINGS = list()
         WIND_DIRECTION_READINGS = list()
         LIGHT_LEVEL_READINGS = list()
-
-        time.sleep(10)
 
 
 def poll_sensors():
@@ -131,15 +142,15 @@ def start_sensor_recording(params):
     SERIAL_PORT = serial.Serial()
     SERIAL_PORT.port = params.serial_port
     SERIAL_PORT.baudrate = params.serial_baud
-    SERIAL_PORT.timeout = 1
+    SERIAL_PORT.timeout = params.poll_interval
 
     try:
         SERIAL_PORT.open()
     except Exception, e:
-        print "Error opening serial port: " + str(e)
+        logging.getLogger(__name__).error('Error opening serial port: ' + str(e))
         sys.exit(1)
 
-    thread = Thread(target=submit_reading_loop, args=(params.database,))
+    thread = Thread(target=submit_reading_loop, args=(params.database, params.submit_interval))
     thread.start()
 
     # Loop to poll all sensors
@@ -148,7 +159,7 @@ def start_sensor_recording(params):
             poll_sensors()
 
         except Exception, e:
-            print 'Sensor error: ' + str(e)
+            logging.getLogger(__name__).error('Sensor error: ' + str(e))
 
     sys.exit(0)
 
@@ -175,6 +186,22 @@ if __name__ == '__main__':
         action='store',
         default=115200,
         help='Serial baud rate to use'
+    )
+
+    parser.add_argument(
+        '--submit-interval',
+        action='store',
+        default=600,
+        type=int,
+        help='Time in seconds between data averaging and database submission'
+    )
+
+    parser.add_argument(
+        '--poll-interval',
+        action='store',
+        default=10,
+        type=int,
+        help='Time in seconds between the sensors being polled'
     )
 
     parser.add_argument(
