@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import Adafruit_DHT
 import argparse
 from collections import Counter
 import logging
@@ -15,6 +16,9 @@ RAIN_COUNTS = 0
 WIND_SPEED_READINGS = list()
 WIND_DIRECTION_READINGS = list()
 LIGHT_LEVEL_READINGS = list()
+TEMPERATURE_READINGS = list()
+HUMIDITY_READINGS = list()
+PRESSURE_READINGS = list()
 
 RUN = True
 SERIAL_PORT = None
@@ -57,22 +61,20 @@ def submit_reading_loop(database, interval):
     global WIND_SPEED_READINGS
     global WIND_DIRECTION_READINGS
     global LIGHT_LEVEL_READINGS
+    global TEMPERATURE_READINGS
+    global HUMIDITY_READINGS
+    global PRESSURE_READINGS
 
     while RUN:
         time.sleep(interval)
 
         try:
-            # Get avergae and peak wind speeds
-            avg_wind_speed = 0.0
-            peak_wind_speed = 0.0
-            for speed in WIND_SPEED_READINGS:
-                if speed > peak_wind_speed:
-                    peak_wind_speed = speed
-                avg_wind_speed += speed
-            if len(WIND_SPEED_READINGS):
-                avg_wind_speed /= len(WIND_SPEED_READINGS)
-            logging.getLogger(__name__).debug('Average wind speed: %d' % avg_wind_speed)
-            logging.getLogger(__name__).debug('Peak wind speed: %d' % peak_wind_speed)
+            # Get average values
+            avg_wind_speed, peak_wind_speed = get_stats(WIND_SPEED_READINGS)
+            average_light_level = get_stats(LIGHT_LEVEL_READINGS)[0]
+            average_temperature = get_stats(TEMPERATURE_READINGS)[0]
+            average_humidity = get_stats(HUMIDITY_READINGS)[0]
+            average_pressure = get_stats(PRESSURE_READINGS)[0]
 
             # Get modal wind direction
             directions = Counter(WIND_DIRECTION_READINGS)
@@ -82,14 +84,9 @@ def submit_reading_loop(database, interval):
                 modal_direction = modal_directions[0][0]
             logging.getLogger(__name__).debug('Wind direction: %d' % modal_direction)
 
-            # Get avaerage light level
-            average_light_level = 0
-            if len(LIGHT_LEVEL_READINGS) > 0:
-                average_light_level = sum(LIGHT_LEVEL_READINGS) / len(LIGHT_LEVEL_READINGS)
-
             connection = sqlite3.connect(database)
             cursor = connection.cursor()
-            sql = "INSERT INTO weather_history (wind_direction, average_wind_speed, peak_wind_speed, rain_frequency, temperature, humidity, pressure, light_level) VALUES ('%s', %f, %f, %f, %f, %f, %f, %f)" % (DIRECTION_ID_TO_NAME[modal_direction], avg_wind_speed, peak_wind_speed, RAIN_COUNTS, 0.0, 0.0, 0.0, average_light_level)
+            sql = "INSERT INTO weather_history (wind_direction, average_wind_speed, peak_wind_speed, rain_frequency, temperature, humidity, pressure, light_level) VALUES ('%s', %f, %f, %f, %f, %f, %f, %f)" % (DIRECTION_ID_TO_NAME[modal_direction], avg_wind_speed, peak_wind_speed, RAIN_COUNTS, average_temperature, average_humidity, average_pressure, average_light_level)
             logging.getLogger(__name__).debug('SQL statement: ' + sql)
             cursor.execute(sql)
             connection.commit()
@@ -106,9 +103,29 @@ def submit_reading_loop(database, interval):
         LIGHT_LEVEL_READINGS = list()
 
 
-def poll_sensors():
+def get_stats(data):
     """
-    Poll the sensors and take readings.
+    Finds the mean and peak values for data in a list.
+
+    @param data Data to get statistics for
+    """
+    average = 0.0
+    peak = 0.0
+
+    for value in data:
+        if value > peak:
+            peak = value
+        average += value
+
+    if len(data):
+        average /= len(data)
+
+    return average, peak
+
+
+def poll_serial_sensors():
+    """
+    Poll the sensors on the serial port and take readings.
     """
 
     # Get new data from serial port form Maplin sensors
@@ -128,8 +145,23 @@ def poll_sensors():
         value = float(data[2].split(';')[0])
         WIND_SPEED_READINGS.append(value)
 
-    # TODO: Poll DHT sensor
-    # TODO: Poll barometer
+
+def poll_gpio_sensors_loop(interval):
+    """
+    Poll the sensors on the serial port and take readings.
+
+    @param interval TIme to wait between polling
+    """
+
+    while RUN:
+        # Get temperature and humidity from DHT sensor
+        humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 4)
+        TEMPERATURE_READINGS.append(temperature)
+        HUMIDITY_READINGS.append(humidity)
+
+        # TODO: Poll barometer
+
+        time.sleep(interval)
 
 
 def start_sensor_recording(params):
@@ -144,7 +176,7 @@ def start_sensor_recording(params):
     SERIAL_PORT = serial.Serial()
     SERIAL_PORT.port = params.serial_port
     SERIAL_PORT.baudrate = params.serial_baud
-    SERIAL_PORT.timeout = params.poll_interval
+    SERIAL_PORT.timeout = 1
 
     try:
         SERIAL_PORT.open()
@@ -152,16 +184,18 @@ def start_sensor_recording(params):
         logging.getLogger(__name__).error('Error opening serial port: ' + str(e))
         sys.exit(1)
 
-    thread = Thread(target=submit_reading_loop, args=(params.database, params.submit_interval))
-    thread.start()
+    db_submit_loop = Thread(target=submit_reading_loop, args=(params.database, params.submit_interval))
+    db_submit_loop.start()
 
-    # Loop to poll all sensors
+    gpio_poll_loop = Thread(target=poll_gpio_sensors_loop, args=(params.poll_interval,))
+    gpio_poll_loop.start()
+
+    # Loop to poll serial port
     while RUN:
         try:
-            poll_sensors()
-
+            poll_serial_sensors()
         except Exception, e:
-            logging.getLogger(__name__).error('Sensor error: ' + str(e))
+            logging.getLogger(__name__).error('Serial sensor error: ' + str(e))
 
     sys.exit(0)
 
