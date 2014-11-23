@@ -207,7 +207,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--log-file',
         action='store',
-        default='gps_timelapse.log',
+        default='weather_sensors.log',
         help='File to save log to'
     )
 

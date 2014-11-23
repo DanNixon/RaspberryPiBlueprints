@@ -6,7 +6,9 @@
 #define SERIAL_BAUD 115200
 
 // Number of half revolutions taken by wind speed sensor to calculate RPM
-const uint8_t windSpeedHalfRevolutionsThreshold = 10;
+const uint8_t windSpeedHalfRevolutionsThreshold = 5;
+// For conversion from RPM to MPH
+const float windSpeedMultFactor = 0.0117439155;
 // Approximate analog values for centre of each direction reading
 const uint16_t windDirectionLevels[] = {930, 830, 735, 390, 75, 135, 235, 560};
 // Tolerance/width of each wind direction reading
@@ -61,10 +63,11 @@ void loop()
     // Reset timer and half revolution counter
     windSpeedStartTime = millis();
     windSpeedHalfRevolutions = 0;
+    float windSpeedMPH = windSpeedRPM * windSpeedMultFactor;
 
     // Send the serial message
-    Serial.print("WIND_SPEED:RPM:");
-    Serial.print(windSpeedRPM);
+    Serial.print("WIND_SPEED:MPH:");
+    Serial.print(windSpeedMPH);
     Serial.println(";");
   }
 
