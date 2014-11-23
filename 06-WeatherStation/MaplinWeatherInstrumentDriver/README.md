@@ -1,7 +1,7 @@
 Maplin Weather Instrument Driver
 ================================
 
-An Arduino based driver for the Maplin rain sensor, wind direction and speed sensors.
+An Arduino based driver for the Maplin rain sensor, wind direction and speed sensors and an LDR.
 
 Serial Output
 -------------
@@ -14,8 +14,9 @@ Wiring
 ------
 
 - Rain sensor between GND and digital pin 2
-- Wind speed sensor between GND and digital pin 3
-- Wind direction sensor between +5V and A0 with 10K pull down
+- Wind speed sensor (red nad yellow) between GND and digital pin 3
+- Wind direction sensor (black and green) between +5V and A0 with 10K pull down
+- LDR between +5V and A1 with 4.7K pull down
 
 Maplin links
 ------------
