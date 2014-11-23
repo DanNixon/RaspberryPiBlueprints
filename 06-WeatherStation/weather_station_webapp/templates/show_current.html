@@ -27,6 +27,7 @@
         drawChart('temperature_gauge', 'Temperature', {{ data.temperature }}, 0, 80);
         drawChart('humidity_gauge', 'Humidity', {{ data.humidity  }}, 0, 100);
         drawChart('pressure_gauge', 'Pressure', {{ data.pressure  }}, 0, 50);
+        drawChart('rain_gauge', 'Rain', {{ data.rain_frequency  }}, 0, 25);
       }
     </script>
   {% endif %}
@@ -41,6 +42,7 @@
     <div id="pressure_gauge" class="small_gauge"></div>
     <div id="avg_wind_gauge" class="small_gauge"></div>
     <div id="light_level_gauge" class="small_gauge"></div>
+    <div id="rain_gauge" class="small_gauge"></div>
   {% else %}
     <em>No data recorded yet.</em>
   {% endif %}
