@@ -46,6 +46,24 @@ void setup()
  */
 void loop()
 {
+  // If the client wants some data, then send the current readings
+  while(Serial.available())
+  {
+    char c = Serial.read();
+    if(c == 'D')
+    {
+      // Send last wind direction
+      Serial.print("WIND_DIRECTION:ARB:");
+      Serial.print(lastWindDirection);
+      Serial.println(";");
+
+      // Send last light level
+      Serial.print("LIGHT_LEVEL:ARB:");
+      Serial.print(lastLightLevel);
+      Serial.println(";");
+    }
+  }
+
   // If the rain sensor has been triggered
   if(rainFlag)
   {
@@ -75,7 +93,7 @@ void loop()
   }
 
   // Take a reading from the wind direction sensor
-  uint16_t wind_direction_reading = analogRead(0);
+  uint16_t windDirectionReading = analogRead(0);
 
   // Loop through the known direction reading ranges
   int8_t windDirection = -1;
@@ -86,7 +104,7 @@ void loop()
     uint16_t rangeMax = windDirectionLevels[i] + windDirectionTolerance;
 
     // If the current reading is in the range
-    if(rangeMin < wind_direction_reading && rangeMax > wind_direction_reading)
+    if(rangeMin < windDirectionReading && rangeMax > windDirectionReading)
     {
       windDirection = i;
       break;

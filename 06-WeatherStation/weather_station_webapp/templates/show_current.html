@@ -13,7 +13,7 @@
         ]);
 
         var options = {
-          from: val_from, to: val_to,
+          min: val_from, max: val_to,
           minorTicks: 5
         };
 
@@ -22,7 +22,7 @@
       }
 
       function drawAllCharts() {
-        drawChart('avg_wind_gauge', 'Avg. Wind Speed', {{ data.average_wind_speed  }}, 0, 70);
+        drawChart('avg_wind_gauge', 'Avg. Wind Speed', {{ data.average_wind_speed  }}, 0, 50);
         drawChart('light_level_gauge', 'Light Level', {{ data.light_level  }}, 0, 1000);
         drawChart('temperature_gauge', 'Temperature', {{ data.temperature }}, 0, 80);
         drawChart('humidity_gauge', 'Humidity', {{ data.humidity  }}, 0, 100);

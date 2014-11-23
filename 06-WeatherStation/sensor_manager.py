@@ -95,6 +95,8 @@ def submit_reading_loop(database, interval):
             connection.commit()
             connection.close()
 
+            SERIAL_PORT.write('D\r\n')
+
         except Exception as e:
             print 'Error submitting readings: ' + str(e)
 
