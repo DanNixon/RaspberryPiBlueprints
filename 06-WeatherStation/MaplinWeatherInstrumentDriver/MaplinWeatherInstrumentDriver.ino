@@ -13,11 +13,14 @@ const float windSpeedMultFactor = 0.0117439155;
 const uint16_t windDirectionLevels[] = {930, 830, 735, 390, 75, 135, 235, 560};
 // Tolerance/width of each wind direction reading
 const uint16_t windDirectionTolerance = 50;
+// Amount light level must have changed to be reported to serial port
+const uint16_t lightLevelThreshold = 10;
 
 volatile bool rainFlag = false;
 volatile uint16_t windSpeedHalfRevolutions = 0;
 uint16_t windSpeedStartTime = 0;
 uint8_t lastWindDirection = 0;
+int16_t lastLightLevel = 0;
 
 /**
  * Setup code to configure the Arduino.
@@ -99,6 +102,18 @@ void loop()
     // Send the serial message
     Serial.print("WIND_DIRECTION:ARB:");
     Serial.print(windDirection);
+    Serial.println(";");
+  }
+
+  int16_t currentLightLevel = analogRead(1);
+  if(abs(currentLightLevel - lastLightLevel) > lightLevelThreshold)
+  {
+    // Record the new light level
+    lastLightLevel = currentLightLevel;
+
+    // Send the serial message
+    Serial.print("LIGHT_LEVEL:ARB:");
+    Serial.print(currentLightLevel);
     Serial.println(";");
   }
 }
