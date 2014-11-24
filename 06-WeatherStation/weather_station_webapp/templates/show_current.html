@@ -23,11 +23,11 @@
 
       function drawAllCharts() {
         drawChart('avg_wind_gauge', 'Avg. Wind Speed', {{ data.average_wind_speed  }}, 0, 50);
-        drawChart('light_level_gauge', 'Light Level', {{ data.light_level  }}, 0, 1000);
-        drawChart('temperature_gauge', 'Temperature', {{ data.temperature }}, 0, 80);
+        drawChart('light_level_gauge', 'Light Level', {{ data.light_level  }}, 0, 1023);
+        drawChart('temperature_gauge', 'Temperature', {{ data.temperature }}, -20, 80);
         drawChart('humidity_gauge', 'Humidity', {{ data.humidity  }}, 0, 100);
         drawChart('pressure_gauge', 'Pressure', {{ data.pressure  }}, 0, 50);
-        drawChart('rain_gauge', 'Rain', {{ data.rain_frequency  }}, 0, 25);
+        drawChart('rain_gauge', 'Rain', {{ data.rain_frequency  }}, 0, 50);
       }
     </script>
   {% endif %}
