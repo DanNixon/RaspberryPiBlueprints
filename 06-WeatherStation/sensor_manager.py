@@ -1,4 +1,6 @@
 #!/usr/bin/python
+
+import Adafruit_BMP.BMP085 as BMP085
 import Adafruit_DHT
 import argparse
 from collections import Counter
@@ -22,6 +24,7 @@ PRESSURE_READINGS = list()
 
 RUN = True
 SERIAL_PORT = None
+BMP_SENSOR = None
 
 
 DIRECTION_ID_TO_NAME = {
@@ -159,7 +162,9 @@ def poll_gpio_sensors_loop(interval):
         TEMPERATURE_READINGS.append(temperature)
         HUMIDITY_READINGS.append(humidity)
 
-        # TODO: Poll barometer
+        # Get a pressure reading from the BMP180
+        pressure = BMP_SENSOR.read_pressure() / 1000.0
+        PRESSURE_READINGS.append(pressure)
 
         time.sleep(interval)
 
@@ -177,6 +182,10 @@ def start_sensor_recording(params):
     SERIAL_PORT.port = params.serial_port
     SERIAL_PORT.baudrate = params.serial_baud
     SERIAL_PORT.timeout = 1
+
+    # BMP180 sensor setup
+    global BMP_SENSOR
+    BMP_SENSOR = BMP085.BMP085()
 
     try:
         SERIAL_PORT.open()
