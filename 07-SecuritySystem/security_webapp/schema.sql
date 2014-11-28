@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS sensors;
+CREATE TABLE sensors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL,
+  location TEXT,
+  description TEXT,
+  mqtt_topic TEXT NOT NULL,
+  trigger_text TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS events;
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  sensor_id INTEGER,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(sensor_id) REFERENCES sensor(id)
+);
+
+DROP TABLE IF EXISTS alarms;
+CREATE TABLE alarms (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL,
+  description TEXT
+);
+
+DROP TABLE IF EXISTS alarm_has_sensor;
+CREATE TABLE alarm_has_sensor (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  alarm_id INTEGER,
+  sensor_id INTEGER,
+  FOREIGN KEY(alarm_id) REFERENCES alarms(id),
+  FOREIGN KEY(sensor_id) REFERENCES sensor(id)
+);
