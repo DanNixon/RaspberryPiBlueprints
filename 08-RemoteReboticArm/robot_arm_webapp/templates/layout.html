@@ -1,0 +1,12 @@
+<!doctype html>
+<title>piArm</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <h1>piArm</h1>
+  <div class="metanav">
+    <a href="{{ url_for('show_control') }}">Control</a>
+    <a href="{{ url_for('show_control_with_video') }}">Control & Video</a>
+    <a href="{{ url_for('show_video') }}">Video</a>
+  </div>
+  {% block body %}{% endblock %}
+</div>
