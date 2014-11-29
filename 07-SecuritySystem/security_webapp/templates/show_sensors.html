@@ -2,6 +2,14 @@
 
 {% block body %}
 
-  <p>Sensors</p>
+  <h2>Sensors</h2>
+
+  <ul>
+    {% for sensor in sensors %}
+      <li><a href="{{ url_for('update_sensor', sensor_id=sensor.id) }}"><span class="item_id">{{ sensor.id }}</span> - {{ sensor.name }}</a></li>
+    {% else %}
+      <p><i>No Sensors Defined.</i></p>
+    {% endfor %}
+  </ul>
 
 {% endblock %}

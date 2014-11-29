@@ -11,23 +11,22 @@ CREATE TABLE sensors (
 DROP TABLE IF EXISTS events;
 CREATE TABLE events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  sensor_id INTEGER,
-  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(sensor_id) REFERENCES sensor(id)
+  sensor_id INTEGER DEFAULT -1 REFERENCES sensors(id) ON DELETE SET DEFAULT,
+  'type' TEXT NOT NULL,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE IF EXISTS alarms;
 CREATE TABLE alarms (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL,
+  alert_when TEXT NOT NULL,
   description TEXT
 );
 
 DROP TABLE IF EXISTS alarm_has_sensor;
 CREATE TABLE alarm_has_sensor (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  alarm_id INTEGER,
-  sensor_id INTEGER,
-  FOREIGN KEY(alarm_id) REFERENCES alarms(id),
-  FOREIGN KEY(sensor_id) REFERENCES sensor(id)
+  alarm_id INTEGER REFERENCES alarms(id) ON DELETE CASCADE,
+  sensor_id INTEGER REFERENCES sensors(id) ON DELETE CASCADE
 );

@@ -2,6 +2,14 @@
 
 {% block body %}
 
-  <p>Alarms</p>
+  <h2>Alarms</h2>
+
+  <ul>
+  {% for alarm in alarms %}
+    <li><a href="{{ url_for('update_alarm', alarm_id=alarm.id) }}"><span class="item_id">{{ alarm.id }}</span> - {{ alarm.name }}</a></li>
+  {% else %}
+    <p><i>No Alarms Defined.</i></p>
+  {% endfor %}
+  </ul>
 
 {% endblock %}

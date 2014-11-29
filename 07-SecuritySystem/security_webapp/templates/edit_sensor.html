@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <h1>Sensor {{ sensor_id }}</h1>
+
+  <form>
+    <input type="text" name="sensor_name" value="{{ sensor_name }}" />
+    <input type="text" name="sensor_description" value="{{ sensor_description }}" />
+    <input type="text" name="sensor_location" value="{{ sensor_location }}" />
+    <input type="text" name="sensor_mqtt_topic" value="{{ sensor_mqtt_topic }}" />
+    <input type="text" name="sensor_trigger" value="{{ sensor_trigger }}" />
+  </form>
+
+{% endblock %}

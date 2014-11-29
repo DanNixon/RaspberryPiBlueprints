@@ -93,31 +93,45 @@ def delete_sensor(sensor_id):
         abort(401)
 
     db = get_db()
-    cur = db.execute('DELETE FROM sensors WHERE id = %d' % sensor_id)
+    cur = db.execute('DELETE FROM sensors WHERE id = ?', (sensor_id,))
+    db.commit()
 
-    # TODO
-
+    flash('Deleted sensor with ID %d' % int(sensor_id))
     return redirect(url_for('show_sensors'))
 
 
-@app.route('/sensors/<sensor_id>/update')
+@app.route('/sensors/<sensor_id>', methods=['POST', 'GET'])
 def update_sensor(sensor_id):
     if not session.get('logged_in'):
         abort(401)
 
+    db = get_db()
+    if request.method == 'GET':
+        cur = db.execute('SELECT * FROM sensors WHERE id = ?', (sensor_id,))
+        sensor = cur.fetchone()
+
+        if sensor is None:
+            flash('Sensor with ID %d does not exist' % int(sensor_id))
+            return redirect(url_for('show_sensors'))
+
+        return render_template('edit_sensor.html', sensor=sensor)
+
     # TODO
 
-    return redirect(url_for('show_sensors'))
+    return redirect(url_for('update_sensor', sensor_id=sensor_id))
 
 
-@app.route('/sensors/add')
+@app.route('/sensors/add', methods=['POST', 'GET'])
 def add_sensor():
     if not session.get('logged_in'):
         abort(401)
 
+    if request.method == 'GET':
+        return render_template('edit_sensor.html', sensor=None)
+
     # TODO
 
-    return redirect(url_for('show_sensors'))
+    return redirect(url_for('update_sensor', sensor_id=0))
 
 
 @app.route('/events')
@@ -137,10 +151,10 @@ def delete_event(event_id):
         abort(401)
 
     db = get_db()
-    cur = db.execute('DELETE FROM events WHERE id = %d' % event_id)
+    cur = db.execute('DELETE FROM events WHERE id = ?', (event_id))
+    db.commit()
 
-    # TODO
-
+    flash('Deleted event with ID %d' % int(event_id))
     return redirect(url_for('show_events'))
 
 
@@ -161,24 +175,24 @@ def delete_alarm(alarm_id):
         abort(401)
 
     db = get_db()
-    cur = db.execute('DELETE FROM alarms WHERE id = %d' % alarm_id)
+    cur = db.execute('DELETE FROM alarms WHERE id = ?', (alarm_id))
+    db.commit()
 
-    # TODO
-
+    flash('Deleted alarm with ID %d' % int(alarm_id))
     return redirect(url_for('show_alarms'))
 
 
-@app.route('/alarms/<alarm_id>/update')
+@app.route('/alarms/<alarm_id>', methods=['POST', 'GET'])
 def update_alarm(alarm_id):
     if not session.get('logged_in'):
         abort(401)
 
     # TODO
 
-    return redirect(url_for('show_alarms'))
+    return redirect(url_for('update_alarm', alarm_id))
 
 
-@app.route('/alarms/add')
+@app.route('/alarms/add', methods=['POST', 'GET'])
 def add_alarm():
     if not session.get('logged_in'):
         abort(401)

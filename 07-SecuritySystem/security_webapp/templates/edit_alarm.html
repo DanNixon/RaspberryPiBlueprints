@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  {% if alarm_id is None %}
+    <h1>New Alarm</h1>
+  {% else %}
+    <h1>Alarm {{ alarm_id }}</h1>
+  {% endif %}
+
+  <form>
+    <input type="text" name="alarm_name" value="{{ alarm_name }}" />
+    <input type="text" name="alarm_description" value="{{ alarm_description }}" />
+
+    <fieldset>
+      {% for sensor in sensors %}
+      {% else %}
+        <p><i>No Sensors Added.</i></p>
+      {% endfor %}
+    </fieldset>
+  </form>
+
+  <span>
+    {% if alarm_id is None %}
+      <a href="">Add</a>
+    {% else %}
+      <a href="">Update</a>
+    {% endif %}
+    <a href="">Delete</a>
+  </span>
+
+{% endblock %}

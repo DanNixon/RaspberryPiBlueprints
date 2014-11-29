@@ -2,6 +2,25 @@
 
 {% block body %}
 
-  <p>Events</p>
+<h2>Events</h2>
+
+  <table>
+    <tr>
+      <th>Timestamp</th>
+      <th>Sensor</th>
+      <th>Event</th>
+      <th>Actions</th>
+    </tr>
+    {% for event in events %}
+      <tr>
+        <td>{{ event.timestamp }}</td>
+        <td><a href="{{ url_for('update_sensor', sensor_id=event.sensor_id) }}">TODO</a></td>
+        <td>{{ event.type }}</td>
+        <td><a href="{{ url_for('delete_event', event_id=event.id) }}">Delete</a></td>
+      </tr>
+    {% else %}
+      <p><i>No Events Recorded.</i></p>
+    {% endfor %}
+  </table>
 
 {% endblock %}
