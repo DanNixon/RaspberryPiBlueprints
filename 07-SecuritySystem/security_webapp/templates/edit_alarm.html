@@ -2,31 +2,33 @@
 
 {% block body %}
 
-  {% if alarm_id is None %}
-    <h1>New Alarm</h1>
+  {% if alarm %}
+    <h2>Alarm {{ alarm.id }}</h2>
   {% else %}
-    <h1>Alarm {{ alarm_id }}</h1>
+    <h2>New Alarm</h2>
   {% endif %}
 
-  <form>
-    <input type="text" name="alarm_name" value="{{ alarm_name }}" />
-    <input type="text" name="alarm_description" value="{{ alarm_description }}" />
+  <form class="block-form">
+    <span>Name: <input type="text" name="alarm_name" value="{{ alarm.name }}" /></span>
+    <span>Description: <input type="text" name="alarm_description" value="{{ alarm.description }}" /></span>
 
     <fieldset>
+      {% if sensors %}
       {% for sensor in sensors %}
+      {% endfor %}
       {% else %}
         <p><i>No Sensors Added.</i></p>
-      {% endfor %}
+      {% endif %}
     </fieldset>
   </form>
 
   <span>
-    {% if alarm_id is None %}
-      <a href="">Add</a>
-    {% else %}
+    {% if alarm %}
       <a href="">Update</a>
+      <a href="{{ url_for('delete_alarm', alarm_id=alarm.id) }}">Delete</a>
+    {% else %}
+      <a href="">Add</a>
     {% endif %}
-    <a href="">Delete</a>
   </span>
 
 {% endblock %}

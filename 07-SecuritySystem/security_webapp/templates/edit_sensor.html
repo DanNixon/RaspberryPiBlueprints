@@ -2,14 +2,27 @@
 
 {% block body %}
 
-  <h1>Sensor {{ sensor_id }}</h1>
+  {% if sensor %}
+    <h2>Sensor {{ sensor.id }}</h2>
+  {% else %}
+    <h2>New Sensor</h2>
+  {% endif %}
 
-  <form>
-    <input type="text" name="sensor_name" value="{{ sensor_name }}" />
-    <input type="text" name="sensor_description" value="{{ sensor_description }}" />
-    <input type="text" name="sensor_location" value="{{ sensor_location }}" />
-    <input type="text" name="sensor_mqtt_topic" value="{{ sensor_mqtt_topic }}" />
-    <input type="text" name="sensor_trigger" value="{{ sensor_trigger }}" />
+  <form class="block-form">
+    <span>Name: <input type="text" name="sensor_name" value="{{ sensor.name }}" /></span>
+    <span>Description: <input type="text" name="sensor_description" value="{{ sensor.description }}" /></span>
+    <span>Location: <input type="text" name="sensor_location" value="{{ sensor.location }}" /></span>
+    <span>MQTT topic: <input type="text" name="sensor_mqtt_topic" value="{{ sensor.mqtt_topic }}" /></span>
+    <span>Triggered text: <input type="text" name="sensor_trigger" value="{{ sensor.trigger_text }}" /></span>
   </form>
+
+  <span>
+    {% if sensor %}
+      <a href="">Update</a>
+      <a href="{{ url_for('delete_sensor', sensor_id=sensor.id) }}">Delete</a>
+    {% else %}
+      <a href="">Add</a>
+    {% endif %}
+  </span>
 
 {% endblock %}

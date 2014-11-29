@@ -187,6 +187,19 @@ def update_alarm(alarm_id):
     if not session.get('logged_in'):
         abort(401)
 
+    db = get_db()
+    if request.method == 'GET':
+        cur = db.execute('SELECT * FROM alarms WHERE id = ?', (alarm_id,))
+        alarm = cur.fetchone()
+
+        if alarm is None:
+            flash('Alarm with ID %d does not exist' % int(alarm_id))
+            return redirect(url_for('show_sensors'))
+
+        sensors = None
+
+        return render_template('edit_alarm.html', alarm=alarm, sensors=sensors)
+
     # TODO
 
     return redirect(url_for('update_alarm', alarm_id))
@@ -196,6 +209,9 @@ def update_alarm(alarm_id):
 def add_alarm():
     if not session.get('logged_in'):
         abort(401)
+
+    if request.method == 'GET':
+        return render_template('edit_alarm.html', alarm=None, sensors=None)
 
     # TODO
 
