@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<p>Video</p>
-<p>Control</p>
+  {% include "video_stream.html" %}
+  {% include "movement_controls.html" %}
+  {% include "arm_controls.html" %}
 {% endblock %}

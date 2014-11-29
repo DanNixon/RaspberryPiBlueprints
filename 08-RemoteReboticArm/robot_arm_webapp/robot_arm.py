@@ -22,3 +22,11 @@ def show_control_with_video():
 @app.route('/video')
 def show_video():
     return render_template('video.html')
+
+@app.route('/command/<command>')
+def handle_command(command):
+
+    # TODO
+    print command
+
+    return redirect(url_for('show_control'))
