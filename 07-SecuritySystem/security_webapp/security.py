@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Web application to manage several secutriy sensors over MQTT.
 """
 
 import os
@@ -16,9 +17,10 @@ app.config.update(dict(
     DEBUG=True,
     SECRET_KEY='development key',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='default',
+    MQTT_BROKER='localhost'
 ))
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.config.from_envvar('SECURITY_APP_SETTINGS', silent=True)
 
 
 def connect_db():
@@ -57,6 +59,21 @@ def get_db():
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
+
+
+def dict_factory(cursor, row):
+    """
+    Used to format SQLite rows as dictionaries
+
+    @param cursor Current sursor
+    @param row Current row
+    @return Row as a list
+    """
+
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
 
 
 @app.teardown_appcontext
@@ -226,23 +243,34 @@ def update_alarm(alarm_id):
         abort(401)
 
     db = get_db()
+    # If we just want to look at the alarm
     if request.method == 'GET':
         cur = db.execute('SELECT * FROM alarms WHERE id = ?', (alarm_id,))
         alarm = cur.fetchone()
 
+        # Give an error if the alarm does not exist
         if alarm is None:
             flash('Alarm with ID %d does not exist' % int(alarm_id))
             return redirect(url_for('show_sensors'))
 
-        sensors = None
+        # Get all of the sensors for this alarm
+        sensors = get_sensors_input(alarm_id)
 
         return render_template('edit_alarm.html', alarm=alarm, sensors=sensors)
 
+    # Here we are updating the alarm
     try:
+        # Update the alarm entry
         cur = db.execute('UPDATE alarms SET name = ?, description = ?, alert_when = ? WHERE id = ?',
                          (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when'], alarm_id))
 
-        # TODO: sensor mapping
+        # Remove all existing mapping between the alarm and sensors
+        db.execute('DELETE FROM alarm_has_sensor WHERE alarm_id = ?', (alarm_id,))
+
+        # For each of the currently enabled sensors add a mapping in the database
+        enabled_sensor_ids = request.values.getlist('enabled_sensors')
+        for sensor_id in enabled_sensor_ids:
+            db.execute('INSERT INTO alarm_has_sensor (alarm_id, sensor_id) VALUES (?, ?)', (alarm_id, sensor_id))
 
         db.commit()
         flash('Alarm %d updated.' % int(alarm_id))
@@ -259,17 +287,23 @@ def add_alarm():
     if not session.get('logged_in'):
         abort(401)
 
+    # If just showing the add page
     if request.method == 'GET':
-        return render_template('edit_alarm.html', alarm=None, sensors=None)
+        sensors = get_sensors_input()
+        return render_template('edit_alarm.html', alarm=None, sensors=sensors)
 
     db = get_db()
 
+    # Add the alarm here
     try:
         cur = db.execute('INSERT INTO alarms (name, description, alert_when) VALUES (?, ?, ?)',
                          (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when']))
         alarm_id = cur.lastrowid
 
-        # TODO: sensor mapping
+        # For each of the currently enabled sensors add a mapping in the database
+        enabled_sensor_ids = request.values.getlist('enabled_sensors')
+        for sensor_id in enabled_sensor_ids:
+            db.execute('INSERT INTO alarm_has_sensor (alarm_id, sensor_id) VALUES (?, ?)', (alarm_id, sensor_id))
 
         db.commit()
         flash('Added alarm %d.' % int(alarm_id))
@@ -279,6 +313,29 @@ def add_alarm():
         db.rollback()
         flash('Error adding alarm: %s' % str(sql_ex))
         return redirect(url_for('add_alarm'))
+
+
+def get_sensors_input(alarm_id=None):
+    """
+    Gets information about sensors associated with an alarm.
+
+    @param alarm_id ID of alarm to get sensors for
+    """
+
+    db = get_db()
+    db.row_factory = dict_factory
+    cur = db.execute('SELECT id, name FROM sensors')
+    sensors = cur.fetchall()
+
+    enabled_sensor_ids = list()
+    if alarm_id is not None:
+        cur = db.execute('SELECT sensor_id FROM alarm_has_sensor WHERE alarm_id = ?', (alarm_id,))
+        enabled_sensor_ids = [ s['sensor_id'] for s in cur.fetchall() ]
+
+    for s in sensors:
+        s['enabled'] = s['id'] in enabled_sensor_ids
+
+    return sensors
 
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -10,11 +10,17 @@
     <form class="block-form" method="POST" action="{{ url_for('add_alarm') }}">
   {% endif %}
 
-    <span>Name: <input type="text" name="alarm_name" value="{{ alarm.name }}" /></span>
-    <span>Description: <input type="text" name="alarm_description" value="{{ alarm.description }}" /></span>
     <span>
-      Alert When:
-      <select name="alarm_alert_when">
+      <label for="alarm_name">Name:</label>
+      <input type="text" id="alarm_name" name="alarm_name" value="{{ alarm.name }}" />
+    </span>
+    <span>
+      <label for="alarm_description">Description:</lebel>
+      <input type="text" id="alarm_description" name="alarm_description" value="{{ alarm.description }}" />
+    </span>
+    <span>
+      <label for"alarm_alert_when">Alert When:</label>
+      <select name="alarm_alert_when" id="alarm_alert_when">
         <option value="when_all_triggered" {% if alarm.alert_when == 'when_all_triggered' %}selected="selected"{% endif %}>All Triggered</option>
         <option value="when_any_triggered" {% if alarm.alert_when == 'when_any_triggered' %}selected="selected"{% endif %}>Any One Triggered</option>
         <option value="when_any_changed" {% if alarm.alert_when == 'when_any_changed' %}selected="selected"{% endif %}>Any One Changed</option>
@@ -22,8 +28,12 @@
     </span>
 
     <fieldset>
+      <legend>Sensors</legend>
+
       {% if sensors %}
       {% for sensor in sensors %}
+        <input type="checkbox" id="chk_sensor{{ sensor.id }}" name="enabled_sensors" {% if sensor.enabled %}checked="checked"{% endif %} value="{{ sensor.id }}">
+        <label for="chk_sensor{{ sensor.id }}">{{ sensor.name }}</label>
       {% endfor %}
       {% else %}
         <p><i>No Sensors Added.</i></p>
