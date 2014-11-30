@@ -94,9 +94,14 @@ def delete_sensor(sensor_id):
 
     db = get_db()
     cur = db.execute('DELETE FROM sensors WHERE id = ?', (sensor_id,))
-    db.commit()
 
-    flash('Deleted sensor with ID %d' % int(sensor_id))
+    try:
+        db.commit()
+        flash('Deleted sensor %d.' % int(sensor_id))
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error deleting sensor %d.' % int(sensor_id))
+
     return redirect(url_for('show_sensors'))
 
 
@@ -111,12 +116,21 @@ def update_sensor(sensor_id):
         sensor = cur.fetchone()
 
         if sensor is None:
-            flash('Sensor with ID %d does not exist' % int(sensor_id))
+            flash('Sensor %d does not exist' % int(sensor_id))
             return redirect(url_for('show_sensors'))
 
         return render_template('edit_sensor.html', sensor=sensor)
 
-    # TODO
+    cur = db.execute('UPDATE sensors SET name = ?, description = ?, location = ?, mqtt_topic = ?, trigger_text = ? WHERE id = ?',
+                     (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
+                      request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text'], sensor_id))
+
+    try:
+        db.commit()
+        flash('Sensor %d updated.' % int(sensor_id))
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error updating sensor %d.' % int(sensor_id))
 
     return redirect(url_for('update_sensor', sensor_id=sensor_id))
 
@@ -129,9 +143,22 @@ def add_sensor():
     if request.method == 'GET':
         return render_template('edit_sensor.html', sensor=None)
 
-    # TODO
+    db = get_db()
 
-    return redirect(url_for('update_sensor', sensor_id=0))
+    cur = db.execute('INSERT INTO sensors (name, description, location, mqtt_topic, trigger_text) VALUES (?, ?, ?, ?, ?)',
+                     (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
+                      request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text']))
+
+    sensor_id = cur.lastrowid
+
+    try:
+        db.commit()
+        flash('Added sensor %d.' % int(sensor_id))
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error adding sensor.')
+
+    return redirect(url_for('update_sensor', sensor_id=sensor_id))
 
 
 @app.route('/events')
@@ -152,9 +179,14 @@ def delete_event(event_id):
 
     db = get_db()
     cur = db.execute('DELETE FROM events WHERE id = ?', (event_id))
-    db.commit()
 
-    flash('Deleted event with ID %d' % int(event_id))
+    try:
+        db.commit()
+        flash('Deleted event %d.' % int(event_id))
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error deleting event %d.' % int(event_id))
+
     return redirect(url_for('show_events'))
 
 
@@ -176,9 +208,14 @@ def delete_alarm(alarm_id):
 
     db = get_db()
     cur = db.execute('DELETE FROM alarms WHERE id = ?', (alarm_id))
-    db.commit()
 
-    flash('Deleted alarm with ID %d' % int(alarm_id))
+    try:
+        db.commit()
+        flash('Deleted alarm %d.' % int(alarm_id))
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error deleting alarm %d.' % int(alarm_id))
+
     return redirect(url_for('show_alarms'))
 
 
