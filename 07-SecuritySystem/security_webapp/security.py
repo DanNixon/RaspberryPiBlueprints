@@ -100,7 +100,7 @@ def delete_sensor(sensor_id):
         flash('Deleted sensor %d.' % int(sensor_id))
     except Exception as sql_ex:
         db.rollback()
-        flash('Error deleting sensor %d.' % int(sensor_id))
+        flash('Error deleting sensor: %s' % str(sql_ex))
 
     return redirect(url_for('show_sensors'))
 
@@ -121,16 +121,17 @@ def update_sensor(sensor_id):
 
         return render_template('edit_sensor.html', sensor=sensor)
 
-    cur = db.execute('UPDATE sensors SET name = ?, description = ?, location = ?, mqtt_topic = ?, trigger_text = ? WHERE id = ?',
-                     (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
-                      request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text'], sensor_id))
-
     try:
+        cur = db.execute('UPDATE sensors SET name = ?, description = ?, location = ?, mqtt_topic = ?, trigger_text = ? WHERE id = ?',
+                         (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
+                          request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text'], sensor_id))
+
         db.commit()
         flash('Sensor %d updated.' % int(sensor_id))
+
     except Exception as sql_ex:
         db.rollback()
-        flash('Error updating sensor %d.' % int(sensor_id))
+        flash('Error updating sensor: %s' % str(sql_ex))
 
     return redirect(url_for('update_sensor', sensor_id=sensor_id))
 
@@ -145,20 +146,20 @@ def add_sensor():
 
     db = get_db()
 
-    cur = db.execute('INSERT INTO sensors (name, description, location, mqtt_topic, trigger_text) VALUES (?, ?, ?, ?, ?)',
-                     (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
-                      request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text']))
-
-    sensor_id = cur.lastrowid
-
     try:
+        cur = db.execute('INSERT INTO sensors (name, description, location, mqtt_topic, trigger_text) VALUES (?, ?, ?, ?, ?)',
+                         (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
+                          request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text']))
+        sensor_id = cur.lastrowid
+
         db.commit()
         flash('Added sensor %d.' % int(sensor_id))
+        return redirect(url_for('update_sensor', sensor_id=sensor_id))
+
     except Exception as sql_ex:
         db.rollback()
-        flash('Error adding sensor.')
-
-    return redirect(url_for('update_sensor', sensor_id=sensor_id))
+        flash('Error adding sensor: %s' % str(sql_ex))
+        return redirect(url_for('add_sensor'))
 
 
 @app.route('/events')
@@ -185,7 +186,7 @@ def delete_event(event_id):
         flash('Deleted event %d.' % int(event_id))
     except Exception as sql_ex:
         db.rollback()
-        flash('Error deleting event %d.' % int(event_id))
+        flash('Error deleting event: %s' % str(sql_ex))
 
     return redirect(url_for('show_events'))
 
@@ -214,7 +215,7 @@ def delete_alarm(alarm_id):
         flash('Deleted alarm %d.' % int(alarm_id))
     except Exception as sql_ex:
         db.rollback()
-        flash('Error deleting alarm %d.' % int(alarm_id))
+        flash('Error deleting alarm: %s' % str(sql_ex))
 
     return redirect(url_for('show_alarms'))
 
@@ -237,9 +238,20 @@ def update_alarm(alarm_id):
 
         return render_template('edit_alarm.html', alarm=alarm, sensors=sensors)
 
-    # TODO
+    try:
+        cur = db.execute('UPDATE alarms SET name = ?, description = ?, alert_when = ? WHERE id = ?',
+                         (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when'], alarm_id))
 
-    return redirect(url_for('update_alarm', alarm_id))
+        # TODO: sensor mapping
+
+        db.commit()
+        flash('Alarm %d updated.' % int(alarm_id))
+
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error updating alarm: %s' % str(sql_ex))
+
+    return redirect(url_for('update_alarm', alarm_id=alarm_id))
 
 
 @app.route('/alarms/add', methods=['POST', 'GET'])
@@ -250,9 +262,23 @@ def add_alarm():
     if request.method == 'GET':
         return render_template('edit_alarm.html', alarm=None, sensors=None)
 
-    # TODO
+    db = get_db()
 
-    return redirect(url_for('show_alarms'))
+    try:
+        cur = db.execute('INSERT INTO alarms (name, description, alert_when) VALUES (?, ?, ?)',
+                         (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when']))
+        alarm_id = cur.lastrowid
+
+        # TODO: sensor mapping
+
+        db.commit()
+        flash('Added alarm %d.' % int(alarm_id))
+        return redirect(url_for('update_alarm', alarm_id=alarm_id))
+
+    except Exception as sql_ex:
+        db.rollback()
+        flash('Error adding alarm: %s' % str(sql_ex))
+        return redirect(url_for('add_alarm'))
 
 
 @app.route('/login', methods=['GET', 'POST'])

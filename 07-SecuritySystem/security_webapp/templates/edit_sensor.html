@@ -4,10 +4,10 @@
 
   {% if sensor %}
     <h2>Sensor {{ sensor.id }}</h2>
-    <form class="block-form" action="{{ url_for('update_sensor', sensor_id=sensor.id) }}", method="POST">
+    <form class="block-form" method="POST" action="{{ url_for('update_sensor', sensor_id=sensor.id) }}">
   {% else %}
     <h2>New Sensor</h2>
-    <form class="block-form" action="{{ url_for('add_sensor') }}", method="POST">
+    <form class="block-form" method="POST" action="{{ url_for('add_sensor') }}">
   {% endif %}
 
     <span>Name: <input type="text" name="sensor_name" value="{{ sensor.name }}" /></span>
