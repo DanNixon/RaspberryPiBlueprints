@@ -140,23 +140,36 @@ def update_sensor(sensor_id):
         abort(401)
 
     db = get_db()
+
+    # Get the existing sensor
+    cur = db.execute('SELECT * FROM sensors WHERE id = ?', (sensor_id,))
+    sensor = cur.fetchone()
+
+    if sensor is None:
+        flash('Sensor %d does not exist' % int(sensor_id))
+        return redirect(url_for('show_sensors'))
+
     if request.method == 'GET':
-        cur = db.execute('SELECT * FROM sensors WHERE id = ?', (sensor_id,))
-        sensor = cur.fetchone()
-
-        if sensor is None:
-            flash('Sensor %d does not exist' % int(sensor_id))
-            return redirect(url_for('show_sensors'))
-
         cur = db.execute('SELECT timestamp, type FROM events WHERE sensor_id = ? ORDER BY timestamp DESC LIMIT 1', (sensor_id,))
         last_event = cur.fetchone()
 
         return render_template('edit_sensor.html', sensor=sensor, last_event=last_event)
 
     try:
+        old_mqtt_topic = str(sensor['mqtt_topic'])
+        new_mqtt_topic = str(request.form['sensor_mqtt_topic'])
+
         cur = db.execute('UPDATE sensors SET name = ?, description = ?, location = ?, mqtt_topic = ?, trigger_text = ? WHERE id = ?',
                          (request.form['sensor_name'], request.form['sensor_description'], request.form['sensor_location'],
-                          request.form['sensor_mqtt_topic'], request.form['sensor_trigger_text'], sensor_id))
+                          new_mqtt_topic, request.form['sensor_trigger_text'], sensor_id))
+
+        # Check to see if the MQTT topic has changed, if so unsubscribe from the old topic and subscribe to the new one
+        if new_mqtt_topic != old_mqtt_topic:
+            logging.getLogger(__name__).info('MQTT topic changed')
+            logging.getLogger(__name__).debug('Unsubscribing from MQTT topic %s' % old_mqtt_topic)
+            mqtt_client.unsubscribe(old_mqtt_topic)
+            logging.getLogger(__name__).debug('Subscribing to MQTT topic %s' % new_mqtt_topic)
+            mqtt_client.subscribe(new_mqtt_topic)
 
         db.commit()
         flash('Sensor %d updated.' % int(sensor_id))
