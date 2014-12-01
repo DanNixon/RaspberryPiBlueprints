@@ -261,8 +261,9 @@ def update_alarm(alarm_id):
     # Here we are updating the alarm
     try:
         # Update the alarm entry
-        cur = db.execute('UPDATE alarms SET name = ?, description = ?, alert_when = ? WHERE id = ?',
-                         (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when'], alarm_id))
+        cur = db.execute('UPDATE alarms SET name = ?, description = ?, alert_when = ?, email = ? WHERE id = ?',
+                         (request.form['alarm_name'], request.form['alarm_description'],
+                             request.form['alarm_alert_when'], request.form['alarm_email'], alarm_id))
 
         # Remove all existing mapping between the alarm and sensors
         db.execute('DELETE FROM alarm_has_sensor WHERE alarm_id = ?', (alarm_id,))
@@ -296,8 +297,9 @@ def add_alarm():
 
     # Add the alarm here
     try:
-        cur = db.execute('INSERT INTO alarms (name, description, alert_when) VALUES (?, ?, ?)',
-                         (request.form['alarm_name'], request.form['alarm_description'], request.form['alarm_alert_when']))
+        cur = db.execute('INSERT INTO alarms (name, description, alert_when, email) VALUES (?, ?, ?, ?)',
+                         (request.form['alarm_name'], request.form['alarm_description'],
+                             request.form['alarm_alert_when'], request.form['alarm_email']))
         alarm_id = cur.lastrowid
 
         # For each of the currently enabled sensors add a mapping in the database

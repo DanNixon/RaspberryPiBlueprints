@@ -21,7 +21,8 @@ CREATE TABLE alarms (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL,
   alert_when TEXT NOT NULL,
-  description TEXT
+  description TEXT,
+  email TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS alarm_has_sensor;
