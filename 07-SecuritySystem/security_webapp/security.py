@@ -148,7 +148,10 @@ def update_sensor(sensor_id):
             flash('Sensor %d does not exist' % int(sensor_id))
             return redirect(url_for('show_sensors'))
 
-        return render_template('edit_sensor.html', sensor=sensor)
+        cur = db.execute('SELECT timestamp, type FROM events WHERE sensor_id = ? ORDER BY timestamp DESC LIMIT 1', (sensor_id,))
+        last_event = cur.fetchone()
+
+        return render_template('edit_sensor.html', sensor=sensor, last_event=last_event)
 
     try:
         cur = db.execute('UPDATE sensors SET name = ?, description = ?, location = ?, mqtt_topic = ?, trigger_text = ? WHERE id = ?',
@@ -199,7 +202,7 @@ def show_events():
         abort(401)
 
     db = get_db()
-    cur = db.execute('SELECT * FROM events ORDER BY timestamp DESC')
+    cur = db.execute('SELECT events.*, sensors.name AS sensor_name FROM events JOIN sensors ON events.sensor_id = sensors.id ORDER BY timestamp DESC')
     events = cur.fetchall()
     return render_template('show_events.html', events=events)
 

@@ -42,4 +42,10 @@
 
   </form>
 
+  {% if last_event %}
+    <p>Last event: {{ last_event.type }} at {{ last_event.timestamp }}</p>
+  {% else %}
+  <p><i>No events recorded for sensor</i></p>
+  {% endif %}
+
 {% endblock %}
