@@ -3,10 +3,11 @@
 Web application to manage several secutriy sensors over MQTT.
 """
 
-import os
+import os, logging
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
+import paho.mqtt.client as mqtt
 
 
 app = Flask(__name__)
@@ -18,15 +19,22 @@ app.config.update(dict(
     SECRET_KEY='development key',
     USERNAME='admin',
     PASSWORD='default',
-    MQTT_BROKER='localhost'
+    LOG_LEVEL='DEBUG',
+    LOG_FILE='pysecurity.log',
+    MQTT_BROKER='iot.eclipse.org',
+    MQTT_PORT=1883
 ))
 app.config.from_envvar('SECURITY_APP_SETTINGS', silent=True)
+
+log_level = getattr(logging, app.config['LOG_LEVEL'].upper(), None)
+logging.basicConfig(level=log_level, filename=app.config['LOG_FILE'])
 
 
 def connect_db():
     """
     Connects to the specific database.
     """
+    logging.getLogger(__name__).debug('Connect to databse.')
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
     return rv
@@ -36,6 +44,7 @@ def init_db():
     """
     Initializes the database.
     """
+    logging.getLogger(__name__).info('Initializing databse.')
     db = get_db()
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
@@ -56,6 +65,7 @@ def get_db():
     Opens a new database connection if there is none yet for the
     current application context.
     """
+    logging.getLogger(__name__).debug('Open databse.')
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
@@ -81,6 +91,7 @@ def close_db(error):
     """
     Closes the database again at the end of the request.
     """
+    logging.getLogger(__name__).debug('Close databse.')
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
@@ -117,6 +128,7 @@ def delete_sensor(sensor_id):
         flash('Deleted sensor %d.' % int(sensor_id))
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error deleting sensor %s' % str(sql_ex))
         flash('Error deleting sensor: %s' % str(sql_ex))
 
     return redirect(url_for('show_sensors'))
@@ -148,6 +160,7 @@ def update_sensor(sensor_id):
 
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error updating sensor %s' % str(sql_ex))
         flash('Error updating sensor: %s' % str(sql_ex))
 
     return redirect(url_for('update_sensor', sensor_id=sensor_id))
@@ -175,6 +188,7 @@ def add_sensor():
 
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error adding sensor %s' % str(sql_ex))
         flash('Error adding sensor: %s' % str(sql_ex))
         return redirect(url_for('add_sensor'))
 
@@ -203,6 +217,7 @@ def delete_event(event_id):
         flash('Deleted event %d.' % int(event_id))
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error deleting event %s' % str(sql_ex))
         flash('Error deleting event: %s' % str(sql_ex))
 
     return redirect(url_for('show_events'))
@@ -232,6 +247,7 @@ def delete_alarm(alarm_id):
         flash('Deleted alarm %d.' % int(alarm_id))
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error deleting alarm %s' % str(sql_ex))
         flash('Error deleting alarm: %s' % str(sql_ex))
 
     return redirect(url_for('show_alarms'))
@@ -278,6 +294,7 @@ def update_alarm(alarm_id):
 
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error updating alarm %s' % str(sql_ex))
         flash('Error updating alarm: %s' % str(sql_ex))
 
     return redirect(url_for('update_alarm', alarm_id=alarm_id))
@@ -313,6 +330,7 @@ def add_alarm():
 
     except Exception as sql_ex:
         db.rollback()
+        logging.getLogger(__name__).error('Error adding alarm %s' % str(sql_ex))
         flash('Error adding alarm: %s' % str(sql_ex))
         return redirect(url_for('add_alarm'))
 
@@ -360,3 +378,53 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_home'))
+
+
+def on_mqtt_connect(mqtt, obj, result):
+    """
+    Handles a commection attempt made by the MQTT client.
+    """
+    if result == 0:
+        logging.getLogger(__name__).info('MQTT broker connection succesful')
+
+        # Subscribe to all the initial topics
+        db = connect_db()
+        db.row_factory = dict_factory
+        cur = db.execute('SELECT mqtt_topic FROM sensors')
+        sensors = cur.fetchall()
+        for sensor in sensors:
+            logging.getLogger(__name__).debug('Subscribing to topic %s' % sensor['mqtt_topic'])
+            mqtt_client.subscribe(str(sensor['mqtt_topic']), 0)
+        db.close()
+    else:
+        logging.getLogger(__name__).error('MQTT broker connection failed with result %d' % (result))
+
+
+def on_mqtt_message(mqtt, obj, msg):
+    """
+    Handles a new message on a subscribed MQTT topic.
+    """
+    logging.getLogger(__name__).info('New MQTT message on topic %s: %s' % (msg.topic, str(msg.payload)))
+
+    # Find the sensor that maps to the topic
+    db = connect_db()
+    db.row_factory = dict_factory
+    cur = db.execute('SELECT id, trigger_text FROM sensors WHERE mqtt_topic = ?', (msg.topic,))
+    sensor = cur.fetchone()
+    if sensor is not None:
+        triggered = str(msg.payload) == sensor['trigger_text']
+        trigger_db_info = {True:'triggered', False:'reset'}
+        db.execute('INSERT INTO events (sensor_id, type) VALUES (?, ?)', (sensor['id'], trigger_db_info[triggered]))
+        db.commit()
+    else:
+        logging.getLogger(__name__).error('Sensor not found in database for MQTT topic %s' % msg.topic)
+    db.close()
+
+    # TODO: Check for alarms
+
+
+mqtt_client = mqtt.Client()
+mqtt_client.on_message = on_mqtt_message
+mqtt_client.on_connect = on_mqtt_connect
+mqtt_client.connect(app.config['MQTT_BROKER'], app.config['MQTT_PORT'], 60)
+mqtt_client.loop_start()
