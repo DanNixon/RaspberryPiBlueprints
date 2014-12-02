@@ -25,6 +25,7 @@
     <span>
       <label for"alarm_alert_when">Alert When:</label>
       <select name="alarm_alert_when" id="alarm_alert_when">
+        <option value="disabled" {% if alarm.alert_when == 'disabled' %}selected="selected"{% endif %}>Never (Disabled)</option>
         <option value="when_all_triggered" {% if alarm.alert_when == 'when_all_triggered' %}selected="selected"{% endif %}>All Triggered</option>
         <option value="when_any_triggered" {% if alarm.alert_when == 'when_any_triggered' %}selected="selected"{% endif %}>Any One Triggered</option>
         <option value="when_any_changed" {% if alarm.alert_when == 'when_any_changed' %}selected="selected"{% endif %}>Any One Changed</option>
