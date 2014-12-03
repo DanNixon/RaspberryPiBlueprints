@@ -3,7 +3,7 @@
 Web application to manage several secutriy sensors over MQTT.
 """
 
-import os, logging
+import os, logging, smtplib
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
@@ -22,7 +22,11 @@ app.config.update(dict(
     LOG_LEVEL='DEBUG',
     LOG_FILE='pysecurity.log',
     MQTT_BROKER='iot.eclipse.org',
-    MQTT_PORT=1883
+    MQTT_PORT=1883,
+    SMTP_SERVER='smtp.gmail.com:587',
+    SMTP_USERNAME='',
+    SMTP_PASSWORD='',
+    FROM_EMAIL=''
 ))
 app.config.from_envvar('SECURITY_APP_SETTINGS', silent=True)
 
@@ -94,6 +98,30 @@ def close_db(error):
     logging.getLogger(__name__).debug('Close databse.')
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
+
+
+def send_mail(to_address, subject, message):
+    """
+    Sends an email to a given email address.
+
+    @param to_address A single address
+    @param subject Subject line
+    @param message Message text
+    """
+
+    server = smtplib.SMTP(app.config['SMTP_SERVER'])
+    server.ehlo()
+    server.starttls()
+    server.login(app.config['SMTP_USERNAME'], app.config['SMTP_PASSWORD'])
+    msg_body = '\r\n'.join([
+               'From: %s' % app.config['FROM_EMAIL'],
+               'To: %s' % to_address,
+               'Subject: %s' % subject,
+               '',
+               message
+        ])
+    server.sendmail(app.config['FROM_EMAIL'], [to_address], msg_body)
+    server.quit()
 
 
 def get_last_sensor_state(sensor_id):
@@ -509,9 +537,16 @@ def alarm_triggered(alarm):
     """
     logging.getLogger(__name__).info('Alarm %s is triggered' % int(alarm['id']))
 
-    # TODO: Send email
+    message = 'Alarm %s was triggered.' % alarm['name']
+
+    # Attempt to send a notification email
+    try:
+        send_mail(alarm['email'], 'PySecurity Alert', message)
+    except Exception as ex:
+        logging.getLogger(__name__).info('Error sending email: %s' % str(ex))
 
 
+# Setup MQTT client
 mqtt_client = mqtt.Client()
 mqtt_client.on_message = on_mqtt_message
 mqtt_client.on_connect = on_mqtt_connect
