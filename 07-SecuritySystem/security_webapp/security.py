@@ -96,6 +96,25 @@ def close_db(error):
         g.sqlite_db.close()
 
 
+def get_last_sensor_state(sensor_id):
+    """
+    Gets the last recorded state of a sensor.
+
+    @param sensor_id The ID of the sensor to query
+    @returns True if triggered, false otherwise
+    """
+    logging.getLogger(__name__).debug('Getting last sensor state for sensor %d' % int(sensor_id))
+
+    db = connect_db()
+    db.row_factory = dict_factory
+    cur = db.execute('SELECT timestamp, type FROM events WHERE sensor_id = ? ORDER BY timestamp DESC LIMIT 1', (sensor_id,))
+    sensor = cur.fetchone()
+
+    if sensor is None:
+        return False
+    return sensor['type'] == 'triggered'
+
+
 @app.route('/')
 def show_home():
     if not session.get('logged_in'):
@@ -428,7 +447,9 @@ def on_mqtt_message(mqtt, obj, msg):
     cur = db.execute('SELECT id, trigger_text FROM sensors WHERE mqtt_topic = ?', (msg.topic,))
     sensor = cur.fetchone()
     if sensor is not None:
+        last_state = get_last_sensor_state(sensor['id'])
         triggered = str(msg.payload) == sensor['trigger_text']
+        logging.getLogger(__name__).debug('Sensor %d: last state %s, current state %s' % (int(sensor['id']), str(last_state), str(triggered)))
         trigger_db_info = {True:'triggered', False:'reset'}
         db.execute('INSERT INTO events (sensor_id, type) VALUES (?, ?)', (sensor['id'], trigger_db_info[triggered]))
         db.commit()
@@ -436,7 +457,59 @@ def on_mqtt_message(mqtt, obj, msg):
         logging.getLogger(__name__).error('Sensor not found in database for MQTT topic %s' % msg.topic)
     db.close()
 
-    # TODO: Check for alarms
+    # If the sensor existed then check if any alarms were triggered
+    if sensor is not None:
+        alarm_check(sensor['id'], last_state, triggered)
+
+
+def alarm_check(sensor_id, last_state, triggered):
+    """
+    Checks if the sensor change has triggered an alarm.
+
+    @param sensor_id ID of the sensor
+    @param last_state Last state of the sensor
+    @param triggered If the sensor was triggered
+    """
+    db = connect_db()
+    db.row_factory = dict_factory
+    cur = db.execute('SELECT DISTINCT alarms.id, alarms.name, alarms.description, alarms.alert_when, alarms.email FROM alarm_has_sensor JOIN alarms ON alarms.id = alarm_has_sensor.alarm_id WHERE alarm_has_sensor.sensor_id = ? AND alarms.alert_when <> "disabled"',
+            (sensor_id,))
+    alarms = cur.fetchall()
+    logging.getLogger(__name__).debug('All alarms for sensor %d: %s' % (int(sensor_id), str(alarms)))
+
+    changed = last_state != triggered
+
+    # Ignore if the state of the sensor did not change
+    if not changed:
+        logging.getLogger(__name__).info('Sensor %d state not changed, no alarms checked' % int(sensor_id))
+        return
+
+    # Check all alarms
+    for alarm in alarms:
+        mode = alarm['alert_when']
+
+        if mode == 'when_any_changed':
+            alarm_triggered(alarm)
+        elif mode == 'when_any_triggered' and triggered:
+            alarm_triggered(alarm)
+        elif mode == 'when_all_triggered' and triggered:
+            cur = db.execute('SELECT sensor_id FROM alarm_has_sensor WHERE alarm_id = ?', (alarm['id'],))
+            sensors = cur.fetchall()
+            all_states = [get_last_sensor_state(sensor['sensor_id']) for sensor in sensors]
+            logging.getLogger(__name__).debug('All sensor states for alarm %d: %s' % (int(alarm['id']), str(all_states)))
+            if len(set(all_states)) == 1:
+                alarm_triggered(alarm)
+
+
+def alarm_triggered(alarm):
+    """
+    Handles an alarm being triggered.
+
+    @param alarm The triggered alarm
+    """
+    logging.getLogger(__name__).info('Alarm %s is triggered' % int(alarm['id']))
+
+    # TODO: Send email
 
 
 mqtt_client = mqtt.Client()
