@@ -15,8 +15,7 @@ app = Flask(__name__)
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'security.db'),
-    DEBUG=True,
-    SECRET_KEY='development key',
+    DEBUG=False,
     USERNAME='admin',
     PASSWORD='default',
     LOG_LEVEL='DEBUG',
