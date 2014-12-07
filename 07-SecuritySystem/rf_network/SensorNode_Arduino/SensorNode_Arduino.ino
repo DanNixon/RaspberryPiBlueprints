@@ -1,6 +1,7 @@
 #include <RF24Network.h>
 #include <RF24.h>
 #include <SPI.h>
+#include <printf.h>
 
 #define SERIAL_BAUD 115200
 
@@ -14,15 +15,6 @@ const uint16_t CHANNEL = 90;
 const uint16_t BASE_NODE_ADDR = 00;
 // This node address, ensure this is valid for your network topology
 const uint16_t THIS_NODE_ADDR = 02;
-
-/**
- * The data that is sent in a single RF message.
- */
-struct payload_t
-{
-  char topic[10];
-  uint8_t state;
-};
 
 /**
  * Configuration data for a signle sensor on a node.
@@ -41,7 +33,7 @@ const uint8_t NUM_SENSORS = 3;
 // Configuration for this node's sensors
 sensor_t sensors[NUM_SENSORS] =
 {
-  {"s1", 2, 1, 1},
+  {"123456789", 2, 1, 1},
   {"s2", 3, 0, 1},
   {"s3", 4, 1, 1}
 };
@@ -52,12 +44,16 @@ uint8_t last_sensor_states[NUM_SENSORS];
 void setup(void)
 {
   // Start the serial port
+  printf_begin();
   Serial.begin(SERIAL_BAUD);
 
   // Start the RF node and network
   SPI.begin();
   radio.begin();
   network.begin(CHANNEL, THIS_NODE_ADDR);
+
+  // Print some debug info
+  radio.printDetails();
 
   // Setup the sensor IO
   for(uint8_t i = 0; i < NUM_SENSORS; i++)
@@ -94,13 +90,13 @@ void loop()
         state = !state;
 
       // Build an RF packet payload
-      payload_t payload;
-      memcpy(payload.topic, sensors[i].topic, 10);
-      payload.state = state;
+      char buffer[14];
+      memset(buffer, 0, 14);
+      sprintf(buffer, "%s,%d;", sensors[i].topic, state);
       RF24NetworkHeader header(BASE_NODE_ADDR);
 
       // And send it
-      bool ok = network.write(header, &payload, sizeof(payload));
+      bool ok = network.write(header, buffer, sizeof(buffer));
 
       // If it failed to send then give a warning on serial port
       if(!ok)
