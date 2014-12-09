@@ -38,12 +38,16 @@ while True:
 
     # Check for new messages
     while NETWORK.available():
-        header, payload = NETWORK.read(15)
-        payload_data = payload.split(',')
+        try:
+            header, payload = NETWORK.read(15)
+            payload_data = payload.split(',')
 
-        topic = payload_data[0]
-        message = payload_data[1].split(';')[0]
+            topic = payload_data[0]
+            message = payload_data[1].split(';')[0]
 
-        MQTT_CLIENT.publish(topic, message)
+            MQTT_CLIENT.publish(topic, message)
 
-    time.sleep(0.1)
+        except Exception as ex:
+            print 'Failed to publish: %s' % str(ex)
+
+        time.sleep(0.1)
