@@ -14,7 +14,7 @@ const uint16_t CHANNEL = 90;
 // Base node address, do not change this
 const uint16_t BASE_NODE_ADDR = 00;
 // This node address, ensure this is valid for your network topology
-const uint16_t THIS_NODE_ADDR = 02;
+const uint16_t THIS_NODE_ADDR = 002;
 
 /**
  * Configuration data for a signle sensor on a node.
@@ -33,9 +33,8 @@ const uint8_t NUM_SENSORS = 3;
 // Configuration for this node's sensors
 sensor_t sensors[NUM_SENSORS] =
 {
-  {"123456789", 2, 1, 1},
-  {"s2", 3, 0, 1},
-  {"s3", 4, 1, 1}
+  {"door1", 2, 0, 1},
+  {"pir1", 3, 0, 0}
 };
 
 // Array to hold the last recorded values for each sensor
