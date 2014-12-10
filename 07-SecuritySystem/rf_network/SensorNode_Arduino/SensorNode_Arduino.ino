@@ -28,7 +28,7 @@ struct sensor_t
 };
 
 // Number of sensors on this node
-const uint8_t NUM_SENSORS = 3;
+const uint8_t NUM_SENSORS = 2;
 
 // Configuration for this node's sensors
 sensor_t sensors[NUM_SENSORS] =
