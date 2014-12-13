@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  {% if sensor %}
+    <h2>Sensor {{ sensor.id }}</h2>
+    <form class="block-form" method="POST" action="{{ url_for('update_sensor', sensor_id=sensor.id) }}">
+  {% else %}
+    <h2>New Sensor</h2>
+    <form class="block-form" method="POST" action="{{ url_for('add_sensor') }}">
+  {% endif %}
+
+    <span>
+      <label for="sensor_name">Name:</label>
+      <input type="text" id="sensor_name" name="sensor_name" value="{{ sensor.name }}" />
+    </span>
+    <span>
+      <label for="sensor_description">Description:</label>
+      <input type="text" id="sensor_description" name="sensor_description" value="{{ sensor.description }}" />
+    </span>
+    <span>
+      <label for="sensor_location">Location:</lebel>
+      <input type="text" id="sensor_location" name="sensor_location" value="{{ sensor.location }}" />
+    </span>
+    <span>
+      <label for="sensor_mqtt_topic">MQTT topic:</label>
+      <input type="text" id="sensor_mqtt_topic" name="sensor_mqtt_topic" value="{{ sensor.mqtt_topic }}" />
+    </span>
+    <span>
+      <label for="sensor_trigger_text">Triggered text:</label>
+      <input type="text" id="sensor_trigger_text" name="sensor_trigger_text" value="{{ sensor.trigger_text }}" />
+    </span>
+
+    <p>
+      {% if sensor %}
+        <input type="submit" value="Update" />
+        <a href="{{ url_for('delete_sensor', sensor_id=sensor.id) }}">Delete</a>
+      {% else %}
+        <input type="submit" value="Add" />
+      {% endif %}
+    </p>
+
+  </form>
+
+  {% if last_event %}
+    <p>Last event: {{ last_event.type }} at {{ last_event.timestamp }}</p>
+  {% else %}
+  <p><i>No events recorded for sensor</i></p>
+  {% endif %}
+
+{% endblock %}

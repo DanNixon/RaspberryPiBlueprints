@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h2>Alarms</h2>
+
+<p><a href="{{ url_for('add_alarm') }}">Add New Alarm</a></p>
+
+  <ul>
+  {% for alarm in alarms %}
+    <li><a href="{{ url_for('update_alarm', alarm_id=alarm.id) }}"><span class="item_id">{{ alarm.id }}</span> - {{ alarm.name }}</a></li>
+  {% else %}
+    <p><i>No Alarms Defined.</i></p>
+  {% endfor %}
+  </ul>
+
+{% endblock %}
