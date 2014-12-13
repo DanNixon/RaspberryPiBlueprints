@@ -16,6 +16,8 @@ app.config.update(dict(
     LOG_FILE='robot_arm.log',
     LOG_LEVEL='DEBUG',
 
+    SERVO_DELTA=50,
+
     LEFT_C_SERVO_GPIO=None,
     RIGHT_C_SERVO_GPIO=None,
     ARM_1_SERVO_GPIO=None,
@@ -52,6 +54,12 @@ def set_servo(servo_id, position):
     @param position Timing value for servo position, will be rounded to nearest 10us
     """
 
+    # Ignore positions out of the valid range
+    if position > app.config[servo_id + '_MAX']:
+        return
+    if position < app.config[servo_id + '_MIN']:
+        return
+
     time_val = int(round(position, -1))
     gpio = app.config[servo_id + '_GPIO']
 
@@ -74,11 +82,9 @@ def set_servos_default():
     """
     logging.getLogger(__name__).info('Resetting servos to default position')
 
-    set_servo('LEFT_C_SERVO', 600)
-    set_servo('RIGHT_C_SERVO', 600)
-    set_servo('ARM_1_SERVO', 600)
-    set_servo('ARM_2_SERVO', 600)
-    set_servo('GRIP_SERVO', 600)
+    all_servo_ids = ['LEFT_C_SERVO', 'RIGHT_C_SERVO', 'ARM_1_SERVO', 'ARM_2_SERVO', 'GRIP_SERVO']
+    for servo_id in all_servo_ids:
+        set_servo(servo_id, app.config[servo_id + '_MIN'])
 
 
 @app.route('/')
@@ -100,7 +106,30 @@ def show_video():
 def handle_command(command):
     logging.getLogger(__name__).debug('Got command: %s' % command)
 
-    # TODO
+    if command == 'mov_fwd':
+        pass
+    elif command == 'mov_rev':
+        pass
+    elif command == 'rot_cw':
+        pass
+    elif command == 'rot_ccw':
+        pass
+    elif command == 'stop':
+        pass
+    elif command == 'arm1_raise':
+        set_servo('ARM_1_SERVO', SERVO_POSITIONS['ARM_1_SERVO'] + app.config['SERVO_DELTA'])
+    elif command == 'arm1_lower':
+        set_servo('ARM_1_SERVO', SERVO_POSITIONS['ARM_1_SERVO'] - app.config['SERVO_DELTA'])
+    elif command == 'arm2_raise':
+        set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] - app.config['SERVO_DELTA'])
+    elif command == 'arm2_lower':
+        set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] - app.config['SERVO_DELTA'])
+    elif command == 'hand_grip':
+        set_servo('GRIP_SERVO', SERVO_POSITIONS['GRIP_SERVO'] - app.config['SERVO_DELTA'])
+    elif command == 'hand_release':
+        set_servo('GRIP_SERVO', SERVO_POSITIONS['GRIP_SERVO'] - app.config['SERVO_DELTA'])
+    else:
+        logger.getLogger(__name__).error('Invalid command: %s' % command)
 
     return redirect(url_for('show_control'))
 
