@@ -5,22 +5,22 @@
     <fieldset class="sub-controls">
       <legend>Joint 1</legend>
 
-      <input type="button" name="arm_j1_raise" value="Raise" />
-      <input type="button" name="arm_j1_lower" value="Lower" />
+      <input type="button" name="arm_j1_raise" value="Raise" onclick="send_command('arm1_raise')" />
+      <input type="button" name="arm_j1_lower" value="Lower" onclick="send_command('arm1_lower')" />
     </fieldset>
 
     <fieldset class="sub-controls">
       <legend>Joint 2</legend>
 
-      <input type="button" name="arm_j2_raise" value="Raise" />
-      <input type="button" name="arm_j2_lower" value="Lower" />
+      <input type="button" name="arm_j2_raise" value="Raise" onclick="send_command('arm2_raise')" />
+      <input type="button" name="arm_j2_lower" value="Lower" onclick="send_command('arm2_lower')" />
     </fieldset>
 
     <fieldset class="sub-controls">
       <legend>Hand</legend>
 
-      <input type="button" name="hand_grip" value="Grip" />
-      <input type="button" name="hand_release" value="Release" />
+      <input type="button" name="hand_grip" value="Grip" onclick="send_command('hand_grip')" />
+      <input type="button" name="hand_release" value="Release" onclick="send_command('hand_release')" />
     </fieldset>
 
   </fieldset>

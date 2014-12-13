@@ -5,19 +5,19 @@
     <fieldset class="sub-controls">
       <legend>Move</legend>
 
-      <input type="button" name="forward" value="Forward" />
-      <input type="button" name="reverse" value="Reverse" />
+      <input type="button" name="forward" value="Forward" onclick="send_command('mov_fwd')" />
+      <input type="button" name="reverse" value="Reverse" onclick="send_command('mov_rev')" />
     </fieldset>
 
 
     <fieldset class="sub-controls">
       <legend>Rotate</legend>
 
-      <input type="button" name="left" value="CW" />
-      <input type="button" name="right" value="CCW" />
+      <input type="button" name="left" value="CW" onclick="send_command('rot_cw')" />
+      <input type="button" name="right" value="CCW" onclick="send_command('rot_ccw')" />
     </fieldset>
 
-      <input type="button" name="stop" value="Stop" />
+      <input type="button" name="stop" value="Stop" onclick="send_command('stop')" />
 
   </fieldset>
 </form>
