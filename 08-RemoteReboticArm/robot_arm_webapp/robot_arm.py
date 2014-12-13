@@ -16,12 +16,25 @@ app.config.update(dict(
     LOG_FILE='robot_arm.log',
     LOG_LEVEL='DEBUG',
 
-    LEFT_C_SERVO=[None, 600, 2500],
-    RIGHT_C_SERVO=[None, 600, 2500],
-    ARM_1_SERVO=[None, 600, 2500],
-    ARM_1_SERVO=[None, 600, 2500],
-    GRIP_SERVO=[None, 600, 2500]
+    LEFT_C_SERVO_GPIO=None,
+    RIGHT_C_SERVO_GPIO=None,
+    ARM_1_SERVO_GPIO=None,
+    ARM_2_SERVO_GPIO=None,
+    GRIP_SERVO_GPIO=None,
+
+    LEFT_C_SERVO_MIN=600,
+    RIGHT_C_SERVO_MIN=600,
+    ARM_1_SERVO_MIN=600,
+    ARM_2_SERVO_MIN=600,
+    GRIP_SERVO_MIN=600,
+
+    LEFT_C_SERVO_MAX=2500,
+    RIGHT_C_SERVO_MAX=2500,
+    ARM_1_SERVO_MAX=2500,
+    ARM_2_SERVO_MAX=2500,
+    GRIP_SERVO_MAX=2500
 ))
+app.config.from_envvar('ROBOT_ARM_SETTINGS', silent=True)
 
 
 log_level = getattr(logging, app.config['LOG_LEVEL'].upper(), None)
@@ -40,7 +53,7 @@ def set_servo(servo_id, position):
     """
 
     time_val = int(round(position, -1))
-    gpio = app.config[servo_id][0]
+    gpio = app.config[servo_id + '_GPIO']
 
     # Create a new servo object if it does not exist
     if servo_id not in SERVOS:
