@@ -64,10 +64,15 @@ def set_servo(servo_id, position):
     @param position Timing value for servo position, will be rounded to nearest 10us
     """
 
+    max_pos = app.config[servo_id + '_MAX']
+    min_pos = app.config[servo_id + '_MIN']
+
     # Ignore positions out of the valid range
-    if position > app.config[servo_id + '_MAX']:
+    if position > max_pos:
+        logging.getLogger(__name__).error('Servo %s, position %d is greater than max %d' % (servo_id, position, max_pos))
         return
-    if position < app.config[servo_id + '_MIN']:
+    if position < min_pos:
+        logging.getLogger(__name__).error('Servo %s, position %d is less than min %d' % (servo_id, position, min_pos))
         return
 
     time_val = int(round(position, -1))
@@ -171,11 +176,11 @@ def handle_command(command):
         set_servo('ARM_1_A_SERVO', SERVO_POSITIONS['ARM_1_A_SERVO'] - app.config['SERVO_DELTA'])
         set_servo('ARM_1_B_SERVO', SERVO_POSITIONS['ARM_1_B_SERVO'] - app.config['SERVO_DELTA'])
     elif command == 'arm2_raise':
-        set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] - app.config['SERVO_DELTA'])
+        set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] + app.config['SERVO_DELTA'])
     elif command == 'arm2_lower':
         set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] - app.config['SERVO_DELTA'])
     elif command == 'hand_grip':
-        set_servo('GRIP_SERVO', SERVO_POSITIONS['GRIP_SERVO'] - app.config['SERVO_DELTA'])
+        set_servo('GRIP_SERVO', SERVO_POSITIONS['GRIP_SERVO'] + app.config['SERVO_DELTA'])
     elif command == 'hand_release':
         set_servo('GRIP_SERVO', SERVO_POSITIONS['GRIP_SERVO'] - app.config['SERVO_DELTA'])
     else:
