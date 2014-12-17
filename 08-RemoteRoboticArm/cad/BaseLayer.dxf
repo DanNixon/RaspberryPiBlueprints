@@ -41,6 +41,10 @@ $INSUNITS
  70
 4
   9
+$DIMSTYLE
+  2
+Standard
+  9
 $DIMEXO
  40
 0.625
@@ -899,7 +903,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-11
+16
   0
 LAYER
   5
@@ -931,7 +935,7 @@ AcDbLayerTableRecord
   2
 RelayBoard_Board
  70
-0
+1
  62
 2
   6
@@ -971,7 +975,7 @@ AcDbLayerTableRecord
   2
 RelayBoard_Pins
  70
-0
+1
  62
 4
   6
@@ -991,7 +995,7 @@ AcDbLayerTableRecord
   2
 RelayBoard_TerminalBlocks
  70
-0
+1
  62
 4
   6
@@ -1031,7 +1035,7 @@ AcDbLayerTableRecord
   2
 RaspberryPi_BoardHeaders
  70
-0
+1
  62
 4
   6
@@ -1051,7 +1055,7 @@ AcDbLayerTableRecord
   2
 RaspberryPi_Connectors
  70
-0
+1
  62
 3
   6
@@ -1071,7 +1075,7 @@ AcDbLayerTableRecord
   2
 RaspberryPi_Board
  70
-0
+1
  62
 2
   6
@@ -1114,6 +1118,106 @@ ArmMountings
 0
  62
 1
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+4D
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+GearedMotor_MouningHoles
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+4E
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+GearedMotor_Plate
+ 70
+1
+ 62
+2
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+4F
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+GearedMotor_Gearbox
+ 70
+1
+ 62
+3
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+50
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+Castor_MountingHoles
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+51
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+Castor_Plate
+ 70
+1
+ 62
+2
   6
 CONTINUOUS
 370
@@ -1327,7 +1431,7 @@ AcDbBlockTableRecord
   0
 BLOCK_RECORD
   5
-4D
+52
 100
 AcDbSymbolTableRecord
 100
@@ -1339,13 +1443,37 @@ eBay_RelayBoard-0
   0
 BLOCK_RECORD
   5
-4E
+53
 100
 AcDbSymbolTableRecord
 100
 AcDbBlockTableRecord
   2
 RaspberryPi-0
+340
+0
+  0
+BLOCK_RECORD
+  5
+54
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+GearedMotor-0
+340
+0
+  0
+BLOCK_RECORD
+  5
+55
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+Castor30mm-0
 340
 0
   0
@@ -1465,7 +1593,7 @@ AcDbBlockEnd
   0
 BLOCK
   5
-4F
+56
 100
 AcDbEntity
   8
@@ -1489,197 +1617,13 @@ eBay_RelayBoard-0
   0
 CIRCLE
   5
-50
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--24.75
- 20
-65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-51
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-24.75
- 20
-65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-52
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-24.75
- 20
--65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-53
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--24.75
- 20
--65.5
- 30
-0.0
- 40
-1.75
-  0
-ARC
-  5
-54
-100
-AcDbEntity
-  8
-RelayBoard_Board
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbCircle
- 10
--25.0
- 20
-66.0
- 30
-0.0
- 40
-3.0
-100
-AcDbArc
- 50
-90.0
- 51
-180.0
-  0
-LINE
-  5
-55
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RelayBoard_Board
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--25.0
- 20
-69.0
- 30
-0.0
- 11
-25.0
- 21
-69.0
- 31
-0.0
-  0
-ARC
-  5
-56
-100
-AcDbEntity
-  8
-RelayBoard_Board
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbCircle
- 10
-25.0
- 20
-66.0
- 30
-0.0
- 40
-3.0
-100
-AcDbArc
- 50
-0.0
- 51
-90.0
-  0
-LINE
-  5
 57
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-RelayBoard_Board
+RelayBoard_MountingHoles
  62
 256
 370
@@ -1687,57 +1631,47 @@ RelayBoard_Board
   6
 ByLayer
  10
-28.0
+-24.75
  20
--66.0
+65.5
  30
 0.0
- 11
-28.0
- 21
-66.0
- 31
-0.0
+ 40
+1.75
   0
-ARC
+CIRCLE
   5
 58
 100
 AcDbEntity
+100
+AcDbCircle
   8
-RelayBoard_Board
+RelayBoard_MountingHoles
  62
 256
 370
 -1
   6
 ByLayer
-100
-AcDbCircle
  10
-25.0
+24.75
  20
--66.0
+65.5
  30
 0.0
  40
-3.0
-100
-AcDbArc
- 50
-270.0
- 51
-0.0
+1.75
   0
-LINE
+CIRCLE
   5
 59
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-RelayBoard_Board
+RelayBoard_MountingHoles
  62
 256
 370
@@ -1745,27 +1679,23 @@ RelayBoard_Board
   6
 ByLayer
  10
--28.0
+24.75
  20
-66.0
+-65.5
  30
 0.0
- 11
--28.0
- 21
--66.0
- 31
-0.0
+ 40
+1.75
   0
-LINE
+CIRCLE
   5
 5A
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-RelayBoard_Board
+RelayBoard_MountingHoles
  62
 256
 370
@@ -1773,17 +1703,13 @@ RelayBoard_Board
   6
 ByLayer
  10
--25.0
+-24.75
  20
--69.0
+-65.5
  30
 0.0
- 11
-25.0
- 21
--69.0
- 31
-0.0
+ 40
+1.75
   0
 ARC
   5
@@ -1803,6 +1729,208 @@ AcDbCircle
  10
 -25.0
  20
+66.0
+ 30
+0.0
+ 40
+3.0
+100
+AcDbArc
+ 50
+90.0
+ 51
+180.0
+  0
+LINE
+  5
+5C
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-25.0
+ 20
+69.0
+ 30
+0.0
+ 11
+25.0
+ 21
+69.0
+ 31
+0.0
+  0
+ARC
+  5
+5D
+100
+AcDbEntity
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+25.0
+ 20
+66.0
+ 30
+0.0
+ 40
+3.0
+100
+AcDbArc
+ 50
+0.0
+ 51
+90.0
+  0
+LINE
+  5
+5E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+28.0
+ 20
+-66.0
+ 30
+0.0
+ 11
+28.0
+ 21
+66.0
+ 31
+0.0
+  0
+ARC
+  5
+5F
+100
+AcDbEntity
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+25.0
+ 20
+-66.0
+ 30
+0.0
+ 40
+3.0
+100
+AcDbArc
+ 50
+270.0
+ 51
+0.0
+  0
+LINE
+  5
+60
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-28.0
+ 20
+66.0
+ 30
+0.0
+ 11
+-28.0
+ 21
+-66.0
+ 31
+0.0
+  0
+LINE
+  5
+61
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-25.0
+ 20
+-69.0
+ 30
+0.0
+ 11
+25.0
+ 21
+-69.0
+ 31
+0.0
+  0
+ARC
+  5
+62
+100
+AcDbEntity
+  8
+RelayBoard_Board
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+-25.0
+ 20
 -66.0
  30
 0.0
@@ -1817,7 +1945,7 @@ AcDbArc
   0
 CIRCLE
   5
-5C
+63
 100
 AcDbEntity
 100
@@ -1841,7 +1969,7 @@ ByLayer
   0
 CIRCLE
   5
-5D
+64
 100
 AcDbEntity
 100
@@ -1865,7 +1993,7 @@ ByLayer
   0
 CIRCLE
   5
-5E
+65
 100
 AcDbEntity
 100
@@ -1889,7 +2017,7 @@ ByLayer
   0
 CIRCLE
   5
-5F
+66
 100
 AcDbEntity
 100
@@ -1913,7 +2041,7 @@ ByLayer
   0
 CIRCLE
   5
-60
+67
 100
 AcDbEntity
 100
@@ -1937,7 +2065,7 @@ ByLayer
   0
 CIRCLE
   5
-61
+68
 100
 AcDbEntity
 100
@@ -1961,7 +2089,7 @@ ByLayer
   0
 CIRCLE
   5
-62
+69
 100
 AcDbEntity
 100
@@ -1985,7 +2113,7 @@ ByLayer
   0
 CIRCLE
   5
-63
+6A
 100
 AcDbEntity
 100
@@ -2009,7 +2137,7 @@ ByLayer
   0
 CIRCLE
   5
-64
+6B
 100
 AcDbEntity
 100
@@ -2033,7 +2161,7 @@ ByLayer
   0
 CIRCLE
   5
-65
+6C
 100
 AcDbEntity
 100
@@ -2057,7 +2185,7 @@ ByLayer
   0
 CIRCLE
   5
-66
+6D
 100
 AcDbEntity
 100
@@ -2081,7 +2209,7 @@ ByLayer
   0
 CIRCLE
   5
-67
+6E
 100
 AcDbEntity
 100
@@ -2105,7 +2233,7 @@ ByLayer
   0
 CIRCLE
   5
-68
+6F
 100
 AcDbEntity
 100
@@ -2129,7 +2257,7 @@ ByLayer
   0
 MTEXT
   5
-69
+70
 100
 AcDbEntity
 100
@@ -2155,289 +2283,9 @@ ByLayer
  71
 4
  72
-0
+2
   1
 RLY-Vcc
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6A
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-51.4600000000000009
- 30
-0.0
- 40
-1.0
- 41
-2.0
- 71
-4
- 72
-0
-  1
-Vcc
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6B
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-48.9200000000000017
- 30
-0.0
- 40
-1.0
- 41
-2.3333333333300001
- 71
-4
- 72
-0
-  1
-GND
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6C
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-11.5
- 30
-0.0
- 40
-1.0
- 41
-2.0
- 71
-4
- 72
-0
-  1
-Vcc
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6D
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-8.9600000000000009
- 30
-0.0
- 40
-1.0
- 41
-1.3333333333299999
- 71
-4
- 72
-0
-  1
-R8
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6E
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-6.4199999999999999
- 30
-0.0
- 40
-1.0
- 41
-1.3333333333299999
- 71
-4
- 72
-0
-  1
-R7
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-6F
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-3.8799999999999999
- 30
-0.0
- 40
-1.0
- 41
-1.3333333333299999
- 71
-4
- 72
-0
-  1
-R6
-  7
-iso
- 50
-0.0
- 73
-1
- 44
-1.0
-  0
-MTEXT
-  5
-70
-100
-AcDbEntity
-100
-AcDbMText
-  8
-RelayBoard_Pins
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.0
- 20
-1.3400000000000001
- 30
-0.0
- 40
-1.0
- 41
-1.3333333333299999
- 71
-4
- 72
-0
-  1
-R5
   7
 iso
  50
@@ -2465,19 +2313,19 @@ ByLayer
  10
 25.0
  20
--1.2
+51.4600000000000009
  30
 0.0
  40
 1.0
  41
-1.44444444444
+2.0
  71
 4
  72
-0
+2
   1
-R4
+Vcc
   7
 iso
  50
@@ -2505,19 +2353,19 @@ ByLayer
  10
 25.0
  20
--3.7400000000000002
+48.9200000000000017
  30
 0.0
  40
 1.0
  41
-1.3333333333299999
+2.3333333333300001
  71
 4
  72
-0
+2
   1
-R3
+GND
   7
 iso
  50
@@ -2545,19 +2393,19 @@ ByLayer
  10
 25.0
  20
--6.2800000000000002
+11.5
  30
 0.0
  40
 1.0
  41
-1.3333333333299999
+2.0
  71
 4
  72
-0
+2
   1
-R2
+Vcc
   7
 iso
  50
@@ -2585,19 +2433,19 @@ ByLayer
  10
 25.0
  20
--8.8200000000000003
+8.9600000000000009
  30
 0.0
  40
 1.0
  41
-1.11111111111
+1.3333333333299999
  71
 4
  72
-0
+2
   1
-R1
+R8
   7
 iso
  50
@@ -2625,6 +2473,286 @@ ByLayer
  10
 25.0
  20
+6.4199999999999999
+ 30
+0.0
+ 40
+1.0
+ 41
+1.3333333333299999
+ 71
+4
+ 72
+2
+  1
+R7
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+76
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+3.8799999999999999
+ 30
+0.0
+ 40
+1.0
+ 41
+1.3333333333299999
+ 71
+4
+ 72
+2
+  1
+R6
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+77
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+1.3400000000000001
+ 30
+0.0
+ 40
+1.0
+ 41
+1.3333333333299999
+ 71
+4
+ 72
+2
+  1
+R5
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+78
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+-1.2
+ 30
+0.0
+ 40
+1.0
+ 41
+1.44444444444
+ 71
+4
+ 72
+2
+  1
+R4
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+79
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+-3.7400000000000002
+ 30
+0.0
+ 40
+1.0
+ 41
+1.3333333333299999
+ 71
+4
+ 72
+2
+  1
+R3
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+7A
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+-6.2800000000000002
+ 30
+0.0
+ 40
+1.0
+ 41
+1.3333333333299999
+ 71
+4
+ 72
+2
+  1
+R2
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+7B
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
+-8.8200000000000003
+ 30
+0.0
+ 40
+1.0
+ 41
+1.11111111111
+ 71
+4
+ 72
+2
+  1
+R1
+  7
+iso
+ 50
+0.0
+ 73
+1
+ 44
+1.0
+  0
+MTEXT
+  5
+7C
+100
+AcDbEntity
+100
+AcDbMText
+  8
+RelayBoard_Pins
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+25.0
+ 20
 -11.3599999999999994
  30
 0.0
@@ -2635,7 +2763,7 @@ ByLayer
  71
 4
  72
-0
+2
   1
 GND
   7
@@ -2649,7 +2777,7 @@ iso
   0
 LINE
   5
-76
+7D
 100
 AcDbEntity
 100
@@ -2677,7 +2805,7 @@ ByLayer
   0
 LINE
   5
-77
+7E
 100
 AcDbEntity
 100
@@ -2694,46 +2822,46 @@ ByLayer
 -23.0
  20
 63.0
- 30
-0.0
- 11
--15.0
- 21
-63.0
- 31
-0.0
-  0
-LINE
-  5
-78
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RelayBoard_TerminalBlocks
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--23.0
- 20
--63.0
  30
 0.0
  11
 -15.0
  21
+63.0
+ 31
+0.0
+  0
+LINE
+  5
+7F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RelayBoard_TerminalBlocks
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-23.0
+ 20
+-63.0
+ 30
+0.0
+ 11
+-15.0
+ 21
 -63.0
  31
 0.0
   0
 LINE
   5
-79
+80
 100
 AcDbEntity
 100
@@ -2761,7 +2889,7 @@ ByLayer
   0
 ENDBLK
   5
-7A
+81
 100
 AcDbEntity
   8
@@ -2771,7 +2899,7 @@ AcDbBlockEnd
   0
 BLOCK
   5
-7B
+82
 100
 AcDbEntity
   8
@@ -2795,7 +2923,7 @@ RaspberryPi-0
   0
 CIRCLE
   5
-7C
+83
 100
 AcDbEntity
 100
@@ -2819,7 +2947,7 @@ ByLayer
   0
 CIRCLE
   5
-7D
+84
 100
 AcDbEntity
 100
@@ -2843,202 +2971,6 @@ ByLayer
   0
 LINE
   5
-7E
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-59.7455679999999987
- 20
-21.9499989999999912
- 30
-0.0
- 11
-59.7455679999999987
- 21
-0.5329090000000036
- 31
-0.0
-  0
-LINE
-  5
-7F
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-56.7469549999999998
- 20
-0.5329090000000036
- 30
-0.0
- 11
-59.7455679999999987
- 21
-0.5329090000000036
- 31
-0.0
-  0
-LINE
-  5
-80
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-56.7469549999999998
- 20
-21.9499989999999912
- 30
-0.0
- 11
-56.7469549999999998
- 21
-0.5329090000000036
- 31
-0.0
-  0
-LINE
-  5
-81
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-56.7469549999999998
- 20
-21.9499989999999912
- 30
-0.0
- 11
-59.7455679999999987
- 21
-21.9499989999999912
- 31
-0.0
-  0
-LINE
-  5
-82
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-13.090679999999999
- 20
-39.6912639999999968
- 30
-0.0
- 11
-13.090679999999999
- 21
-18.1999989999999912
- 31
-0.0
-  0
-LINE
-  5
-83
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-10.180261999999999
- 20
-18.1999989999999912
- 30
-0.0
- 11
-13.090679999999999
- 21
-18.1999989999999912
- 31
-0.0
-  0
-LINE
-  5
-84
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-10.180261999999999
- 20
-39.6912639999999968
- 30
-0.0
- 11
-10.180261999999999
- 21
-18.1999989999999912
- 31
-0.0
-  0
-LINE
-  5
 85
 100
 AcDbEntity
@@ -3053,6 +2985,202 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
+59.7455679999999987
+ 20
+21.9499989999999912
+ 30
+0.0
+ 11
+59.7455679999999987
+ 21
+0.5329090000000036
+ 31
+0.0
+  0
+LINE
+  5
+86
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+56.7469549999999998
+ 20
+0.5329090000000036
+ 30
+0.0
+ 11
+59.7455679999999987
+ 21
+0.5329090000000036
+ 31
+0.0
+  0
+LINE
+  5
+87
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+56.7469549999999998
+ 20
+21.9499989999999912
+ 30
+0.0
+ 11
+56.7469549999999998
+ 21
+0.5329090000000036
+ 31
+0.0
+  0
+LINE
+  5
+88
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+56.7469549999999998
+ 20
+21.9499989999999912
+ 30
+0.0
+ 11
+59.7455679999999987
+ 21
+21.9499989999999912
+ 31
+0.0
+  0
+LINE
+  5
+89
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+13.090679999999999
+ 20
+39.6912639999999968
+ 30
+0.0
+ 11
+13.090679999999999
+ 21
+18.1999989999999912
+ 31
+0.0
+  0
+LINE
+  5
+8A
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+10.180261999999999
+ 20
+18.1999989999999912
+ 30
+0.0
+ 11
+13.090679999999999
+ 21
+18.1999989999999912
+ 31
+0.0
+  0
+LINE
+  5
+8B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+10.180261999999999
+ 20
+39.6912639999999968
+ 30
+0.0
+ 11
+10.180261999999999
+ 21
+18.1999989999999912
+ 31
+0.0
+  0
+LINE
+  5
+8C
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 10.180261999999999
  20
 39.6912639999999968
@@ -3067,7 +3195,7 @@ ByLayer
   0
 LINE
   5
-86
+8D
 100
 AcDbEntity
 100
@@ -3095,7 +3223,7 @@ ByLayer
   0
 LINE
   5
-87
+8E
 100
 AcDbEntity
 100
@@ -3123,7 +3251,7 @@ ByLayer
   0
 LINE
   5
-88
+8F
 100
 AcDbEntity
 100
@@ -3151,7 +3279,7 @@ ByLayer
   0
 LINE
   5
-89
+90
 100
 AcDbEntity
 100
@@ -3179,7 +3307,7 @@ ByLayer
   0
 LINE
   5
-8A
+91
 100
 AcDbEntity
 100
@@ -3207,7 +3335,7 @@ ByLayer
   0
 LINE
   5
-8B
+92
 100
 AcDbEntity
 100
@@ -3235,7 +3363,7 @@ ByLayer
   0
 LINE
   5
-8C
+93
 100
 AcDbEntity
 100
@@ -3263,7 +3391,7 @@ ByLayer
   0
 LINE
   5
-8D
+94
 100
 AcDbEntity
 100
@@ -3291,7 +3419,7 @@ ByLayer
   0
 LINE
   5
-8E
+95
 100
 AcDbEntity
 100
@@ -3319,202 +3447,6 @@ ByLayer
   0
 LINE
   5
-8F
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-65.7427919999999943
- 20
-2.2968000000000046
- 30
-0.0
- 11
-85.0
- 21
-2.2968000000000046
- 31
-0.0
-  0
-LINE
-  5
-90
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-65.7427919999999943
- 20
-18.0836129999999997
- 30
-0.0
- 11
-65.7427919999999943
- 21
-2.2968000000000046
- 31
-0.0
-  0
-LINE
-  5
-91
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-65.7427919999999943
- 20
-18.0836129999999997
- 30
-0.0
- 11
-85.0
- 21
-18.0836129999999997
- 31
-0.0
-  0
-LINE
-  5
-92
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-75.3559910000000031
- 20
-37.6627920000000032
- 30
-0.0
- 11
-75.3559910000000031
- 21
-24.3454250000000059
- 31
-0.0
-  0
-LINE
-  5
-93
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-75.3559910000000031
- 20
-37.6627920000000032
- 30
-0.0
- 11
-85.0
- 21
-37.6627920000000032
- 31
-0.0
-  0
-LINE
-  5
-94
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-75.3559910000000031
- 20
-24.3454250000000059
- 30
-0.0
- 11
-85.0
- 21
-24.3454250000000059
- 31
-0.0
-  0
-LINE
-  5
-95
-100
-AcDbEntity
-100
-AcDbLine
-  8
-RaspberryPi_Connectors
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-70.7698790000000031
- 20
-56.1999989999999983
- 30
-0.0
- 11
-70.7698790000000031
- 21
-45.5121010000000012
- 31
-0.0
-  0
-LINE
-  5
 96
 100
 AcDbEntity
@@ -3529,15 +3461,15 @@ RaspberryPi_Connectors
   6
 ByLayer
  10
-58.5108430000000013
+65.7427919999999943
  20
-56.1999989999999983
+2.2968000000000046
  30
 0.0
  11
-58.5108430000000013
+85.0
  21
-45.5121010000000012
+2.2968000000000046
  31
 0.0
   0
@@ -3557,15 +3489,15 @@ RaspberryPi_Connectors
   6
 ByLayer
  10
-58.5108430000000013
+65.7427919999999943
  20
-45.5121010000000012
+18.0836129999999997
  30
 0.0
  11
-70.7698790000000031
+65.7427919999999943
  21
-45.5121010000000012
+2.2968000000000046
  31
 0.0
   0
@@ -3585,15 +3517,15 @@ RaspberryPi_Connectors
   6
 ByLayer
  10
-51.4552839999999989
+65.7427919999999943
  20
-53.8905779999999979
+18.0836129999999997
  30
 0.0
  11
-51.4552839999999989
+85.0
  21
-43.7482129999999998
+18.0836129999999997
  31
 0.0
   0
@@ -3613,15 +3545,15 @@ RaspberryPi_Connectors
   6
 ByLayer
  10
-40.6955570000000009
+75.3559910000000031
  20
-43.7482129999999998
+37.6627920000000032
  30
 0.0
  11
-51.4552839999999989
+75.3559910000000031
  21
-43.7482129999999998
+24.3454250000000059
  31
 0.0
   0
@@ -3641,6 +3573,202 @@ RaspberryPi_Connectors
   6
 ByLayer
  10
+75.3559910000000031
+ 20
+37.6627920000000032
+ 30
+0.0
+ 11
+85.0
+ 21
+37.6627920000000032
+ 31
+0.0
+  0
+LINE
+  5
+9B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+75.3559910000000031
+ 20
+24.3454250000000059
+ 30
+0.0
+ 11
+85.0
+ 21
+24.3454250000000059
+ 31
+0.0
+  0
+LINE
+  5
+9C
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+70.7698790000000031
+ 20
+56.1999989999999983
+ 30
+0.0
+ 11
+70.7698790000000031
+ 21
+45.5121010000000012
+ 31
+0.0
+  0
+LINE
+  5
+9D
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+58.5108430000000013
+ 20
+56.1999989999999983
+ 30
+0.0
+ 11
+58.5108430000000013
+ 21
+45.5121010000000012
+ 31
+0.0
+  0
+LINE
+  5
+9E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+58.5108430000000013
+ 20
+45.5121010000000012
+ 30
+0.0
+ 11
+70.7698790000000031
+ 21
+45.5121010000000012
+ 31
+0.0
+  0
+LINE
+  5
+9F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+51.4552839999999989
+ 20
+53.8905779999999979
+ 30
+0.0
+ 11
+51.4552839999999989
+ 21
+43.7482129999999998
+ 31
+0.0
+  0
+LINE
+  5
+A0
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+40.6955570000000009
+ 20
+43.7482129999999998
+ 30
+0.0
+ 11
+51.4552839999999989
+ 21
+43.7482129999999998
+ 31
+0.0
+  0
+LINE
+  5
+A1
+100
+AcDbEntity
+100
+AcDbLine
+  8
+RaspberryPi_Connectors
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 40.6955570000000009
  20
 53.8905779999999979
@@ -3655,7 +3783,7 @@ ByLayer
   0
 LINE
   5
-9B
+A2
 100
 AcDbEntity
 100
@@ -3683,7 +3811,7 @@ ByLayer
   0
 LINE
   5
-9C
+A3
 100
 AcDbEntity
 100
@@ -3711,7 +3839,7 @@ ByLayer
   0
 LINE
   5
-9D
+A4
 100
 AcDbEntity
 100
@@ -3739,7 +3867,7 @@ ByLayer
   0
 LINE
   5
-9E
+A5
 100
 AcDbEntity
 100
@@ -3767,7 +3895,7 @@ ByLayer
   0
 LINE
   5
-9F
+A6
 100
 AcDbEntity
 100
@@ -3795,7 +3923,7 @@ ByLayer
   0
 LINE
   5
-A0
+A7
 100
 AcDbEntity
 100
@@ -3823,7 +3951,7 @@ ByLayer
   0
 LINE
   5
-A1
+A8
 100
 AcDbEntity
 100
@@ -3851,7 +3979,7 @@ ByLayer
   0
 LINE
   5
-A2
+A9
 100
 AcDbEntity
 100
@@ -3879,7 +4007,7 @@ ByLayer
   0
 LINE
   5
-A3
+AA
 100
 AcDbEntity
 100
@@ -3907,7 +4035,7 @@ ByLayer
   0
 LINE
   5
-A4
+AB
 100
 AcDbEntity
 100
@@ -3935,7 +4063,7 @@ ByLayer
   0
 LINE
   5
-A5
+AC
 100
 AcDbEntity
 100
@@ -3963,7 +4091,7 @@ ByLayer
   0
 LINE
   5
-A6
+AD
 100
 AcDbEntity
 100
@@ -3991,7 +4119,7 @@ ByLayer
   0
 LINE
   5
-A7
+AE
 100
 AcDbEntity
 100
@@ -4019,7 +4147,7 @@ ByLayer
   0
 LINE
   5
-A8
+AF
 100
 AcDbEntity
 100
@@ -4047,7 +4175,7 @@ ByLayer
   0
 LINE
   5
-A9
+B0
 100
 AcDbEntity
 100
@@ -4075,7 +4203,7 @@ ByLayer
   0
 LINE
   5
-AA
+B1
 100
 AcDbEntity
 100
@@ -4103,7 +4231,7 @@ ByLayer
   0
 LINE
   5
-AB
+B2
 100
 AcDbEntity
 100
@@ -4131,7 +4259,7 @@ ByLayer
   0
 LINE
   5
-AC
+B3
 100
 AcDbEntity
 100
@@ -4159,7 +4287,7 @@ ByLayer
   0
 LINE
   5
-AD
+B4
 100
 AcDbEntity
 100
@@ -4187,7 +4315,7 @@ ByLayer
   0
 LINE
   5
-AE
+B5
 100
 AcDbEntity
 100
@@ -4215,7 +4343,7 @@ ByLayer
   0
 LINE
   5
-AF
+B6
 100
 AcDbEntity
 100
@@ -4243,7 +4371,7 @@ ByLayer
   0
 LINE
   5
-B0
+B7
 100
 AcDbEntity
 100
@@ -4271,7 +4399,7 @@ ByLayer
   0
 LINE
   5
-B1
+B8
 100
 AcDbEntity
 100
@@ -4299,7 +4427,7 @@ ByLayer
   0
 LINE
   5
-B2
+B9
 100
 AcDbEntity
 100
@@ -4327,7 +4455,7 @@ ByLayer
   0
 LINE
   5
-B3
+BA
 100
 AcDbEntity
 100
@@ -4355,7 +4483,7 @@ ByLayer
   0
 LINE
   5
-B4
+BB
 100
 AcDbEntity
 100
@@ -4383,7 +4511,7 @@ ByLayer
   0
 LINE
   5
-B5
+BC
 100
 AcDbEntity
 100
@@ -4411,7 +4539,7 @@ ByLayer
   0
 LINE
   5
-B6
+BD
 100
 AcDbEntity
 100
@@ -4439,7 +4567,7 @@ ByLayer
   0
 LINE
   5
-B7
+BE
 100
 AcDbEntity
 100
@@ -4467,7 +4595,7 @@ ByLayer
   0
 LINE
   5
-B8
+BF
 100
 AcDbEntity
 100
@@ -4495,7 +4623,7 @@ ByLayer
   0
 LINE
   5
-B9
+C0
 100
 AcDbEntity
 100
@@ -4523,7 +4651,7 @@ ByLayer
   0
 LINE
   5
-BA
+C1
 100
 AcDbEntity
 100
@@ -4551,174 +4679,6 @@ ByLayer
   0
 CIRCLE
   5
-BB
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-1.8999990000000011
- 20
-53.8899990000000031
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-BC
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-1.8999990000000011
- 20
-51.3499989999999968
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-BD
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-4.4399990000000003
- 20
-53.8899990000000031
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-BE
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-4.4399990000000003
- 20
-51.3499989999999968
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-BF
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-6.9799989999999994
- 20
-53.8899990000000031
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-C0
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-6.9799989999999994
- 20
-51.3499989999999968
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
-C1
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_BoardHeaders
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-9.5199989999999985
- 20
-53.8899990000000031
- 30
-0.0
- 40
-0.635
-  0
-CIRCLE
-  5
 C2
 100
 AcDbEntity
@@ -4733,9 +4693,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-9.5199989999999985
+1.8999990000000011
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4757,9 +4717,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-12.0599989999999977
+1.8999990000000011
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -4781,9 +4741,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-12.0599989999999977
+4.4399990000000003
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4805,9 +4765,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-14.5999990000000004
+4.4399990000000003
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -4829,9 +4789,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-14.5999990000000004
+6.9799989999999994
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4853,9 +4813,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-17.1399989999999995
+6.9799989999999994
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -4877,9 +4837,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-17.1399989999999995
+9.5199989999999985
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4901,9 +4861,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-19.6799989999999987
+9.5199989999999985
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -4925,9 +4885,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-19.6799989999999987
+12.0599989999999977
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4949,9 +4909,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-22.2199990000000014
+12.0599989999999977
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -4973,9 +4933,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-22.2199990000000014
+14.5999990000000004
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -4997,9 +4957,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-24.7599990000000005
+14.5999990000000004
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -5021,9 +4981,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-24.7599990000000005
+17.1399989999999995
  20
-51.3499989999999968
+53.8899990000000031
  30
 0.0
  40
@@ -5045,9 +5005,9 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
-27.2999989999999997
+17.1399989999999995
  20
-53.8899990000000031
+51.3499989999999968
  30
 0.0
  40
@@ -5069,6 +5029,174 @@ RaspberryPi_BoardHeaders
   6
 ByLayer
  10
+19.6799989999999987
+ 20
+53.8899990000000031
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D1
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+19.6799989999999987
+ 20
+51.3499989999999968
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D2
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+22.2199990000000014
+ 20
+53.8899990000000031
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D3
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+22.2199990000000014
+ 20
+51.3499989999999968
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D4
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.7599990000000005
+ 20
+53.8899990000000031
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D5
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.7599990000000005
+ 20
+51.3499989999999968
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D6
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+27.2999989999999997
+ 20
+53.8899990000000031
+ 30
+0.0
+ 40
+0.635
+  0
+CIRCLE
+  5
+D7
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+RaspberryPi_BoardHeaders
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 27.2999989999999997
  20
 51.3499989999999968
@@ -5079,7 +5207,7 @@ ByLayer
   0
 CIRCLE
   5
-D1
+D8
 100
 AcDbEntity
 100
@@ -5103,7 +5231,7 @@ ByLayer
   0
 CIRCLE
   5
-D2
+D9
 100
 AcDbEntity
 100
@@ -5127,7 +5255,7 @@ ByLayer
   0
 CIRCLE
   5
-D3
+DA
 100
 AcDbEntity
 100
@@ -5151,7 +5279,7 @@ ByLayer
   0
 CIRCLE
   5
-D4
+DB
 100
 AcDbEntity
 100
@@ -5175,7 +5303,7 @@ ByLayer
   0
 MTEXT
   5
-D5
+DC
 100
 AcDbEntity
 100
@@ -5201,11 +5329,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 DSI
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5215,7 +5343,7 @@ STANDARD
   0
 MTEXT
   5
-D6
+DD
 100
 AcDbEntity
 100
@@ -5241,11 +5369,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 CSI
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5255,7 +5383,7 @@ STANDARD
   0
 MTEXT
   5
-D7
+DE
 100
 AcDbEntity
 100
@@ -5281,11 +5409,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 3.3V
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5295,7 +5423,7 @@ STANDARD
   0
 MTEXT
   5
-D8
+DF
 100
 AcDbEntity
 100
@@ -5321,11 +5449,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 SDA
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5335,7 +5463,7 @@ STANDARD
   0
 MTEXT
   5
-D9
+E0
 100
 AcDbEntity
 100
@@ -5361,11 +5489,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 SCL
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5375,7 +5503,7 @@ STANDARD
   0
 MTEXT
   5
-DA
+E1
 100
 AcDbEntity
 100
@@ -5401,11 +5529,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 GND
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5415,7 +5543,7 @@ STANDARD
   0
 MTEXT
   5
-DB
+E2
 100
 AcDbEntity
 100
@@ -5441,11 +5569,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 GND
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5455,7 +5583,7 @@ STANDARD
   0
 MTEXT
   5
-DC
+E3
 100
 AcDbEntity
 100
@@ -5481,11 +5609,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 MOSI
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5495,7 +5623,7 @@ STANDARD
   0
 MTEXT
   5
-DD
+E4
 100
 AcDbEntity
 100
@@ -5521,11 +5649,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 MISO
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5535,7 +5663,7 @@ STANDARD
   0
 MTEXT
   5
-DE
+E5
 100
 AcDbEntity
 100
@@ -5561,11 +5689,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 SCLK
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5575,7 +5703,7 @@ STANDARD
   0
 MTEXT
   5
-DF
+E6
 100
 AcDbEntity
 100
@@ -5601,11 +5729,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 3.3V
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5615,7 +5743,7 @@ STANDARD
   0
 MTEXT
   5
-E0
+E7
 100
 AcDbEntity
 100
@@ -5641,11 +5769,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 GND
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5655,7 +5783,7 @@ STANDARD
   0
 MTEXT
   5
-E1
+E8
 100
 AcDbEntity
 100
@@ -5681,11 +5809,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 GND
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5695,7 +5823,7 @@ STANDARD
   0
 MTEXT
   5
-E2
+E9
 100
 AcDbEntity
 100
@@ -5721,11 +5849,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 GND
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5735,7 +5863,7 @@ STANDARD
   0
 MTEXT
   5
-E3
+EA
 100
 AcDbEntity
 100
@@ -5761,11 +5889,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 5V
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5775,7 +5903,7 @@ STANDARD
   0
 MTEXT
   5
-E4
+EB
 100
 AcDbEntity
 100
@@ -5801,11 +5929,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 5V
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5815,7 +5943,7 @@ STANDARD
   0
 MTEXT
   5
-E5
+EC
 100
 AcDbEntity
 100
@@ -5841,11 +5969,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 Tx
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5855,7 +5983,7 @@ STANDARD
   0
 MTEXT
   5
-E6
+ED
 100
 AcDbEntity
 100
@@ -5881,11 +6009,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 Rx
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5895,7 +6023,7 @@ STANDARD
   0
 MTEXT
   5
-E7
+EE
 100
 AcDbEntity
 100
@@ -5921,11 +6049,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 CE0
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5935,7 +6063,7 @@ STANDARD
   0
 MTEXT
   5
-E8
+EF
 100
 AcDbEntity
 100
@@ -5961,11 +6089,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 CE1
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -5975,7 +6103,7 @@ STANDARD
   0
 MTEXT
   5
-E9
+F0
 100
 AcDbEntity
 100
@@ -6001,11 +6129,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 G25
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6015,7 +6143,7 @@ STANDARD
   0
 MTEXT
   5
-EA
+F1
 100
 AcDbEntity
 100
@@ -6041,11 +6169,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 G24
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6055,7 +6183,7 @@ STANDARD
   0
 MTEXT
   5
-EB
+F2
 100
 AcDbEntity
 100
@@ -6081,11 +6209,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 G23
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6095,7 +6223,7 @@ STANDARD
   0
 MTEXT
   5
-EC
+F3
 100
 AcDbEntity
 100
@@ -6121,11 +6249,11 @@ ByLayer
  71
 4
  72
-0
+2
   1
 G18
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6135,7 +6263,7 @@ STANDARD
   0
 MTEXT
   5
-ED
+F4
 100
 AcDbEntity
 100
@@ -6161,11 +6289,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 G4
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6175,7 +6303,7 @@ STANDARD
   0
 MTEXT
   5
-EE
+F5
 100
 AcDbEntity
 100
@@ -6201,11 +6329,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 G17
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6215,7 +6343,7 @@ STANDARD
   0
 MTEXT
   5
-EF
+F6
 100
 AcDbEntity
 100
@@ -6241,11 +6369,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 G22
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6255,7 +6383,7 @@ STANDARD
   0
 MTEXT
   5
-F0
+F7
 100
 AcDbEntity
 100
@@ -6281,11 +6409,11 @@ ByLayer
  71
 6
  72
-0
+2
   1
 G21/27
   7
-STANDARD
+standard
  50
 90.0
  73
@@ -6295,7 +6423,631 @@ STANDARD
   0
 ENDBLK
   5
-F1
+F8
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+F9
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+GearedMotor-0
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+GearedMotor-0
+  1
+
+  0
+CIRCLE
+  5
+FA
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+GearedMotor_MouningHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-17.5
+ 20
+14.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+FB
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+GearedMotor_MouningHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-17.5
+ 20
+-14.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+FC
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+GearedMotor_MouningHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+17.5
+ 20
+-14.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+FD
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+GearedMotor_MouningHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+17.5
+ 20
+14.0
+ 30
+0.0
+ 40
+2.0
+  0
+LINE
+  5
+FE
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.5
+ 20
+17.5
+ 30
+0.0
+ 11
+20.5
+ 21
+17.5
+ 31
+0.0
+  0
+LINE
+  5
+FF
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.5
+ 20
+-17.5
+ 30
+0.0
+ 11
+20.5
+ 21
+-17.5
+ 31
+0.0
+  0
+LINE
+  5
+100
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.5
+ 20
+17.5
+ 30
+0.0
+ 11
+-20.5
+ 21
+-17.5
+ 31
+0.0
+  0
+LINE
+  5
+101
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+20.5
+ 20
+17.5
+ 30
+0.0
+ 11
+20.5
+ 21
+-17.5
+ 31
+0.0
+  0
+LINE
+  5
+102
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Gearbox
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.0
+ 20
+49.5
+ 30
+0.0
+ 11
+20.0
+ 21
+49.5
+ 31
+0.0
+  0
+LINE
+  5
+103
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Gearbox
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.0
+ 20
+17.5
+ 30
+0.0
+ 11
+20.0
+ 21
+17.5
+ 31
+0.0
+  0
+LINE
+  5
+104
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Gearbox
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-20.0
+ 20
+49.5
+ 30
+0.0
+ 11
+-20.0
+ 21
+17.5
+ 31
+0.0
+  0
+LINE
+  5
+105
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Gearbox
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+20.0
+ 20
+49.5
+ 30
+0.0
+ 11
+20.0
+ 21
+17.5
+ 31
+0.0
+  0
+LINE
+  5
+106
+100
+AcDbEntity
+100
+AcDbLine
+  8
+GearedMotor_Gearbox
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+17.5
+ 30
+0.0
+ 11
+0.0
+ 21
+17.5
+ 31
+0.0
+  0
+ENDBLK
+  5
+107
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+108
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+Castor30mm-0
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+Castor30mm-0
+  1
+
+  0
+CIRCLE
+  5
+109
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Castor_MountingHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-15.0
+ 20
+15.0
+ 30
+0.0
+ 40
+2.5
+  0
+CIRCLE
+  5
+10A
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Castor_MountingHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+15.0
+ 20
+15.0
+ 30
+0.0
+ 40
+2.5
+  0
+CIRCLE
+  5
+10B
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Castor_MountingHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+14.9999999999999982
+ 20
+-15.0
+ 30
+0.0
+ 40
+2.5
+  0
+CIRCLE
+  5
+10C
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Castor_MountingHoles
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-15.0000000000000018
+ 20
+-15.0
+ 30
+0.0
+ 40
+2.5
+  0
+LINE
+  5
+10D
+100
+AcDbEntity
+100
+AcDbLine
+  8
+Castor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-21.0
+ 20
+21.0
+ 30
+0.0
+ 11
+21.0
+ 21
+21.0
+ 31
+0.0
+  0
+LINE
+  5
+10E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+Castor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-21.0
+ 20
+-21.0
+ 30
+0.0
+ 11
+21.0
+ 21
+-21.0
+ 31
+0.0
+  0
+LINE
+  5
+10F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+Castor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-21.0
+ 20
+21.0
+ 30
+0.0
+ 11
+-21.0
+ 21
+-21.0
+ 31
+0.0
+  0
+LINE
+  5
+110
+100
+AcDbEntity
+100
+AcDbLine
+  8
+Castor_Plate
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+21.0
+ 20
+21.0
+ 30
+0.0
+ 11
+21.0
+ 21
+-21.0
+ 31
+0.0
+  0
+ENDBLK
+  5
+111
 100
 AcDbEntity
   8
@@ -6311,7 +7063,7 @@ ENTITIES
   0
 INSERT
   5
-F2
+112
 100
 AcDbEntity
 100
@@ -6337,7 +7089,7 @@ eBay_RelayBoard-0
   0
 INSERT
   5
-F3
+113
 100
 AcDbEntity
 100
@@ -6363,7 +7115,7 @@ RaspberryPi-0
   0
 LINE
   5
-F4
+114
 100
 AcDbEntity
 100
@@ -6377,13 +7129,13 @@ ArmMountings
   6
 ByLayer
  10
-8.4999999999999858
+-36.0000000000000142
  20
 110.0
  30
 0.0
  11
-11.5000000000000071
+-32.9999999999999858
  21
 110.0
  31
@@ -6391,7 +7143,7 @@ ByLayer
   0
 LINE
   5
-F5
+115
 100
 AcDbEntity
 100
@@ -6405,125 +7157,13 @@ ArmMountings
   6
 ByLayer
  10
-8.5000000000000089
+-35.9999999999999858
  20
 150.0
  30
 0.0
  11
-11.4999999999999982
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-F6
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-8.5000000000000018
- 20
-140.0
- 30
-0.0
- 11
-11.5000000000000018
- 21
-140.0
- 31
-0.0
-  0
-LINE
-  5
-F7
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-8.5
- 20
-120.0
- 30
-0.0
- 11
-11.4999999999999964
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-F8
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-11.5000000000000071
- 20
-110.0
- 30
-0.0
- 11
-11.4999999999999964
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-F9
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-11.5000000000000018
- 20
-140.0
- 30
-0.0
- 11
-11.4999999999999982
+-33.0
  21
 150.0
  31
@@ -6531,7 +7171,7 @@ ByLayer
   0
 LINE
   5
-FA
+116
 100
 AcDbEntity
 100
@@ -6545,13 +7185,41 @@ ArmMountings
   6
 ByLayer
  10
-8.4999999999999858
+-35.9999999999999929
  20
-110.0
+140.0
  30
 0.0
  11
-8.5
+-32.9999999999999929
+ 21
+140.0
+ 31
+0.0
+  0
+LINE
+  5
+117
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-36.0
+ 20
+120.0
+ 30
+0.0
+ 11
+-33.0
  21
 120.0
  31
@@ -6559,7 +7227,7 @@ ByLayer
   0
 LINE
   5
-FB
+118
 100
 AcDbEntity
 100
@@ -6573,13 +7241,97 @@ ArmMountings
   6
 ByLayer
  10
-8.5000000000000018
+-32.9999999999999858
+ 20
+110.0
+ 30
+0.0
+ 11
+-33.0
+ 21
+120.0
+ 31
+0.0
+  0
+LINE
+  5
+119
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-32.9999999999999929
  20
 140.0
  30
 0.0
  11
-8.5000000000000089
+-33.0
+ 21
+150.0
+ 31
+0.0
+  0
+LINE
+  5
+11A
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-36.0000000000000142
+ 20
+110.0
+ 30
+0.0
+ 11
+-36.0
+ 21
+120.0
+ 31
+0.0
+  0
+LINE
+  5
+11B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-35.9999999999999929
+ 20
+140.0
+ 30
+0.0
+ 11
+-35.9999999999999858
  21
 150.0
  31
@@ -6587,7 +7339,7 @@ ByLayer
   0
 CIRCLE
   5
-FC
+11C
 100
 AcDbEntity
 100
@@ -6601,7 +7353,7 @@ ArmMountings
   6
 ByLayer
  10
-10.0
+-34.5
  20
 130.0
  30
@@ -6611,7 +7363,7 @@ ByLayer
   0
 LINE
   5
-FD
+11D
 100
 AcDbEntity
 100
@@ -6625,13 +7377,13 @@ ArmMountings
   6
 ByLayer
  10
--11.5000000000000142
+32.9999999999999858
  20
 110.0
  30
 0.0
  11
--8.4999999999999929
+36.0000000000000071
  21
 110.0
  31
@@ -6639,7 +7391,7 @@ ByLayer
   0
 LINE
   5
-FE
+11E
 100
 AcDbEntity
 100
@@ -6653,125 +7405,13 @@ ArmMountings
   6
 ByLayer
  10
--11.4999999999999911
+33.0000000000000071
  20
 150.0
  30
 0.0
  11
--8.5000000000000018
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-FF
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--11.4999999999999982
- 20
-140.0
- 30
-0.0
- 11
--8.4999999999999982
- 21
-140.0
- 31
-0.0
-  0
-LINE
-  5
-100
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--11.5
- 20
-120.0
- 30
-0.0
- 11
--8.5000000000000036
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-101
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--8.4999999999999929
- 20
-110.0
- 30
-0.0
- 11
--8.5000000000000036
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-102
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--8.4999999999999982
- 20
-140.0
- 30
-0.0
- 11
--8.5000000000000018
+36.0
  21
 150.0
  31
@@ -6779,7 +7419,7 @@ ByLayer
   0
 LINE
   5
-103
+11F
 100
 AcDbEntity
 100
@@ -6793,13 +7433,41 @@ ArmMountings
   6
 ByLayer
  10
--11.5000000000000142
+33.0
  20
-110.0
+140.0
  30
 0.0
  11
--11.5
+36.0
+ 21
+140.0
+ 31
+0.0
+  0
+LINE
+  5
+120
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+33.0
+ 20
+120.0
+ 30
+0.0
+ 11
+36.0
  21
 120.0
  31
@@ -6807,7 +7475,7 @@ ByLayer
   0
 LINE
   5
-104
+121
 100
 AcDbEntity
 100
@@ -6821,13 +7489,97 @@ ArmMountings
   6
 ByLayer
  10
--11.4999999999999982
+36.0000000000000071
+ 20
+110.0
+ 30
+0.0
+ 11
+36.0
+ 21
+120.0
+ 31
+0.0
+  0
+LINE
+  5
+122
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+36.0
  20
 140.0
  30
 0.0
  11
--11.4999999999999911
+36.0
+ 21
+150.0
+ 31
+0.0
+  0
+LINE
+  5
+123
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.9999999999999858
+ 20
+110.0
+ 30
+0.0
+ 11
+33.0
+ 21
+120.0
+ 31
+0.0
+  0
+LINE
+  5
+124
+100
+AcDbEntity
+100
+AcDbLine
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+33.0
+ 20
+140.0
+ 30
+0.0
+ 11
+33.0000000000000071
  21
 150.0
  31
@@ -6835,7 +7587,7 @@ ByLayer
   0
 CIRCLE
   5
-105
+125
 100
 AcDbEntity
 100
@@ -6849,7 +7601,7 @@ ArmMountings
   6
 ByLayer
  10
--10.0
+34.5
  20
 130.0
  30
@@ -6857,9 +7609,95 @@ ByLayer
  40
 2.0
   0
+INSERT
+  5
+126
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+GearedMotor-0
+ 10
+-60.0
+ 20
+0.0
+ 30
+0.0
+ 50
+90.0
+  0
+INSERT
+  5
+127
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+ArmMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+GearedMotor-0
+ 10
+59.9999999999999929
+ 20
+-0.0000000000000195
+ 30
+0.0
+ 41
+1.0
+ 42
+-1.0
+ 43
+1.0
+ 50
+90.0
+  0
 LINE
   5
-106
+128
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+60.0
+ 20
+-40.0
+ 30
+0.0
+ 11
+-60.0
+ 21
+-40.0
+ 31
+0.0
+  0
+LINE
+  5
+129
 100
 AcDbEntity
 100
@@ -6875,11 +7713,39 @@ ByLayer
  10
 -80.0
  20
+-20.0
+ 30
+0.0
+ 11
+-80.0
+ 21
+110.0
+ 31
+0.0
+  0
+LINE
+  5
+12A
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-30.0000000000000071
+ 20
 160.0
  30
 0.0
  11
-80.0
+29.9999999999999929
  21
 160.0
  31
@@ -6887,7 +7753,7 @@ ByLayer
   0
 LINE
   5
-107
+12B
 100
 AcDbEntity
 100
@@ -6903,51 +7769,45 @@ ByLayer
  10
 80.0
  20
-160.0
+110.0
  30
 0.0
  11
 80.0
  21
--40.0
+-20.0
  31
 0.0
   0
-LINE
+INSERT
   5
-108
+12C
 100
 AcDbEntity
 100
-AcDbLine
+AcDbBlockReference
   8
-PanelOuter
+0
  62
 256
 370
 -1
   6
 ByLayer
+  2
+Castor30mm-0
  10
-80.0
- 20
--40.0
- 30
 0.0
- 11
--80.0
- 21
--40.0
- 31
+ 20
+130.0
+ 30
 0.0
   0
-LINE
+ARC
   5
-109
+12D
 100
 AcDbEntity
-100
-AcDbLine
   8
 PanelOuter
  62
@@ -6956,18 +7816,112 @@ PanelOuter
 -1
   6
 ByLayer
+100
+AcDbCircle
  10
--80.0
+-60.0
  20
--40.0
+-20.0
  30
 0.0
- 11
--80.0
- 21
-160.0
- 31
+ 40
+20.0
+100
+AcDbArc
+ 50
+180.0
+ 51
+270.0
+  0
+ARC
+  5
+12E
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+60.0
+ 20
+-20.0
+ 30
 0.0
+ 40
+20.0
+100
+AcDbArc
+ 50
+270.0
+ 51
+0.0
+  0
+ARC
+  5
+12F
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+-30.0000000000000071
+ 20
+110.0
+ 30
+0.0
+ 40
+50.0
+100
+AcDbArc
+ 50
+90.0
+ 51
+180.0
+  0
+ARC
+  5
+130
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+29.9999999999999893
+ 20
+110.0
+ 30
+0.0
+ 40
+50.0
+100
+AcDbArc
+ 50
+0.0
+ 51
+90.0
   0
 ENDSEC
   0
@@ -7007,7 +7961,7 @@ E
   3
 AcDbVariableDictionary
 350
-10A
+131
   0
 DICTIONARY
   5
@@ -7471,7 +8425,7 @@ Layout2
   0
 DICTIONARY
   5
-10A
+131
 100
 AcDbDictionary
 281
@@ -7479,15 +8433,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-10C
+133
   3
 HIDETEXT
 350
-10B
+132
   0
 DICTIONARYVAR
   5
-10B
+132
 100
 DictionaryVariables
 280
@@ -7497,7 +8451,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-10C
+133
 100
 DictionaryVariables
 280
