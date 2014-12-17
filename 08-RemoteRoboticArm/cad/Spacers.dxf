@@ -13,63 +13,9 @@ $HANDSEED
   5
 FFFF
   9
-$SPLINESEGS
- 70
-8
-  9
-$DIMEXE
- 40
-1.25
-  9
-$DIMLUNIT
- 70
-2
-  9
-$GRIDMODE
- 70
-1
-  9
-$INSUNITS
- 70
-4
-  9
-$DIMADEC
- 70
-2
-  9
 $DIMASZ
  40
 2.5
-  9
-$DIMGAP
- 40
-0.625
-  9
-$DIMTXT
- 40
-2.5
-  9
-$GRIDUNIT
- 10
-10.0
- 20
-10.0
-  9
-$DIMEXO
- 40
-0.625
-  9
-$LUPREC
- 70
-4
-  9
-$DIMAUNIT
- 70
-0
-  9
-$AUPREC
- 70
-2
   9
 $PLIMMIN
  10
@@ -77,9 +23,13 @@ $PLIMMIN
  20
 0.0
   9
-$LUNITS
- 70
-2
+$DIMEXE
+ 40
+1.25
+  9
+$DIMGAP
+ 40
+0.625
   9
 $PLIMMAX
  10
@@ -87,13 +37,17 @@ $PLIMMAX
  20
 297.0
   9
-$DIMSTYLE
-  2
-Standard
-  9
-$AUNITS
+$INSUNITS
  70
-0
+4
+  9
+$DIMEXO
+ 40
+0.625
+  9
+$DIMTXT
+ 40
+2.5
   0
 ENDSEC
   0
@@ -945,7 +899,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-4
+2
   0
 LAYER
   5
@@ -975,47 +929,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-PanelOuter
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-44
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-M3_ScrewJoint
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-45
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-AssemblyMountings
+Spacers-4.1x8mm
  70
 0
  62
@@ -1231,6 +1145,66 @@ AcDbBlockTableRecord
 340
 26
   0
+BLOCK_RECORD
+  5
+44
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+4_1x8mm-0
+340
+0
+  0
+BLOCK_RECORD
+  5
+45
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+4_1x8mm-1
+340
+0
+  0
+BLOCK_RECORD
+  5
+46
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+4_1x8mm-2
+340
+0
+  0
+BLOCK_RECORD
+  5
+47
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+4_1x8mm-3
+340
+0
+  0
+BLOCK_RECORD
+  5
+48
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+4_1x8mm-4
+340
+0
+  0
 ENDTAB
   0
 ENDSEC
@@ -1345,191 +1319,69 @@ AcDbEntity
 100
 AcDbBlockEnd
   0
-ENDSEC
-  0
-SECTION
-  2
-ENTITIES
-  0
-CIRCLE
-  5
-46
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
-150.0
- 30
-0.0
- 40
-2.0
-  0
-CIRCLE
-  5
-47
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 40
-2.0
-  0
-ARC
-  5
-48
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbCircle
- 10
-0.0
- 20
-150.0
- 30
-0.0
- 40
-20.0
-100
-AcDbArc
- 50
-90.0
- 51
-180.0
-  0
-LINE
+BLOCK
   5
 49
 100
 AcDbEntity
-100
-AcDbLine
   8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
+0
+100
+AcDbBlockBegin
+  2
+4_1x8mm-0
+ 70
+0
  10
 0.0
  20
-170.0
+0.0
  30
 0.0
- 11
-0.0
- 21
-170.0
- 31
-0.0
+  3
+4_1x8mm-0
+  1
+
   0
-ARC
+CIRCLE
   5
 4A
 100
 AcDbEntity
+100
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
 -1
   6
 ByLayer
-100
-AcDbCircle
  10
 0.0
  20
-150.0
+0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-0.0
- 51
-90.0
+2.0499999999999998
   0
-LINE
+CIRCLE
   5
 4B
 100
 AcDbEntity
 100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-20.0
- 20
-150.0
- 30
-0.0
- 11
-20.0
- 21
-0.0
- 31
-0.0
-  0
-ARC
-  5
-4C
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
 AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
  10
 0.0
  20
@@ -1537,109 +1389,65 @@ AcDbCircle
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-270.0
- 51
-0.0
+4.0
   0
-LINE
+CIRCLE
+  5
+4C
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+8.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
   5
 4D
 100
 AcDbEntity
 100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
--20.0
- 30
-0.0
- 11
-0.0
- 21
--20.0
- 31
-0.0
-  0
-LINE
-  5
-4E
-100
-AcDbEntity
-100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--20.0
- 20
-0.0
- 30
-0.0
- 11
--20.0
- 21
-150.0
- 31
-0.0
-  0
-ARC
-  5
-4F
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
 AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
  10
-0.0
+8.0
  20
 0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-180.0
- 51
-270.0
+4.0
   0
-LINE
+CIRCLE
   5
-50
+4E
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -1647,17 +1455,61 @@ PanelOuter
   6
 ByLayer
  10
-42.0
+16.0
  20
--20.0
+0.0
  30
 0.0
- 11
-42.0
- 21
--20.0
- 31
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+4F
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
 0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+50
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
   0
 CIRCLE
   5
@@ -1667,7 +1519,7 @@ AcDbEntity
 100
 AcDbCircle
   8
-AssemblyMountings
+Spacers-4.1x8mm
  62
 256
 370
@@ -1675,13 +1527,13 @@ AssemblyMountings
   6
 ByLayer
  10
-0.0
+24.0
  20
-70.0
+0.0
  30
 0.0
  40
-2.0
+4.0
   0
 CIRCLE
   5
@@ -1691,7 +1543,7 @@ AcDbEntity
 100
 AcDbCircle
   8
-AssemblyMountings
+Spacers-4.1x8mm
  62
 256
 370
@@ -1699,13 +1551,13 @@ AssemblyMountings
   6
 ByLayer
  10
-0.0
+32.0
  20
-120.0
+0.0
  30
 0.0
  40
-2.0
+2.0499999999999998
   0
 CIRCLE
   5
@@ -1715,7 +1567,7 @@ AcDbEntity
 100
 AcDbCircle
   8
-AssemblyMountings
+Spacers-4.1x8mm
  62
 256
 370
@@ -1723,101 +1575,81 @@ AssemblyMountings
   6
 ByLayer
  10
-0.0
+32.0
  20
-20.0
+0.0
  30
 0.0
  40
-2.0
+4.0
   0
-CIRCLE
+ENDBLK
   5
 54
 100
 AcDbEntity
-100
-AcDbCircle
   8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-50.0
- 20
-150.0
- 30
-0.0
- 40
-2.0
+0
+100
+AcDbBlockEnd
   0
-CIRCLE
+BLOCK
   5
 55
 100
 AcDbEntity
-100
-AcDbCircle
   8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
+0
+100
+AcDbBlockBegin
+  2
+4_1x8mm-1
+ 70
+0
  10
-50.0
+0.0
  20
 0.0
  30
 0.0
- 40
-2.0
+  3
+4_1x8mm-1
+  1
+
   0
-ARC
+CIRCLE
   5
 56
 100
 AcDbEntity
+100
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
 -1
   6
 ByLayer
-100
-AcDbCircle
  10
-50.0
+0.0
  20
-150.0
+0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-90.0
- 51
-180.0
+2.0499999999999998
   0
-LINE
+CIRCLE
   5
 57
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -1825,201 +1657,119 @@ PanelOuter
   6
 ByLayer
  10
-50.0
+0.0
  20
-170.0
+0.0
  30
 0.0
- 11
-50.0
- 21
-170.0
- 31
-0.0
+ 40
+4.0
   0
-ARC
+CIRCLE
   5
 58
 100
 AcDbEntity
+100
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
 -1
   6
 ByLayer
-100
-AcDbCircle
  10
-50.0
+8.0
  20
-150.0
+0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-0.0
- 51
-90.0
+2.0499999999999998
   0
-LINE
+CIRCLE
   5
 59
 100
 AcDbEntity
 100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-70.0
- 20
-150.0
- 30
-0.0
- 11
-70.0
- 21
-0.0
- 31
-0.0
-  0
-ARC
-  5
-5A
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
 AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
  10
-50.0
+8.0
  20
 0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-270.0
- 51
-0.0
+4.0
   0
-LINE
+CIRCLE
+  5
+5A
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
   5
 5B
 100
 AcDbEntity
 100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-50.0
- 20
--20.0
- 30
-0.0
- 11
-50.0
- 21
--20.0
- 31
-0.0
-  0
-LINE
-  5
-5C
-100
-AcDbEntity
-100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-30.0
- 20
-0.0
- 30
-0.0
- 11
-30.0
- 21
-150.0
- 31
-0.0
-  0
-ARC
-  5
-5D
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
 AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
  10
-50.0
+16.0
  20
 0.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-180.0
- 51
-270.0
+4.0
   0
-LINE
+CIRCLE
   5
-5E
+5C
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -2027,17 +1777,61 @@ PanelOuter
   6
 ByLayer
  10
-92.0
+24.0
  20
--20.0
+0.0
  30
 0.0
- 11
-92.0
- 21
--20.0
- 31
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+5D
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
 0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+5E
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
   0
 CIRCLE
   5
@@ -2047,7 +1841,7 @@ AcDbEntity
 100
 AcDbCircle
   8
-AssemblyMountings
+Spacers-4.1x8mm
  62
 256
 370
@@ -2055,71 +1849,57 @@ AssemblyMountings
   6
 ByLayer
  10
-50.0
+32.0
  20
-70.0
+0.0
  30
 0.0
  40
-2.0
+4.0
   0
-CIRCLE
+ENDBLK
   5
 60
 100
 AcDbEntity
-100
-AcDbCircle
   8
-AssemblyMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-50.0
- 20
-120.0
- 30
-0.0
- 40
-2.0
+0
+100
+AcDbBlockEnd
   0
-CIRCLE
+BLOCK
   5
 61
 100
 AcDbEntity
-100
-AcDbCircle
   8
-AssemblyMountings
- 62
-256
-370
--1
-  6
-ByLayer
+0
+100
+AcDbBlockBegin
+  2
+4_1x8mm-2
+ 70
+0
  10
-50.0
+0.0
  20
-20.0
+0.0
  30
 0.0
- 40
-2.0
+  3
+4_1x8mm-2
+  1
+
   0
-LINE
+CIRCLE
   5
 62
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -2127,27 +1907,23 @@ PanelOuter
   6
 ByLayer
  10
--7.0000000000000009
+0.0
  20
-28.0
+0.0
  30
 0.0
- 11
--6.9999999999999991
- 21
-52.0
- 31
-0.0
+ 40
+2.0499999999999998
   0
-LINE
+CIRCLE
   5
 63
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -2155,27 +1931,23 @@ PanelOuter
   6
 ByLayer
  10
-6.9999999999999991
+0.0
  20
-28.0
+0.0
  30
 0.0
- 11
-7.0000000000000009
- 21
-52.0
- 31
-0.0
+ 40
+4.0
   0
-LINE
+CIRCLE
   5
 64
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -2183,27 +1955,23 @@ PanelOuter
   6
 ByLayer
  10
--6.9999999999999991
+8.0
  20
-52.0
+0.0
  30
 0.0
- 11
-7.0000000000000009
- 21
-52.0
- 31
-0.0
+ 40
+2.0499999999999998
   0
-LINE
+CIRCLE
   5
 65
 100
 AcDbEntity
 100
-AcDbLine
+AcDbCircle
   8
-PanelOuter
+Spacers-4.1x8mm
  62
 256
 370
@@ -2211,16 +1979,840 @@ PanelOuter
   6
 ByLayer
  10
-6.9999999999999991
+8.0
  20
-28.0
+0.0
  30
 0.0
- 11
--7.0000000000000009
- 21
-28.0
- 31
+ 40
+4.0
+  0
+CIRCLE
+  5
+66
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+67
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+68
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+69
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+6A
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+6B
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+ENDBLK
+  5
+6C
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+6D
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+4_1x8mm-3
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+4_1x8mm-3
+  1
+
+  0
+CIRCLE
+  5
+6E
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+6F
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+70
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+8.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+71
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+8.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+72
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+73
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+74
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+75
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+76
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+77
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+ENDBLK
+  5
+78
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+79
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+4_1x8mm-4
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+4_1x8mm-4
+  1
+
+  0
+CIRCLE
+  5
+7A
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+7B
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+7C
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+8.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+7D
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+8.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+7E
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+7F
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+16.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+80
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+81
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+24.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+CIRCLE
+  5
+82
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0499999999999998
+  0
+CIRCLE
+  5
+83
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+Spacers-4.1x8mm
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+32.0
+ 20
+0.0
+ 30
+0.0
+ 40
+4.0
+  0
+ENDBLK
+  5
+84
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+INSERT
+  5
+85
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+0
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+4_1x8mm-0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  0
+INSERT
+  5
+86
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+0
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+4_1x8mm-1
+ 10
+0.0
+ 20
+10.0
+ 30
+0.0
+  0
+INSERT
+  5
+87
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+0
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+4_1x8mm-2
+ 10
+0.0
+ 20
+20.0
+ 30
+0.0
+  0
+INSERT
+  5
+88
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+0
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+4_1x8mm-3
+ 10
+0.0
+ 20
+30.0
+ 30
+0.0
+  0
+INSERT
+  5
+89
+100
+AcDbEntity
+100
+AcDbBlockReference
+  8
+0
+ 62
+256
+370
+-1
+  6
+ByLayer
+  2
+4_1x8mm-4
+ 10
+0.0
+ 20
+40.0
+ 30
 0.0
   0
 ENDSEC
@@ -2261,7 +2853,7 @@ E
   3
 AcDbVariableDictionary
 350
-66
+8A
   0
 DICTIONARY
   5
@@ -2725,7 +3317,7 @@ Layout2
   0
 DICTIONARY
   5
-66
+8A
 100
 AcDbDictionary
 281
@@ -2733,15 +3325,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-68
+8C
   3
 HIDETEXT
 350
-67
+8B
   0
 DICTIONARYVAR
   5
-67
+8B
 100
 DictionaryVariables
 280
@@ -2751,7 +3343,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-68
+8C
 100
 DictionaryVariables
 280

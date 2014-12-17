@@ -903,7 +903,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-6
+3
   0
 LAYER
   5
@@ -933,66 +933,6 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-MicroServo_MountingHoles
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-44
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-MicroServo_Cutout
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-45
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-MicroServo_Outer
- 70
-0
- 62
-2
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-46
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
 PanelOuter
  70
 0
@@ -1007,7 +947,7 @@ F
   0
 LAYER
   5
-47
+44
 100
 AcDbSymbolTableRecord
 100
@@ -1231,19 +1171,7 @@ AcDbBlockTableRecord
   0
 BLOCK_RECORD
   5
-48
-100
-AcDbSymbolTableRecord
-100
-AcDbBlockTableRecord
-  2
-Micro_Servo-0
-340
-0
-  0
-BLOCK_RECORD
-  5
-49
+45
 100
 AcDbSymbolTableRecord
 100
@@ -1369,313 +1297,7 @@ AcDbBlockEnd
   0
 BLOCK
   5
-4A
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockBegin
-  2
-Micro_Servo-0
- 70
-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  3
-Micro_Servo-0
-  1
-
-  0
-LINE
-  5
-4B
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--6.0000000000000009
- 20
--16.0
- 30
-0.0
- 11
--5.9999999999999991
- 21
-16.0
- 31
-0.0
-  0
-LINE
-  5
-4C
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--16.0
- 30
-0.0
- 11
-6.0000000000000009
- 21
-16.0
- 31
-0.0
-  0
-LINE
-  5
-4D
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.9999999999999991
- 20
-16.0
- 30
-0.0
- 11
-6.0000000000000009
- 21
-16.0
- 31
-0.0
-  0
-LINE
-  5
-4E
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--16.0
- 30
-0.0
- 11
--6.0000000000000009
- 21
--16.0
- 31
-0.0
-  0
-LINE
-  5
-4F
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--6.0000000000000009
- 20
--11.25
- 30
-0.0
- 11
--5.9999999999999991
- 21
-11.25
- 31
-0.0
-  0
-LINE
-  5
-50
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--11.25
- 30
-0.0
- 11
-6.0000000000000009
- 21
-11.25
- 31
-0.0
-  0
-LINE
-  5
-51
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--11.25
- 30
-0.0
- 11
--6.0000000000000009
- 21
--11.25
- 31
-0.0
-  0
-LINE
-  5
-52
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.9999999999999991
- 20
-11.25
- 30
-0.0
- 11
-6.0000000000000009
- 21
-11.25
- 31
-0.0
-  0
-CIRCLE
-  5
-53
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-MicroServo_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.000000000000001
- 20
-13.25
- 30
-0.0
- 40
-1.25
-  0
-CIRCLE
-  5
-54
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-MicroServo_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--0.000000000000001
- 20
--13.25
- 30
-0.0
- 40
-1.25
-  0
-ENDBLK
-  5
-55
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockEnd
-  0
-BLOCK
-  5
-56
+46
 100
 AcDbEntity
   8
@@ -1699,7 +1321,7 @@ M3_ScrewJoint-0
   0
 LINE
   5
-57
+47
 100
 AcDbEntity
 100
@@ -1727,7 +1349,7 @@ ByLayer
   0
 LINE
   5
-58
+48
 100
 AcDbEntity
 100
@@ -1755,7 +1377,7 @@ ByLayer
   0
 LINE
   5
-59
+49
 100
 AcDbEntity
 100
@@ -1783,7 +1405,7 @@ ByLayer
   0
 LINE
   5
-5A
+4A
 100
 AcDbEntity
 100
@@ -1811,7 +1433,7 @@ ByLayer
   0
 LINE
   5
-5B
+4B
 100
 AcDbEntity
 100
@@ -1839,7 +1461,7 @@ ByLayer
   0
 LINE
   5
-5C
+4C
 100
 AcDbEntity
 100
@@ -1867,7 +1489,7 @@ ByLayer
   0
 LINE
   5
-5D
+4D
 100
 AcDbEntity
 100
@@ -1895,7 +1517,7 @@ ByLayer
   0
 LINE
   5
-5E
+4E
 100
 AcDbEntity
 100
@@ -1923,7 +1545,7 @@ ByLayer
   0
 LINE
   5
-5F
+4F
 100
 AcDbEntity
 100
@@ -1951,7 +1573,7 @@ ByLayer
   0
 LINE
   5
-60
+50
 100
 AcDbEntity
 100
@@ -1979,7 +1601,7 @@ ByLayer
   0
 LINE
   5
-61
+51
 100
 AcDbEntity
 100
@@ -2007,7 +1629,7 @@ ByLayer
   0
 ENDBLK
   5
-62
+52
 100
 AcDbEntity
   8
@@ -2021,33 +1643,9 @@ SECTION
   2
 ENTITIES
   0
-INSERT
-  5
-63
-100
-AcDbEntity
-100
-AcDbBlockReference
-  8
-0
- 62
-256
-370
--1
-  6
-ByLayer
-  2
-Micro_Servo-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  0
 LINE
   5
-64
+53
 100
 AcDbEntity
 100
@@ -2075,7 +1673,7 @@ ByLayer
   0
 ARC
   5
-65
+54
 100
 AcDbEntity
   8
@@ -2105,7 +1703,7 @@ AcDbArc
   0
 LINE
   5
-66
+55
 100
 AcDbEntity
 100
@@ -2133,7 +1731,7 @@ ByLayer
   0
 LINE
   5
-67
+56
 100
 AcDbEntity
 100
@@ -2161,7 +1759,7 @@ ByLayer
   0
 ARC
   5
-68
+57
 100
 AcDbEntity
   8
@@ -2191,7 +1789,7 @@ AcDbArc
   0
 LINE
   5
-69
+58
 100
 AcDbEntity
 100
@@ -2219,7 +1817,7 @@ ByLayer
   0
 LINE
   5
-6A
+59
 100
 AcDbEntity
 100
@@ -2247,7 +1845,7 @@ ByLayer
   0
 LINE
   5
-6B
+5A
 100
 AcDbEntity
 100
@@ -2275,7 +1873,7 @@ ByLayer
   0
 LINE
   5
-6C
+5B
 100
 AcDbEntity
 100
@@ -2303,7 +1901,7 @@ ByLayer
   0
 LINE
   5
-6D
+5C
 100
 AcDbEntity
 100
@@ -2331,7 +1929,7 @@ ByLayer
   0
 LINE
   5
-6E
+5D
 100
 AcDbEntity
 100
@@ -2359,7 +1957,7 @@ ByLayer
   0
 INSERT
   5
-6F
+5E
 100
 AcDbEntity
 100
@@ -2383,7 +1981,7 @@ M3_ScrewJoint-0
   0
 LINE
   5
-70
+5F
 100
 AcDbEntity
 100
@@ -2411,7 +2009,7 @@ ByLayer
   0
 LINE
   5
-71
+60
 100
 AcDbEntity
 100
@@ -2434,6 +2032,118 @@ ByLayer
 10.0
  21
 -30.0
+ 31
+0.0
+  0
+LINE
+  5
+61
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-7.0000000000000009
+ 20
+-12.0
+ 30
+0.0
+ 11
+-6.9999999999999991
+ 21
+12.0
+ 31
+0.0
+  0
+LINE
+  5
+62
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+6.9999999999999991
+ 20
+-12.0
+ 30
+0.0
+ 11
+7.0000000000000009
+ 21
+12.0
+ 31
+0.0
+  0
+LINE
+  5
+63
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-6.9999999999999991
+ 20
+12.0
+ 30
+0.0
+ 11
+7.0000000000000009
+ 21
+12.0
+ 31
+0.0
+  0
+LINE
+  5
+64
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+6.9999999999999991
+ 20
+-12.0
+ 30
+0.0
+ 11
+-7.0000000000000009
+ 21
+-12.0
  31
 0.0
   0
@@ -2475,7 +2185,7 @@ E
   3
 AcDbVariableDictionary
 350
-72
+65
   0
 DICTIONARY
   5
@@ -2939,7 +2649,7 @@ Layout2
   0
 DICTIONARY
   5
-72
+65
 100
 AcDbDictionary
 281
@@ -2947,15 +2657,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-74
+67
   3
 HIDETEXT
 350
-73
+66
   0
 DICTIONARYVAR
   5
-73
+66
 100
 DictionaryVariables
 280
@@ -2965,7 +2675,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-74
+67
 100
 DictionaryVariables
 280
