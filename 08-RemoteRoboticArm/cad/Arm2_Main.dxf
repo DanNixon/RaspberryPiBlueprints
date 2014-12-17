@@ -903,7 +903,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-6
+7
   0
 LAYER
   5
@@ -1014,6 +1014,26 @@ AcDbSymbolTableRecord
 AcDbLayerTableRecord
   2
 M3_ScrewJoint
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+48
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+AssemblyMountings
  70
 0
  62
@@ -1231,7 +1251,7 @@ AcDbBlockTableRecord
   0
 BLOCK_RECORD
   5
-48
+49
 100
 AcDbSymbolTableRecord
 100
@@ -1243,7 +1263,7 @@ Micro_Servo-0
   0
 BLOCK_RECORD
   5
-49
+4A
 100
 AcDbSymbolTableRecord
 100
@@ -1369,7 +1389,7 @@ AcDbBlockEnd
   0
 BLOCK
   5
-4A
+4B
 100
 AcDbEntity
   8
@@ -1393,7 +1413,7 @@ Micro_Servo-0
   0
 LINE
   5
-4B
+4C
 100
 AcDbEntity
 100
@@ -1421,7 +1441,7 @@ ByLayer
   0
 LINE
   5
-4C
+4D
 100
 AcDbEntity
 100
@@ -1438,34 +1458,6 @@ ByLayer
 5.9999999999999991
  20
 -16.0
- 30
-0.0
- 11
-6.0000000000000009
- 21
-16.0
- 31
-0.0
-  0
-LINE
-  5
-4D
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.9999999999999991
- 20
-16.0
  30
 0.0
  11
@@ -1491,6 +1483,34 @@ MicroServo_Outer
   6
 ByLayer
  10
+-5.9999999999999991
+ 20
+16.0
+ 30
+0.0
+ 11
+6.0000000000000009
+ 21
+16.0
+ 31
+0.0
+  0
+LINE
+  5
+4F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+MicroServo_Outer
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 5.9999999999999991
  20
 -16.0
@@ -1505,7 +1525,7 @@ ByLayer
   0
 LINE
   5
-4F
+50
 100
 AcDbEntity
 100
@@ -1526,34 +1546,6 @@ ByLayer
 0.0
  11
 -5.9999999999999991
- 21
-11.25
- 31
-0.0
-  0
-LINE
-  5
-50
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--11.25
- 30
-0.0
- 11
-6.0000000000000009
  21
 11.25
  31
@@ -1581,6 +1573,34 @@ ByLayer
  30
 0.0
  11
+6.0000000000000009
+ 21
+11.25
+ 31
+0.0
+  0
+LINE
+  5
+52
+100
+AcDbEntity
+100
+AcDbLine
+  8
+MicroServo_Cutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+5.9999999999999991
+ 20
+-11.25
+ 30
+0.0
+ 11
 -6.0000000000000009
  21
 -11.25
@@ -1589,7 +1609,7 @@ ByLayer
   0
 LINE
   5
-52
+53
 100
 AcDbEntity
 100
@@ -1617,7 +1637,7 @@ ByLayer
   0
 CIRCLE
   5
-53
+54
 100
 AcDbEntity
 100
@@ -1641,7 +1661,7 @@ ByLayer
   0
 CIRCLE
   5
-54
+55
 100
 AcDbEntity
 100
@@ -1665,7 +1685,7 @@ ByLayer
   0
 ENDBLK
   5
-55
+56
 100
 AcDbEntity
   8
@@ -1675,7 +1695,7 @@ AcDbBlockEnd
   0
 BLOCK
   5
-56
+57
 100
 AcDbEntity
   8
@@ -1699,7 +1719,7 @@ Micro_Servo-1
   0
 LINE
   5
-57
+58
 100
 AcDbEntity
 100
@@ -1727,7 +1747,7 @@ ByLayer
   0
 LINE
   5
-58
+59
 100
 AcDbEntity
 100
@@ -1744,34 +1764,6 @@ ByLayer
 5.9999999999999991
  20
 -16.0
- 30
-0.0
- 11
-6.0000000000000009
- 21
-16.0
- 31
-0.0
-  0
-LINE
-  5
-59
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Outer
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.9999999999999991
- 20
-16.0
  30
 0.0
  11
@@ -1797,6 +1789,34 @@ MicroServo_Outer
   6
 ByLayer
  10
+-5.9999999999999991
+ 20
+16.0
+ 30
+0.0
+ 11
+6.0000000000000009
+ 21
+16.0
+ 31
+0.0
+  0
+LINE
+  5
+5B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+MicroServo_Outer
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 5.9999999999999991
  20
 -16.0
@@ -1811,7 +1831,7 @@ ByLayer
   0
 LINE
   5
-5B
+5C
 100
 AcDbEntity
 100
@@ -1832,34 +1852,6 @@ ByLayer
 0.0
  11
 -5.9999999999999991
- 21
-11.25
- 31
-0.0
-  0
-LINE
-  5
-5C
-100
-AcDbEntity
-100
-AcDbLine
-  8
-MicroServo_Cutout
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.9999999999999991
- 20
--11.25
- 30
-0.0
- 11
-6.0000000000000009
  21
 11.25
  31
@@ -1887,6 +1879,34 @@ ByLayer
  30
 0.0
  11
+6.0000000000000009
+ 21
+11.25
+ 31
+0.0
+  0
+LINE
+  5
+5E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+MicroServo_Cutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+5.9999999999999991
+ 20
+-11.25
+ 30
+0.0
+ 11
 -6.0000000000000009
  21
 -11.25
@@ -1895,7 +1915,7 @@ ByLayer
   0
 LINE
   5
-5E
+5F
 100
 AcDbEntity
 100
@@ -1923,7 +1943,7 @@ ByLayer
   0
 CIRCLE
   5
-5F
+60
 100
 AcDbEntity
 100
@@ -1947,7 +1967,7 @@ ByLayer
   0
 CIRCLE
   5
-60
+61
 100
 AcDbEntity
 100
@@ -1971,7 +1991,7 @@ ByLayer
   0
 ENDBLK
   5
-61
+62
 100
 AcDbEntity
   8
@@ -1987,7 +2007,7 @@ ENTITIES
   0
 CIRCLE
   5
-62
+63
 100
 AcDbEntity
 100
@@ -2011,7 +2031,7 @@ ByLayer
   0
 ARC
   5
-63
+64
 100
 AcDbEntity
   8
@@ -2041,7 +2061,7 @@ AcDbArc
   0
 LINE
   5
-64
+65
 100
 AcDbEntity
 100
@@ -2069,7 +2089,7 @@ ByLayer
   0
 ARC
   5
-65
+66
 100
 AcDbEntity
   8
@@ -2099,7 +2119,7 @@ AcDbArc
   0
 LINE
   5
-66
+67
 100
 AcDbEntity
 100
@@ -2122,34 +2142,6 @@ ByLayer
 20.0
  21
 0.0
- 31
-0.0
-  0
-LINE
-  5
-67
-100
-AcDbEntity
-100
-AcDbLine
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
--20.0
- 30
-0.0
- 11
-0.0
- 21
--20.0
  31
 0.0
   0
@@ -2169,6 +2161,34 @@ PanelOuter
   6
 ByLayer
  10
+0.0
+ 20
+-20.0
+ 30
+0.0
+ 11
+0.0
+ 21
+-20.0
+ 31
+0.0
+  0
+LINE
+  5
+69
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
 -20.0
  20
 0.0
@@ -2183,7 +2203,7 @@ ByLayer
   0
 LINE
   5
-69
+6A
 100
 AcDbEntity
 100
@@ -2211,7 +2231,7 @@ ByLayer
   0
 INSERT
   5
-6A
+6B
 100
 AcDbEntity
 100
@@ -2235,7 +2255,7 @@ Micro_Servo-1
   0
 LINE
   5
-6B
+6C
 100
 AcDbEntity
 100
@@ -2263,7 +2283,7 @@ ByLayer
   0
 ARC
   5
-6C
+6D
 100
 AcDbEntity
   8
@@ -2293,7 +2313,7 @@ AcDbArc
   0
 LINE
   5
-6D
+6E
 100
 AcDbEntity
 100
@@ -2321,7 +2341,7 @@ ByLayer
   0
 LINE
   5
-6E
+6F
 100
 AcDbEntity
 100
@@ -2349,7 +2369,7 @@ ByLayer
   0
 ARC
   5
-6F
+70
 100
 AcDbEntity
   8
@@ -2379,7 +2399,7 @@ AcDbArc
   0
 ARC
   5
-70
+71
 100
 AcDbEntity
   8
@@ -2409,7 +2429,7 @@ AcDbArc
   0
 LINE
   5
-71
+72
 100
 AcDbEntity
 100
@@ -2437,7 +2457,7 @@ ByLayer
   0
 ARC
   5
-72
+73
 100
 AcDbEntity
   8
@@ -2467,7 +2487,7 @@ AcDbArc
   0
 CIRCLE
   5
-73
+74
 100
 AcDbEntity
 100
@@ -2484,6 +2504,582 @@ ByLayer
 10.0
  20
 -60.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+75
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+AssemblyMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+110.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+76
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+AssemblyMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+0.0
+ 20
+40.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+77
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+0.0
+ 30
+0.0
+ 40
+2.0
+  0
+ARC
+  5
+78
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+42.0
+ 20
+150.0
+ 30
+0.0
+ 40
+20.0
+100
+AcDbArc
+ 50
+90.0
+ 51
+180.0
+  0
+LINE
+  5
+79
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+170.0
+ 30
+0.0
+ 11
+42.0
+ 21
+170.0
+ 31
+0.0
+  0
+ARC
+  5
+7A
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+42.0
+ 20
+150.0
+ 30
+0.0
+ 40
+20.0
+100
+AcDbArc
+ 50
+0.0
+ 51
+90.0
+  0
+LINE
+  5
+7B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+62.0
+ 20
+150.0
+ 30
+0.0
+ 11
+62.0
+ 21
+0.0
+ 31
+0.0
+  0
+LINE
+  5
+7C
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+-20.0
+ 30
+0.0
+ 11
+42.0
+ 21
+-20.0
+ 31
+0.0
+  0
+LINE
+  5
+7D
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+22.0
+ 20
+0.0
+ 30
+0.0
+ 11
+22.0
+ 21
+150.0
+ 31
+0.0
+  0
+LINE
+  5
+7E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+62.0
+ 20
+0.0
+ 30
+0.0
+ 11
+62.0
+ 21
+-20.0
+ 31
+0.0
+  0
+LINE
+  5
+7F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+22.0
+ 20
+0.0
+ 30
+0.0
+ 11
+22.0
+ 21
+0.0
+ 31
+0.0
+  0
+ARC
+  5
+80
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+52.0
+ 20
+-60.0
+ 30
+0.0
+ 40
+10.0
+100
+AcDbArc
+ 50
+180.0
+ 51
+270.0
+  0
+LINE
+  5
+81
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+52.0
+ 20
+-70.0
+ 30
+0.0
+ 11
+52.0
+ 21
+-70.0
+ 31
+0.0
+  0
+LINE
+  5
+82
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+62.0
+ 20
+-60.0
+ 30
+0.0
+ 11
+62.0
+ 21
+-20.0
+ 31
+0.0
+  0
+ARC
+  5
+83
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+52.0
+ 20
+-60.0
+ 30
+0.0
+ 40
+10.0
+100
+AcDbArc
+ 50
+270.0
+ 51
+0.0
+  0
+ARC
+  5
+84
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+42.0000000000000071
+ 20
+0.0
+ 30
+0.0
+ 40
+20.0
+100
+AcDbArc
+ 50
+180.0
+ 51
+250.5287793655093083
+  0
+LINE
+  5
+85
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+-28.284271247461902
+ 30
+0.0
+ 11
+42.0
+ 21
+-60.0
+ 31
+0.0
+  0
+ARC
+  5
+86
+100
+AcDbEntity
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbCircle
+ 10
+32.0
+ 20
+-28.284271247461902
+ 30
+0.0
+ 40
+10.0
+100
+AcDbArc
+ 50
+0.0
+ 51
+70.5287793655093083
+  0
+CIRCLE
+  5
+87
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+52.0
+ 20
+-60.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+88
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+AssemblyMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+110.0
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+89
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+AssemblyMountings
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+42.0
+ 20
+40.0
  30
 0.0
  40
@@ -2527,7 +3123,7 @@ E
   3
 AcDbVariableDictionary
 350
-74
+8A
   0
 DICTIONARY
   5
@@ -2991,7 +3587,7 @@ Layout2
   0
 DICTIONARY
   5
-74
+8A
 100
 AcDbDictionary
 281
@@ -2999,15 +3595,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-76
+8C
   3
 HIDETEXT
 350
-75
+8B
   0
 DICTIONARYVAR
   5
-75
+8B
 100
 DictionaryVariables
 280
@@ -3017,7 +3613,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-76
+8C
 100
 DictionaryVariables
 280
