@@ -41,10 +41,6 @@ $INSUNITS
  70
 4
   9
-$DIMSTYLE
-  2
-Standard
-  9
 $DIMEXO
  40
 0.625
@@ -903,7 +899,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-7
+3
   0
 LAYER
   5
@@ -933,7 +929,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-RelayBoard_MountingHoles
+PanelOuter
  70
 0
  62
@@ -953,87 +949,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-RaspberryPi_MountingHoles
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-45
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-PanelOuter
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-46
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-ArmMountings
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-47
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-GearedMotor_MouningHoles
- 70
-0
- 62
-1
-  6
-CONTINUOUS
-370
-0
-390
-F
-  0
-LAYER
-  5
-48
-100
-AcDbSymbolTableRecord
-100
-AcDbLayerTableRecord
-  2
-Castor_MountingHoles
+CableCutout
  70
 0
  62
@@ -1249,54 +1165,6 @@ AcDbBlockTableRecord
 340
 26
   0
-BLOCK_RECORD
-  5
-49
-100
-AcDbSymbolTableRecord
-100
-AcDbBlockTableRecord
-  2
-eBay_RelayBoard-0
-340
-0
-  0
-BLOCK_RECORD
-  5
-4A
-100
-AcDbSymbolTableRecord
-100
-AcDbBlockTableRecord
-  2
-RaspberryPi-0
-340
-0
-  0
-BLOCK_RECORD
-  5
-4B
-100
-AcDbSymbolTableRecord
-100
-AcDbBlockTableRecord
-  2
-GearedMotor-0
-340
-0
-  0
-BLOCK_RECORD
-  5
-4C
-100
-AcDbSymbolTableRecord
-100
-AcDbBlockTableRecord
-  2
-Castor30mm-0
-340
-0
-  0
 ENDTAB
   0
 ENDSEC
@@ -1411,1093 +1279,15 @@ AcDbEntity
 100
 AcDbBlockEnd
   0
-BLOCK
-  5
-4D
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockBegin
-  2
-eBay_RelayBoard-0
- 70
-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  3
-eBay_RelayBoard-0
-  1
-
-  0
-CIRCLE
-  5
-4E
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--24.75
- 20
-65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-4F
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-24.75
- 20
-65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-50
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-24.75
- 20
--65.5
- 30
-0.0
- 40
-1.75
-  0
-CIRCLE
-  5
-51
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RelayBoard_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--24.75
- 20
--65.5
- 30
-0.0
- 40
-1.75
-  0
-ENDBLK
-  5
-52
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockEnd
-  0
-BLOCK
-  5
-53
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockBegin
-  2
-RaspberryPi-0
- 70
-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  3
-RaspberryPi-0
-  1
-
-  0
-CIRCLE
-  5
-54
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-25.5
- 20
-18.0
- 30
-0.0
- 40
-1.45
-  0
-CIRCLE
-  5
-55
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-RaspberryPi_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-80.0
- 20
-43.5
- 30
-0.0
- 40
-1.45
-  0
-ENDBLK
-  5
-56
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockEnd
-  0
-BLOCK
-  5
-57
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockBegin
-  2
-GearedMotor-0
- 70
-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  3
-GearedMotor-0
-  1
-
-  0
-CIRCLE
-  5
-58
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-GearedMotor_MouningHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--17.5
- 20
-14.0
- 30
-0.0
- 40
-2.0
-  0
-CIRCLE
-  5
-59
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-GearedMotor_MouningHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--17.5
- 20
--14.0
- 30
-0.0
- 40
-2.0
-  0
-CIRCLE
-  5
-5A
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-GearedMotor_MouningHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-17.5
- 20
--14.0
- 30
-0.0
- 40
-2.0
-  0
-CIRCLE
-  5
-5B
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-GearedMotor_MouningHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-17.5
- 20
-14.0
- 30
-0.0
- 40
-2.0
-  0
-ENDBLK
-  5
-5C
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockEnd
-  0
-BLOCK
-  5
-5D
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockBegin
-  2
-Castor30mm-0
- 70
-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
-  3
-Castor30mm-0
-  1
-
-  0
-CIRCLE
-  5
-5E
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--15.0
- 20
-15.0
- 30
-0.0
- 40
-2.5
-  0
-CIRCLE
-  5
-5F
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-15.0
- 20
-15.0
- 30
-0.0
- 40
-2.5
-  0
-CIRCLE
-  5
-60
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-14.9999999999999982
- 20
--15.0
- 30
-0.0
- 40
-2.5
-  0
-CIRCLE
-  5
-61
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--15.0000000000000018
- 20
--15.0
- 30
-0.0
- 40
-2.5
-  0
-ENDBLK
-  5
-62
-100
-AcDbEntity
-  8
-0
-100
-AcDbBlockEnd
-  0
 ENDSEC
   0
 SECTION
   2
 ENTITIES
   0
-INSERT
-  5
-63
-100
-AcDbEntity
-100
-AcDbBlockReference
-  8
-0
- 62
-256
-370
--1
-  6
-ByLayer
-  2
-eBay_RelayBoard-0
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 50
-90.0
-  0
-INSERT
-  5
-64
-100
-AcDbEntity
-100
-AcDbBlockReference
-  8
-0
- 62
-256
-370
--1
-  6
-ByLayer
-  2
-RaspberryPi-0
- 10
-60.0
- 20
-100.0
- 30
-0.0
- 50
-180.0
-  0
 LINE
   5
-65
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--36.0000000000000142
- 20
-110.0
- 30
-0.0
- 11
--32.9999999999999858
- 21
-110.0
- 31
-0.0
-  0
-LINE
-  5
-66
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--35.9999999999999858
- 20
-150.0
- 30
-0.0
- 11
--33.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-67
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--35.9999999999999929
- 20
-140.0
- 30
-0.0
- 11
--32.9999999999999929
- 21
-140.0
- 31
-0.0
-  0
-LINE
-  5
-68
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--36.0
- 20
-120.0
- 30
-0.0
- 11
--33.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-69
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--32.9999999999999858
- 20
-110.0
- 30
-0.0
- 11
--33.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-6A
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--32.9999999999999929
- 20
-140.0
- 30
-0.0
- 11
--33.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-6B
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--36.0000000000000142
- 20
-110.0
- 30
-0.0
- 11
--36.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-6C
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--35.9999999999999929
- 20
-140.0
- 30
-0.0
- 11
--35.9999999999999858
- 21
-150.0
- 31
-0.0
-  0
-CIRCLE
-  5
-6D
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--34.5
- 20
-130.0
- 30
-0.0
- 40
-2.0
-  0
-LINE
-  5
-6E
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-32.9999999999999858
- 20
-110.0
- 30
-0.0
- 11
-36.0000000000000071
- 21
-110.0
- 31
-0.0
-  0
-LINE
-  5
-6F
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-33.0000000000000071
- 20
-150.0
- 30
-0.0
- 11
-36.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-70
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-33.0
- 20
-140.0
- 30
-0.0
- 11
-36.0
- 21
-140.0
- 31
-0.0
-  0
-LINE
-  5
-71
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-33.0
- 20
-120.0
- 30
-0.0
- 11
-36.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-72
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-36.0000000000000071
- 20
-110.0
- 30
-0.0
- 11
-36.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-73
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-36.0
- 20
-140.0
- 30
-0.0
- 11
-36.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-74
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-32.9999999999999858
- 20
-110.0
- 30
-0.0
- 11
-33.0
- 21
-120.0
- 31
-0.0
-  0
-LINE
-  5
-75
-100
-AcDbEntity
-100
-AcDbLine
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-33.0
- 20
-140.0
- 30
-0.0
- 11
-33.0000000000000071
- 21
-150.0
- 31
-0.0
-  0
-CIRCLE
-  5
-76
-100
-AcDbEntity
-100
-AcDbCircle
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-34.5
- 20
-130.0
- 30
-0.0
- 40
-2.0
-  0
-INSERT
-  5
-77
-100
-AcDbEntity
-100
-AcDbBlockReference
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
-  2
-GearedMotor-0
- 10
--60.0
- 20
-0.0
- 30
-0.0
- 50
-90.0
-  0
-INSERT
-  5
-78
-100
-AcDbEntity
-100
-AcDbBlockReference
-  8
-ArmMountings
- 62
-256
-370
--1
-  6
-ByLayer
-  2
-GearedMotor-0
- 10
-59.9999999999999929
- 20
--0.0000000000000195
- 30
-0.0
- 41
-1.0
- 42
--1.0
- 43
-1.0
- 50
-90.0
-  0
-LINE
-  5
-79
+45
 100
 AcDbEntity
 100
@@ -2511,21 +1301,21 @@ PanelOuter
   6
 ByLayer
  10
-60.0
+-15.0
  20
--40.0
+0.0
  30
 0.0
  11
--60.0
+-5.0
  21
--40.0
+0.0
  31
 0.0
   0
 LINE
   5
-7A
+46
 100
 AcDbEntity
 100
@@ -2539,21 +1329,21 @@ PanelOuter
   6
 ByLayer
  10
--80.0
+5.0
  20
--20.0
+0.0
  30
 0.0
  11
--80.0
+15.0
  21
-110.0
+0.0
  31
 0.0
   0
 LINE
   5
-7B
+47
 100
 AcDbEntity
 100
@@ -2567,21 +1357,21 @@ PanelOuter
   6
 ByLayer
  10
--30.0000000000000071
+-5.0
  20
-160.0
+0.0
  30
 0.0
  11
-29.9999999999999929
+-5.0
  21
-160.0
+-2.0
  31
 0.0
   0
 LINE
   5
-7C
+48
 100
 AcDbEntity
 100
@@ -2595,49 +1385,193 @@ PanelOuter
   6
 ByLayer
  10
-80.0
+-5.0
  20
-110.0
+-2.0
  30
 0.0
  11
-80.0
+5.0
  21
--20.0
+-2.0
  31
 0.0
   0
-INSERT
+LINE
   5
-7D
+49
 100
 AcDbEntity
 100
-AcDbBlockReference
+AcDbLine
   8
-0
+PanelOuter
  62
 256
 370
 -1
   6
 ByLayer
-  2
-Castor30mm-0
  10
-0.0
+5.0
  20
-130.0
+-2.0
  30
+0.0
+ 11
+5.0
+ 21
+0.0
+ 31
+0.0
+  0
+LINE
+  5
+4A
+100
+AcDbEntity
+100
+AcDbLine
+  8
+CableCutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-10.0
+ 20
+7.0
+ 30
+0.0
+ 11
+10.0
+ 21
+7.0
+ 31
+0.0
+  0
+LINE
+  5
+4B
+100
+AcDbEntity
+100
+AcDbLine
+  8
+CableCutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-10.0
+ 20
+5.0
+ 30
+0.0
+ 11
+10.0
+ 21
+5.0
+ 31
+0.0
+  0
+LINE
+  5
+4C
+100
+AcDbEntity
+100
+AcDbLine
+  8
+CableCutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-10.0
+ 20
+7.0
+ 30
+0.0
+ 11
+-10.0
+ 21
+5.0
+ 31
+0.0
+  0
+LINE
+  5
+4D
+100
+AcDbEntity
+100
+AcDbLine
+  8
+CableCutout
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+10.0
+ 20
+7.0
+ 30
+0.0
+ 11
+10.0
+ 21
+5.0
+ 31
+0.0
+  0
+LINE
+  5
+4E
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-15.0
+ 20
+0.0
+ 30
+0.0
+ 11
+-15.0
+ 21
+35.0
+ 31
 0.0
   0
 ARC
   5
-7E
+4F
 100
 AcDbEntity
   8
-PanelOuter
+CableCutout
  62
 256
 370
@@ -2647,73 +1581,13 @@ ByLayer
 100
 AcDbCircle
  10
--60.0
+-10.0
  20
--20.0
+35.0
  30
 0.0
  40
-20.0
-100
-AcDbArc
- 50
-180.0
- 51
-270.0
-  0
-ARC
-  5
-7F
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbCircle
- 10
-60.0
- 20
--20.0
- 30
-0.0
- 40
-20.0
-100
-AcDbArc
- 50
-270.0
- 51
-0.0
-  0
-ARC
-  5
-80
-100
-AcDbEntity
-  8
-PanelOuter
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbCircle
- 10
--30.0000000000000071
- 20
-110.0
- 30
-0.0
- 40
-50.0
+5.0
 100
 AcDbArc
  50
@@ -2721,13 +1595,69 @@ AcDbArc
  51
 180.0
   0
+LINE
+  5
+50
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-10.0
+ 20
+40.0
+ 30
+0.0
+ 11
+10.0
+ 21
+40.0
+ 31
+0.0
+  0
+LINE
+  5
+51
+100
+AcDbEntity
+100
+AcDbLine
+  8
+PanelOuter
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+15.0
+ 20
+35.0
+ 30
+0.0
+ 11
+15.0
+ 21
+0.0
+ 31
+0.0
+  0
 ARC
   5
-81
+52
 100
 AcDbEntity
   8
-PanelOuter
+CableCutout
  62
 256
 370
@@ -2737,131 +1667,19 @@ ByLayer
 100
 AcDbCircle
  10
-29.9999999999999893
+9.9999999999999982
  20
-110.0
+35.0
  30
 0.0
  40
-50.0
+5.0
 100
 AcDbArc
  50
 0.0
  51
 90.0
-  0
-LINE
-  5
-82
-100
-AcDbEntity
-100
-AcDbLine
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.0
- 20
-153.0
- 30
-0.0
- 11
-5.0
- 21
-153.0
- 31
-0.0
-  0
-LINE
-  5
-83
-100
-AcDbEntity
-100
-AcDbLine
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.0
- 20
-153.0
- 30
-0.0
- 11
-5.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-84
-100
-AcDbEntity
-100
-AcDbLine
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-5.0
- 20
-150.0
- 30
-0.0
- 11
--5.0
- 21
-150.0
- 31
-0.0
-  0
-LINE
-  5
-85
-100
-AcDbEntity
-100
-AcDbLine
-  8
-Castor_MountingHoles
- 62
-256
-370
--1
-  6
-ByLayer
- 10
--5.0
- 20
-150.0
- 30
-0.0
- 11
--5.0
- 21
-153.0
- 31
-0.0
   0
 ENDSEC
   0
@@ -2901,7 +1719,7 @@ E
   3
 AcDbVariableDictionary
 350
-86
+53
   0
 DICTIONARY
   5
@@ -3365,7 +2183,7 @@ Layout2
   0
 DICTIONARY
   5
-86
+53
 100
 AcDbDictionary
 281
@@ -3373,15 +2191,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-88
+55
   3
 HIDETEXT
 350
-87
+54
   0
 DICTIONARYVAR
   5
-87
+54
 100
 DictionaryVariables
 280
@@ -3391,7 +2209,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-88
+55
 100
 DictionaryVariables
 280
