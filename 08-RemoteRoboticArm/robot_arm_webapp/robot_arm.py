@@ -3,7 +3,7 @@
 Web application to control servos for a robot arm via RPi GPIO.
 """
 
-import os, logging, time
+import os, logging, time, commands
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template
 import RPIO
@@ -157,12 +157,14 @@ def show_control():
 
 @app.route('/control_w_video')
 def show_control_with_video():
-    return render_template('control_w_video.html')
+    stream_url = commands.getoutput("hostname -I").strip() + ':8080'
+    return render_template('control_w_video.html', stream_server_url=stream_url)
 
 
 @app.route('/video')
 def show_video():
-    return render_template('video.html')
+    stream_url = commands.getoutput("hostname -I").strip() + ':8080'
+    return render_template('video.html', stream_server_url=stream_url)
 
 
 @app.route('/command/<command>')

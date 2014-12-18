@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-  {% include "video_stream.html" %}
+  {% with stream_server_url=stream_server_url %}
+    {% include "video_stream.html" %}
+  {% endwith %}
 {% endblock %}
