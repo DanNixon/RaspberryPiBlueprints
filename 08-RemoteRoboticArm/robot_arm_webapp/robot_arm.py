@@ -133,9 +133,13 @@ def set_servos_default():
     Sets all servos to their default position.
     """
     logging.getLogger(__name__).info('Resetting servos to default position')
-    all_servo_ids = ['ARM_1_A_SERVO', 'ARM_1_B_SERVO', 'ARM_2_SERVO', 'GRIP_SERVO']
-    for servo_id in all_servo_ids:
+
+    # Set the standard servos
+    for servo_id in ['ARM_1_A_SERVO', 'ARM_2_SERVO', 'GRIP_SERVO']:
         set_servo(servo_id, app.config[servo_id + '_MIN'])
+
+    # Set this servo to it's max as it works opposite to ARM_1_A_SERVO
+    set_servo('ARM_1_B_SERVO', app.config['ARM_1_B_SERVO_MAX'])
 
     logging.getLogger(__name__).info('Enabling motor power')
 
@@ -170,10 +174,10 @@ def handle_command(command):
     if command in base_movement_commands:
         set_base_movement(command)
     elif command == 'arm1_raise':
-        set_servo('ARM_1_A_SERVO', SERVO_POSITIONS['ARM_1_A_SERVO'] + app.config['SERVO_DELTA'])
+        set_servo('ARM_1_A_SERVO', SERVO_POSITIONS['ARM_1_A_SERVO'] - app.config['SERVO_DELTA'])
         set_servo('ARM_1_B_SERVO', SERVO_POSITIONS['ARM_1_B_SERVO'] + app.config['SERVO_DELTA'])
     elif command == 'arm1_lower':
-        set_servo('ARM_1_A_SERVO', SERVO_POSITIONS['ARM_1_A_SERVO'] - app.config['SERVO_DELTA'])
+        set_servo('ARM_1_A_SERVO', SERVO_POSITIONS['ARM_1_A_SERVO'] + app.config['SERVO_DELTA'])
         set_servo('ARM_1_B_SERVO', SERVO_POSITIONS['ARM_1_B_SERVO'] - app.config['SERVO_DELTA'])
     elif command == 'arm2_raise':
         set_servo('ARM_2_SERVO', SERVO_POSITIONS['ARM_2_SERVO'] + app.config['SERVO_DELTA'])
