@@ -3,7 +3,7 @@
 Web application to control servos for a robot arm via RPi GPIO.
 """
 
-import os, logging
+import os, logging, time
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template
 import RPIO
@@ -98,30 +98,36 @@ def set_base_movement(movement_type):
     @param movement_type Movement command.
     """
 
+    outputs = dict()
     if movement_type == 'mov_fwd':
-        RPIO.output(app.config['MOTOR_1_A_GPIO'], False)
-        RPIO.output(app.config['MOTOR_1_B_GPIO'], True)
-        RPIO.output(app.config['MOTOR_2_A_GPIO'], False)
-        RPIO.output(app.config['MOTOR_2_B_GPIO'], True)
+        outputs['MOTOR_1_A_GPIO'] = False
+        outputs['MOTOR_1_B_GPIO'] = True
+        outputs['MOTOR_2_A_GPIO'] = False
+        outputs['MOTOR_2_B_GPIO'] = True
     elif movement_type == 'mov_rev':
-        RPIO.output(app.config['MOTOR_1_A_GPIO'], True)
-        RPIO.output(app.config['MOTOR_1_B_GPIO'], False)
-        RPIO.output(app.config['MOTOR_2_A_GPIO'], True)
-        RPIO.output(app.config['MOTOR_2_B_GPIO'], False)
+        outputs['MOTOR_1_A_GPIO'] = True
+        outputs['MOTOR_1_B_GPIO'] = False
+        outputs['MOTOR_2_A_GPIO'] = True
+        outputs['MOTOR_2_B_GPIO'] = False
     elif movement_type == 'rot_cw':
-        RPIO.output(app.config['MOTOR_1_A_GPIO'], False)
-        RPIO.output(app.config['MOTOR_1_B_GPIO'], True)
-        RPIO.output(app.config['MOTOR_2_A_GPIO'], True)
-        RPIO.output(app.config['MOTOR_2_B_GPIO'], False)
+        outputs['MOTOR_1_A_GPIO'] = True
+        outputs['MOTOR_1_B_GPIO'] = False
+        outputs['MOTOR_2_A_GPIO'] = False
+        outputs['MOTOR_2_B_GPIO'] = True
     elif movement_type == 'rot_ccw':
-        RPIO.output(app.config['MOTOR_1_A_GPIO'], True)
-        RPIO.output(app.config['MOTOR_1_B_GPIO'], False)
-        RPIO.output(app.config['MOTOR_2_A_GPIO'], False)
-        RPIO.output(app.config['MOTOR_2_B_GPIO'], True)
+        outputs['MOTOR_1_A_GPIO'] = False
+        outputs['MOTOR_1_B_GPIO'] = True
+        outputs['MOTOR_2_A_GPIO'] = True
+        outputs['MOTOR_2_B_GPIO'] = False
     elif movement_type == 'stop':
-        pass
+        outputs = None
     else:
         logging.getLogger(__name__).error('Unknown movement type: %s' % movement_type)
+
+    if outputs is not None:
+        for out, state in outputs.items():
+            RPIO.output(app.config[out], state)
+            time.sleep(0.1)
 
     power = movement_type != 'stop'
     logging.getLogger(__name__).debug('Setting motor power: %s' % str(power))
