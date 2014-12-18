@@ -158,12 +158,14 @@ def show_control():
 @app.route('/control_w_video')
 def show_control_with_video():
     stream_url = commands.getoutput("hostname -I").strip() + ':8080'
+    logging.getLogger(__name__).debug('Stream server URL: %s' % stream_url)
     return render_template('control_w_video.html', stream_server_url=stream_url)
 
 
 @app.route('/video')
 def show_video():
     stream_url = commands.getoutput("hostname -I").strip() + ':8080'
+    logging.getLogger(__name__).debug('Stream server URL: %s' % stream_url)
     return render_template('video.html', stream_server_url=stream_url)
 
 
