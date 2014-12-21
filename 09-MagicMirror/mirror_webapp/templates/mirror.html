@@ -1,0 +1,9 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  {% for widget in widgets %}
+    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name %}
+      {% include widget.template_filename %}
+    {% endwith %}
+  {% endfor %}
+</div>

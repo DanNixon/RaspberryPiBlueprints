@@ -1,0 +1,6 @@
+{% block widget %}
+<div class="widget" id="{{ widget_id }}">
+  <h2>{{ widget_name }}</h2>
+  {% block widget_contents %}{% endblock %}
+</div>
+{% endblock %}
