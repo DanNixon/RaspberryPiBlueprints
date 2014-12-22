@@ -68,24 +68,43 @@ def render_mirror():
     """
 
     logging.getLogger(__name__).info('Rendering main page')
-    widgets_to_render = list()
+    widgets_to_render = {'floating':list(),
+                         'top':list(),
+                         'left':list(),
+                         'right':list(),
+                         'bottom':list()}
 
     for w_id, config in WIDGETS.items():
         logging.getLogger(__name__).debug('Configuring widget %s' % w_id)
 
         widget_data = dict()
-        widget = get_widget(config.get('core', 'class'))
-        widget_data['id'] = w_id
-        try:
-            widget_data['name'] = config.get('core', 'title')
-        except NoOptionError:
-            widget_data['name'] = None
-        widget_data['data'] = widget.get_data(config)
-        widget_data['template_filename'] = widget.get_template_filename()
-        widget_data['show_borders'] = config.get('ui', 'show_borders')
-        widget_data['layout_mode'] = config.get('position', 'mode')
 
-        widgets_to_render.append(widget_data)
+        try:
+            widget = get_widget(config.get('core', 'class'))
+            widget_data['id'] = w_id
+            try:
+                widget_data['name'] = config.get('core', 'title')
+            except NoOptionError:
+                widget_data['name'] = None
+            widget_data['data'] = widget.get_data(config)
+            widget_data['template_filename'] = widget.get_template_filename()
+            widget_data['show_borders'] = config.get('ui', 'show_borders')
+            widget_data['layout_mode'] = config.get('position', 'mode')
+
+            position = config.get('position', 'mode')
+
+            if position == 'floating':
+                widget_data['pos_x'] = config.get('position', 'x')
+                widget_data['pos_y'] = config.get('position', 'y')
+            else:
+                widget_data['pos_index'] = config.get('position', 'index')
+
+            widgets_to_render[position].append(widget_data)
+
+        # TODO: sorting
+
+        except NoOptionError:
+            logging.getLogger(__name__).error('Configuration broken for widget %s' % w_id)
 
     return render_template('mirror.html', widgets=widgets_to_render)
 

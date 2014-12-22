@@ -1,10 +1,14 @@
 {% block widget %}
   <div class="widget" id="{{ widget_id }}">
     {% if widget_name %}
-      <h2>{{ widget_name }}</h2>
+      <h1 class="widget_title">{{ widget_name }}</h1>
     {% endif %}
 
     {% block widget_scripts %}{% endblock %}
-    {% block widget_contents %}{% endblock %}
+
+    <div class="widget_contents {% if show_border %}widget_contents_borders{% endif %}"
+        style="width:{% block width %}100{% endblock %}px;">
+      {% block widget_contents %}{% endblock %}
+    </div>
   </div>
 {% endblock %}
