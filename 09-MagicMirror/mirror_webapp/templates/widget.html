@@ -1,6 +1,9 @@
 {% block widget %}
   <div class="widget" id="{{ widget_id }}">
-    <h2>{{ widget_name }}</h2>
+    {% if widget_name %}
+      <h2>{{ widget_name }}</h2>
+    {% endif %}
+
     {% block widget_scripts %}{% endblock %}
     {% block widget_contents %}{% endblock %}
   </div>

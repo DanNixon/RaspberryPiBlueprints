@@ -3,6 +3,7 @@
 """
 
 import importlib, ConfigParser, os, logging
+from ConfigParser import NoOptionError
 from flask import Flask, render_template, jsonify
 
 
@@ -75,9 +76,14 @@ def render_mirror():
         widget_data = dict()
         widget = get_widget(config.get('core', 'class'))
         widget_data['id'] = w_id
-        widget_data['name'] = config.get('core', 'title')
+        try:
+            widget_data['name'] = config.get('core', 'title')
+        except NoOptionError:
+            widget_data['name'] = None
         widget_data['data'] = widget.get_data(config)
         widget_data['template_filename'] = widget.get_template_filename()
+        widget_data['show_borders'] = config.get('ui', 'show_borders')
+        widget_data['layout_mode'] = config.get('position', 'mode')
 
         widgets_to_render.append(widget_data)
 
