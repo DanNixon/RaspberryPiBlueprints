@@ -18,6 +18,7 @@ class AbstractWidget():
         """
         return dict()
 
+
     @abc.abstractmethod
     def name(self):
         """
@@ -28,15 +29,6 @@ class AbstractWidget():
         """
         return
 
-    def string_id(self):
-        """
-        Gets a string ID for the widget.
-        Currently just using the class name.
-
-        @return A unique ID for the widget
-        """
-        return self.__class__.__name__
-
 
     def get_template_filename(self):
         """
@@ -44,5 +36,5 @@ class AbstractWidget():
 
         @return Full template filename
         """
-        template_filename = 'widgets/%s.html' % self.string_id()
+        template_filename = 'widgets/%s.html' % self.__class__.__name__
         return template_filename

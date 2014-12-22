@@ -2,7 +2,7 @@
 """
 """
 
-import importlib
+import importlib, ConfigParser, os
 from flask import Flask, render_template, jsonify
 
 
@@ -12,7 +12,23 @@ app = Flask(__name__)
 app.config.update(dict(
     DEBUG=True
 ))
-app.config.from_envvar('MAGIC_MIRROR_SETTINGS', silent=True)
+app.config.from_envvar('MAGIC_MIRROR_SETTINGS', silent=False)
+
+
+def get_widget_configs(directory):
+    configs = dict()
+
+    for name in os.listdir(directory):
+        file_path = os.path.join(directory, name)
+        if os.path.isfile(file_path):
+            widget_id = name.split('.')[0]
+            configs[widget_id] = ConfigParser.ConfigParser()
+            configs[widget_id].read(file_path)
+
+    return configs
+
+
+WIDGETS = get_widget_configs(app.config['WIDGET_CONFIG_DIR'])
 
 
 def get_widget(widget_class):
@@ -33,27 +49,30 @@ def get_widget(widget_class):
 def render_mirror():
     widgets_to_render = list()
 
-    demo = dict()
-    demo_obj = get_widget('DemoWidget')
-    demo['data'] = demo_obj.get_data(app.config)
-    demo['name'] = demo_obj.name()
-    demo['id'] = demo_obj.string_id()
-    demo['template_filename'] = demo_obj.get_template_filename()
-    widgets_to_render.append(demo)
+    for w_id, config in WIDGETS.items():
+        widget_data = dict()
+        widget = get_widget(config.get('core', 'class'))
+        widget_data['data'] = widget.get_data(config)
+        widget_data['name'] = config.get('core', 'title')
+        widget_data['id'] = w_id
+        widget_data['template_filename'] = widget.get_template_filename()
+
+        widgets_to_render.append(widget_data)
 
     return render_template('mirror.html', widgets=widgets_to_render)
 
 
-@app.route('/<widget_class>')
-def get_json_data(widget_class):
+@app.route('/widget_data/<widget_id>')
+def get_json_data(widget_id):
     """
     Gets data for a widget.
 
-    @param widget_class Name of widget class
+    @param widget_id Widget ID given by config file name
     @return JSON formatted widget data
     """
 
+    widget_class = WIDGETS[widget_id].get('core', 'class')
     widget = get_widget(widget_class)
-    data = widget.get_data(app.config)
+    data = widget.get_data(WIDGETS[widget_id])
 
     return jsonify(data)
