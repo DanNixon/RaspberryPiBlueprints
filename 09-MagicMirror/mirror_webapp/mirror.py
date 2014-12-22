@@ -2,7 +2,7 @@
 """
 """
 
-import importlib, ConfigParser, os
+import importlib, ConfigParser, os, logging
 from flask import Flask, render_template, jsonify
 
 
@@ -10,17 +10,31 @@ app = Flask(__name__)
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
-    DEBUG=True
+    DEBUG=True,
+    LOG_LEVEL='DEBUG',
+    LOG_FILE='mirror_app.log'
 ))
 app.config.from_envvar('MAGIC_MIRROR_SETTINGS', silent=False)
 
+log_level = getattr(logging, app.config['LOG_LEVEL'].upper(), None)
+logging.basicConfig(level=log_level, filename=app.config['LOG_FILE'])
+
 
 def get_widget_configs(directory):
+    """
+    Reads the widget configuration files from a given directory.
+
+    @param directory Directory to reaf diles from
+    @return A dictionary of widget IDs to configurations
+    """
+
+    logging.getLogger(__name__).info('Parsing widgetconfiguration files')
     configs = dict()
 
     for name in os.listdir(directory):
         file_path = os.path.join(directory, name)
         if os.path.isfile(file_path):
+            logging.getLogger(__name__).debug('Reading config file %s' % name)
             widget_id = name.split('.')[0]
             configs[widget_id] = ConfigParser.ConfigParser()
             configs[widget_id].read(file_path)
@@ -39,6 +53,7 @@ def get_widget(widget_class):
     @return Widget instance
     """
 
+    logging.getLogger(__name__).info('Getting widget instance for %s' % widget_class)
     widget = importlib.import_module('widgets.%s' % widget_class)
     widget_obj = getattr(widget, widget_class)()
 
@@ -47,14 +62,21 @@ def get_widget(widget_class):
 
 @app.route('/')
 def render_mirror():
+    """
+    Renders the main widget screen for the mirror web application.
+    """
+
+    logging.getLogger(__name__).info('Rendering main page')
     widgets_to_render = list()
 
     for w_id, config in WIDGETS.items():
+        logging.getLogger(__name__).debug('Configuring widget %s' % w_id)
+
         widget_data = dict()
         widget = get_widget(config.get('core', 'class'))
-        widget_data['data'] = widget.get_data(config)
-        widget_data['name'] = config.get('core', 'title')
         widget_data['id'] = w_id
+        widget_data['name'] = config.get('core', 'title')
+        widget_data['data'] = widget.get_data(config)
         widget_data['template_filename'] = widget.get_template_filename()
 
         widgets_to_render.append(widget_data)
@@ -70,6 +92,8 @@ def get_json_data(widget_id):
     @param widget_id Widget ID given by config file name
     @return JSON formatted widget data
     """
+
+    logging.getLogger(__name__).info('Getting data for widget %s' % widget_id)
 
     widget_class = WIDGETS[widget_id].get('core', 'class')
     widget = get_widget(widget_class)

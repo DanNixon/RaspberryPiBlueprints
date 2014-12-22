@@ -19,17 +19,6 @@ class AbstractWidget():
         return dict()
 
 
-    @abc.abstractmethod
-    def name(self):
-        """
-        Gets the user friendly name for the widget.
-        Used for the title on the UI.
-
-        @return Widget title
-        """
-        return
-
-
     def get_template_filename(self):
         """
         Gets the filename for the Flask template.
