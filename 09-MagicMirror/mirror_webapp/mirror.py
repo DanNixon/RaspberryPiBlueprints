@@ -28,7 +28,7 @@ def get_widget_configs(directory):
     @return A dictionary of widget IDs to configurations
     """
 
-    logging.getLogger(__name__).info('Parsing widgetconfiguration files')
+    logging.getLogger(__name__).info('Parsing widget configuration files')
     configs = dict()
 
     for name in os.listdir(directory):

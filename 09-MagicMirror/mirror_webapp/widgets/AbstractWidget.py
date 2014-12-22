@@ -1,4 +1,4 @@
-import abc
+import abc, logging
 from abc import ABCMeta
 
 
@@ -9,11 +9,16 @@ class AbstractWidget():
 
     __metaclass__ = ABCMeta
 
+
+    def __init__(self):
+        self.logger = logging.getLogger(self.__class__.__name__)
+
+
     def get_data(self, config):
         """
         Gets data for widget if applicable.
 
-        @param config COnfiguration data as dictionary
+        @param config Configuration data
         @return Widget data as dictionary
         """
         return dict()
