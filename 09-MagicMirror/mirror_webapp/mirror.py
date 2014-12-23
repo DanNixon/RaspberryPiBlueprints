@@ -89,7 +89,6 @@ def render_mirror():
             widget_data['data'] = widget.get_data(config)
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.get('ui', 'show_borders')
-            widget_data['layout_mode'] = config.get('position', 'mode')
             widget_data['position']= config.get('position', 'mode')
 
             if widget_data['position'] == 'floating':
@@ -100,10 +99,11 @@ def render_mirror():
 
             widgets_to_render[widget_data['position']].append(widget_data)
 
-        # TODO: sorting
-
         except NoOptionError:
             logging.getLogger(__name__).error('Configuration broken for widget %s' % w_id)
+
+    for position in ['top', 'left', 'right', 'bottom']:
+        widgets_to_render[position].sort(key=lambda x:x['pos_index'])
 
     return render_template('mirror.html', widgets=widgets_to_render)
 
