@@ -1,26 +1,27 @@
 from AbstractWidget import AbstractWidget
 from ConfigParser import NoOptionError
 from pytz import timezone
-import datetime, time
+from datetime import datetime
 
 
 class Clock(AbstractWidget):
 
     def get_data(self, config):
         try:
-            user_timesone = config.get('widget', 'zone')
+            user_timesone = config.get('widget', 'timezone')
             time_zone = timezone(user_timesone)
+            self.logger.info('Get timezone form config file: %s' % str(time_zone))
             current_time = datetime.now(time_zone)
 
         except NoOptionError:
-            current_time = time.localtime()
+            current_time = datetime.now()
 
         data = dict()
-        data['year'] = current_time.tm_year
-        data['month'] = current_time.tm_mon
-        data['day'] = current_time.tm_mday
-        data['hour'] = current_time.tm_hour
-        data['minute'] = current_time.tm_min
-        data['second'] = current_time.tm_sec
+        data['year'] = current_time.year
+        data['month'] = current_time.month
+        data['day'] = current_time.day
+        data['hour'] = current_time.hour
+        data['minute'] = current_time.minute
+        data['second'] = current_time.second
 
         return data

@@ -3,16 +3,26 @@
 {% block width %}150{% endblock %}
 
 {% block widget_scripts %}
-  function {{ widget.id }}_Init() {}
+  var {{ widget.id }}_time;
+
+  function {{ widget.id }}_Init() {
+    $.getJSON("/widget_data/{{ widget.id }}", function(data) {
+      {{ widget.id }}_time = new Date(data.year, data.month, data.day, data.hour, data.minute, data.second, 0);
+    });
+  }
 
   function {{ widget.id }}_Update() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
+    var sec = {{ widget.id }}_time.getSeconds() + 1;
+    {{ widget.id }}_time.setSeconds(sec);
+
+    var h = {{ widget.id }}_time.getHours();
+    var m = {{ widget.id }}_time.getMinutes();
+    var s = {{ widget.id }}_time.getSeconds();
+
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById('txt').innerHTML = h+":"+m+":"+s;
+
+    document.getElementById('{{ widget.id }}_time').innerText = h + ":" + m + ":" + s;
   }
 
   function checkTime(i) {
@@ -22,5 +32,5 @@
 {% endblock %}
 
 {% block widget_contents %}
-  <p id="txt"></p>
+  <p id="{{ widget.id }}_time"></p>
 {% endblock %}

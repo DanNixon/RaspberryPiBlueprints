@@ -3,7 +3,7 @@
       class="widget {% if widget.position == 'floating' %}floating-widget{% endif %}"
       style="{% if widget.position == 'floating' %} left: {{ widget.pos_x }}px; top: {{ widget.pos_y }}px;{% endif %}">
     {% if widget.name %}
-      <h1 class="widget-title">{{ widget.name }}</h1>
+      <h1 class="widget-title {% if widget.show_borders %}widget-title-borders{% endif %}">{{ widget.name }}</h1>
     {% endif %}
 
     <script type="text/javascript">

@@ -89,7 +89,7 @@ def render_mirror():
                 widget_data['name'] = None
             widget_data['data'] = widget.get_data(config)
             widget_data['template_filename'] = widget.get_template_filename()
-            widget_data['show_borders'] = config.get('ui', 'show_borders')
+            widget_data['show_borders'] = config.getboolean('ui', 'show_borders')
             widget_data['position']= config.get('position', 'mode')
             try:
                 widget_data['update_interval'] = int(config.get('core', 'update_interval')) * 1000
