@@ -13,7 +13,8 @@ app = Flask(__name__)
 app.config.update(dict(
     DEBUG=True,
     LOG_LEVEL='DEBUG',
-    LOG_FILE='mirror_app.log'
+    LOG_FILE='mirror_app.log',
+    DEFAULT_UPDATE_INTERVAL=60
 ))
 app.config.from_envvar('MAGIC_MIRROR_SETTINGS', silent=False)
 
@@ -90,6 +91,10 @@ def render_mirror():
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.get('ui', 'show_borders')
             widget_data['position']= config.get('position', 'mode')
+            try:
+                widget_data['update_interval'] = int(config.get('core', 'update_interval')) * 1000
+            except NoOptionError:
+                widget_data['update_interval'] = app.config['DEFAULT_UPDATE_INTERVAL'] * 1000
 
             if widget_data['position'] == 'floating':
                 widget_data['pos_x'] = config.get('position', 'x')

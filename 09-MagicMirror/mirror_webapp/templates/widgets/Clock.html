@@ -1,0 +1,26 @@
+{% extends "widget.html" %}
+
+{% block width %}150{% endblock %}
+
+{% block widget_scripts %}
+  function {{ widget.id }}_Init() {}
+
+  function {{ widget.id }}_Update() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = h+":"+m+":"+s;
+  }
+
+  function checkTime(i) {
+    if (i<10) {i = "0" + i};
+    return i;
+  }
+{% endblock %}
+
+{% block widget_contents %}
+  <p id="txt"></p>
+{% endblock %}

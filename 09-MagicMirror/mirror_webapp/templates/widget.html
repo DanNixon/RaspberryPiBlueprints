@@ -6,9 +6,17 @@
       <h1 class="widget-title">{{ widget.name }}</h1>
     {% endif %}
 
-    {% block widget_scripts %}{% endblock %}
+    <script type="text/javascript">
+      {% block widget_scripts %}{% endblock %}
 
-    <div class="widget-contents {% if widget.show_borders %}widget-contents-borders{% endif %}"
+      $(document.getElementById('{{ widget.id }}-contents')).ready(function() {
+        {{ widget.id }}_Init();
+        setInterval(function(){ {{ widget.id }}_Update() }, {{ widget.update_interval }});
+      });
+    </script>
+
+    <div id="{{ widget.id }}-contents"
+        class="widget-contents {% if widget.show_borders %}widget-contents-borders{% endif %}"
         style="width:{% block width %}100{% endblock %}px;">
       {% block widget_contents %}{% endblock %}
     </div>
