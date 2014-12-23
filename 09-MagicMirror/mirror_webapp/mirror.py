@@ -14,7 +14,8 @@ app.config.update(dict(
     DEBUG=True,
     LOG_LEVEL='DEBUG',
     LOG_FILE='mirror_app.log',
-    DEFAULT_UPDATE_INTERVAL=60
+    DEFAULT_UPDATE_INTERVAL=60,
+    DEFAULT_WIDGET_WIDTH=250
 ))
 app.config.from_envvar('MAGIC_MIRROR_SETTINGS', silent=False)
 
@@ -82,16 +83,24 @@ def render_mirror():
 
         try:
             widget = get_widget(config.get('core', 'class'))
+
             widget_data['classname'] = widget.__class__.__name__
             widget_data['id'] = w_id
-            try:
-                widget_data['name'] = config.get('core', 'title')
-            except NoOptionError:
-                widget_data['name'] = None
             widget_data['data'] = widget.get_data(config)
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.getboolean('ui', 'show_borders')
             widget_data['position']= config.get('position', 'mode')
+
+            try:
+                widget_data['name'] = config.get('core', 'title')
+            except NoOptionError:
+                widget_data['name'] = None
+
+            try:
+                widget_data['width'] = config.get('ui', 'width')
+            except NoOptionError:
+                widget_data['width'] = app.config['DEFAULT_WIDGET_WIDTH']
+
             try:
                 widget_data['update_interval'] = int(config.get('core', 'update_interval')) * 1000
             except NoOptionError:

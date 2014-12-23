@@ -24,7 +24,9 @@ Clock.prototype.update = function(widgetDOM) {
   m = this.formatTime(m);
   s = this.formatTime(s);
 
-  widgetDOM.getElementsByTagName('p')[0].innerText = h + ":" + m + ":" + s;
+  var timeText = widgetDOM.getElementsByTagName('h2')[0];
+  timeText.innerText = h + ":" + m + ":" + s;
+  jQuery(timeText).fitText(0.45);
 };
 
 Clock.prototype.formatTime = function(i) {
