@@ -82,6 +82,7 @@ def render_mirror():
 
         try:
             widget = get_widget(config.get('core', 'class'))
+            widget_data['classname'] = widget.__class__.__name__
             widget_data['id'] = w_id
             try:
                 widget_data['name'] = config.get('core', 'title')

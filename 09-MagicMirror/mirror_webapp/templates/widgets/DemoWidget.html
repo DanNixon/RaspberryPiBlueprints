@@ -2,11 +2,6 @@
 
 {% block width %}200{% endblock %}
 
-{% block widget_scripts %}
-  function {{ widget.id }}_Init() {}
-  function {{ widget.id }}_Update() {}
-{% endblock %}
-
 {% block widget_contents %}
   <p>{{ data.greeting }}</p>
 {% endblock %}

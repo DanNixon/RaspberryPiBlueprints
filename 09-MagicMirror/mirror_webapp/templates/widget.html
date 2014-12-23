@@ -6,12 +6,14 @@
       <h1 class="widget-title {% if widget.show_borders %}widget-title-borders{% endif %}">{{ widget.name }}</h1>
     {% endif %}
 
+    <script src="/static/scripts/{{ widget.classname }}.js"></script>
+
     <script type="text/javascript">
-      {% block widget_scripts %}{% endblock %}
+      var {{ widget.id }}_script = new {{ widget.classname }}();
 
       $(document.getElementById('{{ widget.id }}-contents')).ready(function() {
-        {{ widget.id }}_Init();
-        setInterval(function(){ {{ widget.id }}_Update() }, {{ widget.update_interval }});
+        {{ widget.id }}_script.init({{ widget.id }});
+        setInterval(function(){ {{ widget.id }}_script.update({{ widget.id }}) }, {{ widget.update_interval }});
       });
     </script>
 
