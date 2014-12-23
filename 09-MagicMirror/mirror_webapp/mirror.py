@@ -90,16 +90,15 @@ def render_mirror():
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.get('ui', 'show_borders')
             widget_data['layout_mode'] = config.get('position', 'mode')
+            widget_data['position']= config.get('position', 'mode')
 
-            position = config.get('position', 'mode')
-
-            if position == 'floating':
+            if widget_data['position'] == 'floating':
                 widget_data['pos_x'] = config.get('position', 'x')
                 widget_data['pos_y'] = config.get('position', 'y')
             else:
                 widget_data['pos_index'] = config.get('position', 'index')
 
-            widgets_to_render[position].append(widget_data)
+            widgets_to_render[widget_data['position']].append(widget_data)
 
         # TODO: sorting
 

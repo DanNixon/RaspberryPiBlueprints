@@ -1,12 +1,14 @@
 {% block widget %}
-  <div class="widget" id="{{ widget_id }}">
-    {% if widget_name %}
-      <h1 class="widget_title">{{ widget_name }}</h1>
+  <div id="{{ widget.id }}"
+      class="widget {% if widget.position == 'floating' %}floating-widget{% endif %}"
+      style="{% if widget.position == 'floating' %} left: {{ widget.pos_x }}px; top: {{ widget.pos_y }}px;{% endif %}">
+    {% if widget.name %}
+      <h1 class="widget-title">{{ widget.name }}</h1>
     {% endif %}
 
     {% block widget_scripts %}{% endblock %}
 
-    <div class="widget_contents {% if show_border %}widget_contents_borders{% endif %}"
+    <div class="widget-contents {% if widget.show_borders %}widget-contents-borders{% endif %}"
         style="width:{% block width %}100{% endblock %}px;">
       {% block widget_contents %}{% endblock %}
     </div>

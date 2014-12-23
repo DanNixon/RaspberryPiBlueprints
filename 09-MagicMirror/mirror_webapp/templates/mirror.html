@@ -2,14 +2,14 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <div class="widgets">
   {% for widget in widgets.floating %}
-    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name, show_border=widget.show_borders %}
+    {% with data=widget.data, widget=widget %}
       {% include widget.template_filename %}
     {% endwith %}
   {% endfor %}
 
   <div id="top-bar">
     {% for widget in widgets.top %}
-    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name, show_border=widget.show_borders %}
+    {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
       {% endwith %}
     {% endfor %}
@@ -17,7 +17,7 @@
 
   <div id="left-bar">
     {% for widget in widgets.left %}
-    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name, show_border=widget.show_borders %}
+    {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
       {% endwith %}
     {% endfor %}
@@ -25,7 +25,7 @@
 
   <div id="right-bar">
     {% for widget in widgets.right %}
-    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name, show_border=widget.show_borders %}
+    {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
       {% endwith %}
     {% endfor %}
@@ -33,7 +33,7 @@
 
   <div id="bottom-bar">
     {% for widget in widgets.bottom %}
-    {% with data=widget.data, widget_id=widget.id, widget_name=widget.name, show_border=widget.show_borders %}
+    {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
       {% endwith %}
     {% endfor %}

@@ -5,6 +5,12 @@ h2                        { font-size: 1.5em; }
 p                         { font-size: 1.2em; color: #FFF; }
 
 .widget                   { width: -moz-min-content; width: -webkit-min-content; width: min-content; padding: 5px; }
-.widget_title             { white-space: nowrap; }
-.widget_contents          { width: 200px; }
-.widget_contents_borders  { border: 2px solid #FFF; border-radius: 15px; padding: 0px 5px;}
+.floating-widget          { position: absolute; }
+.widget-title             { white-space: nowrap; }
+.widget-contents          { width: 200px; }
+.widget-contents-borders  { border: 2px solid #FFF; border-radius: 15px; padding: 0px 5px;}
+
+#top-bar                  { }
+#left-bar                 { float: left; }
+#right-bar                { float: right; }
+#bottom-bar               { position:absolute; bottom:0; }
