@@ -4,7 +4,7 @@ from pytz import timezone
 from datetime import datetime
 
 
-class Clock(AbstractWidget):
+class AnalogClock(AbstractWidget):
 
     def get_data(self, config):
         try:

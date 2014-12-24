@@ -6,7 +6,8 @@
       <h1 class="widget-title {% if widget.show_borders %}widget-title-borders{% endif %}">{{ widget.name }}</h1>
     {% endif %}
 
-    <script src="/static/scripts/{{ widget.classname }}.js"></script>
+    <script src="{{ url_for('static', filename='widgets/' + widget.classname + '/script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='widgets/' + widget.classname + '/style.css') }}">
 
     <script type="text/javascript">
       var {{ widget.id }}_script = new {{ widget.classname }}();

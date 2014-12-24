@@ -1,0 +1,15 @@
+{% extends "widget.html" %}
+
+{% block widget_contents %}
+  <div class="analog-clock">
+    <div class="hour-hand" style="transform: rotate(113.5deg);">
+      <img src="{{ url_for('static', filename='widgets/' + widget.classname + '/hour-hand.png') }}">
+    </div>
+    <div class="minute-hand" style="transform: rotate(282deg);">
+      <img src="{{ url_for('static', filename='widgets/' + widget.classname + '/minute-hand.png') }}">
+    </div>
+    <div class="second-hand" style="transform: rotate(30deg);">
+      <img src="{{ url_for('static', filename='widgets/' + widget.classname + '/second-hand.png') }}">
+    </div>
+  </div>
+{% endblock %}

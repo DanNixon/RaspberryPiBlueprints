@@ -1,4 +1,4 @@
-var Clock = function() {
+var DigitalClock = function() {
   this.time = new Date();
 
   var that = this;
@@ -9,11 +9,11 @@ var Clock = function() {
 
 }
 
-Clock.prototype.init = function(widgetDOM) {
+DigitalClock.prototype.init = function(widgetDOM) {
   $.getJSON('/widget_data/' + widgetDOM.id, this.setTimeData);
 };
 
-Clock.prototype.update = function(widgetDOM) {
+DigitalClock.prototype.update = function(widgetDOM) {
   var sec = this.time.getSeconds() + 1;
   this.time.setSeconds(sec);
 
@@ -29,7 +29,7 @@ Clock.prototype.update = function(widgetDOM) {
   jQuery(timeText).fitText(0.45);
 };
 
-Clock.prototype.formatTime = function(i) {
+DigitalClock.prototype.formatTime = function(i) {
   if(i < 10) {
     i = "0" + i
   };
