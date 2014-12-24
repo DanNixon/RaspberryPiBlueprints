@@ -11,7 +11,7 @@
     {% endwith %}
   {% endfor %}
 
-  <div id="top-bar">
+  <div id="top-bar" class="widget-layout-section">
     {% for widget in widgets.top %}
     {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
@@ -19,23 +19,25 @@
     {% endfor %}
   </div>
 
-  <div id="left-bar">
-    {% for widget in widgets.left %}
-    {% with data=widget.data, widget=widget %}
-        {% include widget.template_filename %}
-      {% endwith %}
-    {% endfor %}
+  <div id="widget-sidebars" class="widget-layout-section">
+    <div id="left-bar">
+      {% for widget in widgets.left %}
+      {% with data=widget.data, widget=widget %}
+          {% include widget.template_filename %}
+        {% endwith %}
+      {% endfor %}
+    </div>
+
+    <div id="right-bar">
+      {% for widget in widgets.right %}
+      {% with data=widget.data, widget=widget %}
+          {% include widget.template_filename %}
+        {% endwith %}
+      {% endfor %}
+    </div>
   </div>
 
-  <div id="right-bar">
-    {% for widget in widgets.right %}
-    {% with data=widget.data, widget=widget %}
-        {% include widget.template_filename %}
-      {% endwith %}
-    {% endfor %}
-  </div>
-
-  <div id="bottom-bar">
+  <div id="bottom-bar" class="widget-layout-section">
     {% for widget in widgets.bottom %}
     {% with data=widget.data, widget=widget %}
         {% include widget.template_filename %}
