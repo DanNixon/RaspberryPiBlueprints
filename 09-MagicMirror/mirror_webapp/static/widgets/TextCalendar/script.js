@@ -30,10 +30,10 @@ TextCalendar.prototype.updateUI = function(widgetDOM) {
   var day = days[this.time.getDay()];
 
   widgetDOM.getElementsByClassName('textcal-dayname')[0].innerText = day;
-  widgetDOM.getElementsByClassName('textcal-daymonth')[0].innerHTML = '<span class="textcal-date">' + date + '</span>|' + month;
+  widgetDOM.getElementsByClassName('textcal-daymonth')[0].innerHTML = '<span class="textcal-date">' + date + '</span> ' + month;
   widgetDOM.getElementsByClassName('textcal-year')[0].innerText = year;
 
   jQuery(widgetDOM.getElementsByClassName('textcal-dayname')[0]).fitText(0.6);
   jQuery(widgetDOM.getElementsByClassName('textcal-daymonth')[0]).fitText(0.35);
-  jQuery(widgetDOM.getElementsByClassName('textcal-year')[0]).fitText(0.8);
+  jQuery(widgetDOM.getElementsByClassName('textcal-year')[0]).fitText(0.6);
 };

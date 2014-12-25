@@ -1,15 +1,30 @@
-body                      { font-family: sans-serif; background-color: #000 }
-h1, h2, h3, h4, h5, h6    { font-family: "Trebuchet MS", Helvetica, sans-serif; margin: 0; color: #FFF; }
-h1                        { font-size: 2.5vw; }
-h2                        { font-size: 2.0vw; }
-p                         { font-size: 1.2vw; color: #FFF; }
+body {
+  background-color: #000
+}
 
-.widget                   { width: -moz-min-content; width: -webkit-min-content; width: min-content; padding: 10px; }
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Roboto', sans-serif;;
+  margin: 0;
+  font-weight: normal;
+  color: #FFF;
+}
+
+h1 { font-size: 2.5vw; }
+h2 { font-size: 2.0vw; }
+p  { font-size: 1.2vw; }
+
+.widget {
+  width: -moz-min-content;
+  width: -webkit-min-content;
+  width: min-content;
+  padding: 10px;
+}
+
 .floating-widget          { position: absolute; }
 .widget-title             { white-space: nowrap; }
 .widget-title-borders     { padding-left: 10px; }
 .widget-contents          { width: 200px; }
-.widget-contents-borders  { border: 2px solid #FFF; border-radius: 15px; padding: 0px 5px;}
+.widget-contents-borders  { border: 2px solid #FFF; border-radius: 15px; padding: 3px 6px;}
 
 .widget-layout-section    { clear: both; }
 #top-bar > div            { float: left; }

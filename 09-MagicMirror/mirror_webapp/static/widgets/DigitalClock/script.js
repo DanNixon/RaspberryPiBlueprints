@@ -30,7 +30,7 @@ DigitalClock.prototype.updateUI = function(widgetDOM) {
 
   var timeText = widgetDOM.getElementsByTagName('h2')[0];
   timeText.innerText = h + ":" + m + ":" + s;
-  jQuery(timeText).fitText(0.45);
+  jQuery(timeText).fitText(0.4);
 };
 
 DigitalClock.prototype.formatTime = function(i) {
