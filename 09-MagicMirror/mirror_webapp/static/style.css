@@ -1,5 +1,5 @@
 body                      { font-family: sans-serif; background-color: #000 }
-h1, h2                    { font-family: "Trebuchet MS", Helvetica, sans-serif; margin: 0; color: #FFF; }
+h1, h2, h3, h4, h5, h6    { font-family: "Trebuchet MS", Helvetica, sans-serif; margin: 0; color: #FFF; }
 h1                        { font-size: 2.5vw; }
 h2                        { font-size: 2.0vw; }
 p                         { font-size: 1.2vw; color: #FFF; }

@@ -4,9 +4,8 @@ var AnalogClock = function() {
   var that = this;
 
   this.setTimeData = function(data) {
-    that.time = new Date(data.year, data.month, data.day, data.hour, data.minute, data.second, 0);
+    that.time = new Date(data.epoch_seconds * 1000);
   };
-
 }
 
 AnalogClock.prototype.init = function(widgetDOM) {
@@ -16,8 +15,7 @@ AnalogClock.prototype.init = function(widgetDOM) {
 };
 
 AnalogClock.prototype.update = function(widgetDOM) {
-  var sec = this.time.getSeconds() + 1;
-  this.time.setSeconds(sec);
+  this.time.setSeconds(this.time.getSeconds() + 1);
 
   this.updateUI(widgetDOM);
 };

@@ -28,6 +28,6 @@ class AbstractClock(AbstractWidget):
         data['minute'] = current_time.minute
         data['second'] = current_time.second
 
-        data['epoch_seconds'] = timegm(current_time.utctimetuple())
+        data['epoch_seconds'] = timegm(current_time.timetuple())
 
         return data
