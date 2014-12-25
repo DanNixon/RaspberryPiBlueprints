@@ -11,12 +11,18 @@ var AnalogClock = function() {
 
 AnalogClock.prototype.init = function(widgetDOM) {
   $.getJSON('/widget_data/' + widgetDOM.id, this.setTimeData);
+
+  this.updateUI(widgetDOM);
 };
 
 AnalogClock.prototype.update = function(widgetDOM) {
   var sec = this.time.getSeconds() + 1;
   this.time.setSeconds(sec);
 
+  this.updateUI(widgetDOM);
+};
+
+AnalogClock.prototype.updateUI = function(widgetDOM) {
   var angle = 360 / 60;
 
   var hour = this.time.getHours();

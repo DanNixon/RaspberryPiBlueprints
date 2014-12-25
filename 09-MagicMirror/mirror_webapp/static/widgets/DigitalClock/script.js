@@ -11,12 +11,18 @@ var DigitalClock = function() {
 
 DigitalClock.prototype.init = function(widgetDOM) {
   $.getJSON('/widget_data/' + widgetDOM.id, this.setTimeData);
+
+  this.updateUI(widgetDOM);
 };
 
 DigitalClock.prototype.update = function(widgetDOM) {
   var sec = this.time.getSeconds() + 1;
   this.time.setSeconds(sec);
 
+  this.updateUI(widgetDOM);
+};
+
+DigitalClock.prototype.updateUI = function(widgetDOM) {
   var h = this.time.getHours();
   var m = this.time.getMinutes();
   var s = this.time.getSeconds();
