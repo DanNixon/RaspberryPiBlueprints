@@ -22,7 +22,7 @@ TextCalendar.prototype.update = function(widgetDOM) {
 
 TextCalendar.prototype.updateUI = function(widgetDOM) {
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   var year = this.time.getFullYear();
   var date = this.time.getDate();
@@ -33,7 +33,7 @@ TextCalendar.prototype.updateUI = function(widgetDOM) {
   widgetDOM.getElementsByClassName('textcal-daymonth')[0].innerHTML = '<span class="textcal-date">' + date + '</span>|' + month;
   widgetDOM.getElementsByClassName('textcal-year')[0].innerText = year;
 
-  jQuery(widgetDOM.getElementsByClassName('textcal-dayname')[0]).fitText(0.8);
-  jQuery(widgetDOM.getElementsByClassName('textcal-daymonth')[0]).fitText(0.45);
-  jQuery(widgetDOM.getElementsByClassName('textcal-year')[0]).fitText(1.2);
+  jQuery(widgetDOM.getElementsByClassName('textcal-dayname')[0]).fitText(0.6);
+  jQuery(widgetDOM.getElementsByClassName('textcal-daymonth')[0]).fitText(0.35);
+  jQuery(widgetDOM.getElementsByClassName('textcal-year')[0]).fitText(0.8);
 };
