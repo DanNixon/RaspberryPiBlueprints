@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Creates files for a new widget
+# Usage ./make_new_widget ClassName
+
+# Make sure we are in the root webapp directory
+script_dir=$(dirname $0)
+cd $script_dir
+
+# Make a copy of the EmptyWidget
+cp -r static/widgets/EmptyWidget static/widgets/$1
+cp templates/widgets/EmptyWidget.html templates/widgets/$1.html
+cp widgets/EmptyWidget.py widgets/$1.py
+
+# Replace class names, etc. inside files
+sed -i "s/EmptyWidget/$1/g" static/widgets/$1/script.js
+sed -i "s/EmptyWidget/$1/g" widgets/$1.py
