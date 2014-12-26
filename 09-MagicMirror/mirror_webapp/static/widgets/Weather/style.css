@@ -1,19 +1,18 @@
 .weather-icon {
+  width: 80px;
+  height: 80px;
+  float: right;
   -webkit-filter: invert(100%);
-}
-
-.weather-current {
-  display: inline-block;
 }
 
 .weather-temp > p {
   display: inline;
 }
 
-.weather-temp-low {
-  font-size: 0.8vw;
+.weather-temp-current, .weather-wind-direction {
+  font-weight: bold;
 }
 
-.weather-temp-high {
-  font-size: 0.8vw;
+.weather-small-detail {
+  font-size: 1.0vw;
 }

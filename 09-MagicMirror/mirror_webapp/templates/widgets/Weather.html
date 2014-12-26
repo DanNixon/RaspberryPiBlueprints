@@ -1,19 +1,24 @@
 {% extends "widget.html" %}
 
 {% block widget_contents %}
-  <img class="weather-icon" src="{{ data.current.icon }}" />
+  <img class="weather-icon" src="" />
 
   <div class="weather-current">
-    <h2>{{ data.current.name }}</h2>
-    <p>{{ data.current.description }}</p>
+    <h2></h2>
+    <p></p>
   </div>
 
   <div class="weather-temp">
-    <p><span class="weather-temp-current">{{ data.temperature.current }}</span>&deg;<span class="weather-temp-unit">C</span></p>
-    <p>High: <span class="weather-temp-high">{{ data.temperature.max }}</span>&deg;<span class="weather-temp-unit">C</span></p>
-    <p>Low: <span class="weather-temp-low">{{ data.temperature.min }}</span>&deg;<span class="weather-temp-unit">C</span></p>
+    <p>
+      <span class="weather-temp-current"></span>&deg;<span class="weather-temp-unit">C</span>
+      <span class="weather-small-detail">
+        High: <span class="weather-temp-high"></span>&deg;<span class="weather-temp-unit">C</span>
+        Low: <span class="weather-temp-low"></span>&deg;<span class="weather-temp-unit">C</span>
+      </span>
+    </p>
   </div>
 
-  {% for forcast_day in data.forcast %}
-  {% endfor %}
+  <p class="weather-wind-text">Wind: <span class="weather-wind-direction"></span> at <span class="weather-wind-speed"></span> mps</p>
+  <p class="weather-humidity-text">Humidity: <span class="weather-humidity"></span>%</p>
+  <p class="weather-pressure-text">Pressure: <span class="weather-pressure"></span>hPa</p>
 {% endblock %}
