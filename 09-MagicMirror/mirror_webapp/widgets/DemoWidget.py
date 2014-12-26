@@ -5,6 +5,10 @@ class DemoWidget(AbstractWidget):
 
     def get_data(self, config):
         self.logger.info('Getting data for demo widget')
-        data = dict()
-        data['greeting'] = config.get('widget', 'text')
+
+        data = { 'greeting':'No Text Set!' }
+
+        if 'text' in config:
+            data['greeting'] = config['text']
+
         return data

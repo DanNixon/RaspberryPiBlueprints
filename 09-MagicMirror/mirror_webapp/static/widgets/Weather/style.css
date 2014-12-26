@@ -1,0 +1,19 @@
+.weather-icon {
+  -webkit-filter: invert(100%);
+}
+
+.weather-current {
+  display: inline-block;
+}
+
+.weather-temp > p {
+  display: inline;
+}
+
+.weather-temp-low {
+  font-size: 0.8vw;
+}
+
+.weather-temp-high {
+  font-size: 0.8vw;
+}

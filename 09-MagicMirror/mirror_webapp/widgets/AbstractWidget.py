@@ -18,7 +18,7 @@ class AbstractWidget():
         """
         Gets data for widget if applicable.
 
-        @param config Configuration data
+        @param config Configuration data as dictionary
         @return Widget data as dictionary
         """
         return dict()

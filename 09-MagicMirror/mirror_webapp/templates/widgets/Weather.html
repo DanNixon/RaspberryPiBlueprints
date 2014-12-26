@@ -1,0 +1,19 @@
+{% extends "widget.html" %}
+
+{% block widget_contents %}
+  <img class="weather-icon" src="{{ data.current.icon }}" />
+
+  <div class="weather-current">
+    <h2>{{ data.current.name }}</h2>
+    <p>{{ data.current.description }}</p>
+  </div>
+
+  <div class="weather-temp">
+    <p><span class="weather-temp-current">{{ data.temperature.current }}</span>&deg;<span class="weather-temp-unit">C</span></p>
+    <p>High: <span class="weather-temp-high">{{ data.temperature.max }}</span>&deg;<span class="weather-temp-unit">C</span></p>
+    <p>Low: <span class="weather-temp-low">{{ data.temperature.min }}</span>&deg;<span class="weather-temp-unit">C</span></p>
+  </div>
+
+  {% for forcast_day in data.forcast %}
+  {% endfor %}
+{% endblock %}

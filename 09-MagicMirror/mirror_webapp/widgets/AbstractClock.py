@@ -11,13 +11,12 @@ class AbstractClock(AbstractWidget):
         data = dict()
 
         try:
-            user_timezone = config.get('widget', 'timezone')
-            time_zone = timezone(user_timezone)
+            time_zone = timezone(config['timezone'])
             data['timezone'] = time_zone.zone
             self.logger.info('Get timezone form config file: %s' % str(time_zone))
             current_time = datetime.now(time_zone)
 
-        except NoOptionError:
+        except KeyError:
             data['timezone'] = 'System Time'
             current_time = datetime.now()
 

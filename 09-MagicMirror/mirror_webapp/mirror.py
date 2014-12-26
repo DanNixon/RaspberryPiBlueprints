@@ -86,7 +86,7 @@ def render_mirror():
 
             widget_data['classname'] = widget.__class__.__name__
             widget_data['id'] = w_id
-            widget_data['data'] = widget.get_data(config)
+            widget_data['data'] = widget.get_data(dict(config.items('widget')))
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.getboolean('ui', 'show_borders')
             widget_data['position']= config.get('position', 'mode')
@@ -136,6 +136,6 @@ def get_json_data(widget_id):
 
     widget_class = WIDGETS[widget_id].get('core', 'class')
     widget = get_widget(widget_class)
-    data = widget.get_data(WIDGETS[widget_id])
+    data = widget.get_data(dict(WIDGETS[widget_id].items('widget')))
 
     return jsonify(data)
