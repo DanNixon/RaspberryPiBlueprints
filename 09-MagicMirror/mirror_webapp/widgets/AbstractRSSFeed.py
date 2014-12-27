@@ -11,12 +11,16 @@ class AbstractRSSFeed(AbstractWidget):
         number_items = 10
         if 'num_items' in config:
             number_items = int(config['num_items'])
+        self.logger.debug('Number of RSS items: %d' % number_items)
 
-        feed = feedparser.parse(config['feed_url'])
+        feed_url = config['feed_url']
+        self.logger.debug('RSS feed URL: %s' % feed_url)
+
+        feed = feedparser.parse(feed_url)
         sorted_items = sorted(feed['items'], key=lambda entry: entry['published_parsed'])
         sorted_items.reverse()
 
-        sorted_items = sorted_items[:10]
+        sorted_items = sorted_items[:number_items]
         items = list()
 
         for feed_item in sorted_items:

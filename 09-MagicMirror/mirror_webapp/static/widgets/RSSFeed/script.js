@@ -1,7 +1,6 @@
 var RSSFeed = function() {
   this.updateFeed = function(widgetDOM) {
-    feedList = widgetDOM.getElementsByClassName('rss-items')[0];
-    feedList.innerHTML = '';
+    widgetDOM.getElementsByClassName('rss-items')[0].innerHTML = '';
 
     $.getJSON('/widget_data/' + widgetDOM.id, function(data) {
       var items = data.items;
@@ -9,7 +8,7 @@ var RSSFeed = function() {
         var newItem = document.createElement('li');
         var itemTitle = document.createTextNode(items[i].title);
         newItem.appendChild(itemTitle);
-        feedList.appendChild(newItem);
+        widgetDOM.getElementsByClassName('rss-items')[0].appendChild(newItem);
       }
     });
   };
