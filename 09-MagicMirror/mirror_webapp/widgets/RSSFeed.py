@@ -1,8 +1,5 @@
-from AbstractWidget import AbstractWidget
+from AbstractRSSFeed import AbstractRSSFeed
 
 
-class RSSFeed(AbstractWidget):
-
-    def get_data(self, config):
-        data = dict()
-        return data
+class RSSFeed(AbstractRSSFeed):
+    pass
