@@ -2,7 +2,7 @@ body {
   background-color: #000
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, li {
   font-family: 'Roboto', sans-serif;;
   margin: 0;
   font-weight: normal;
@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5, h6, p {
 h1 { font-size: 2.5vw; }
 h2 { font-size: 2.0vw; }
 p  { font-size: 1.2vw; }
+li { font-size: 1.2vw; }
 
 .widget {
   width: -moz-min-content;
