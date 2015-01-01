@@ -33,7 +33,7 @@ AnalogClock.prototype.updateUI = function(widgetDOM) {
 
   hourAngle = (360/12) * hour + (360/(12*60)) * minute;
 
-  widgetDOM.getElementsByClassName('second-hand')[0].style['transform'] = 'rotate(' + angle * second + 'deg)';
-  widgetDOM.getElementsByClassName('minute-hand')[0].style['transform'] = 'rotate(' + angle * minute + 'deg)';
-  widgetDOM.getElementsByClassName('hour-hand')[0].style['transform'] = 'rotate(' + hourAngle + 'deg)';
+  widgetDOM.getElementsByClassName('second-hand')[0].style['-webkit-transform'] = 'rotate(' + angle * second + 'deg)';
+  widgetDOM.getElementsByClassName('minute-hand')[0].style['-webkit-transform'] = 'rotate(' + angle * minute + 'deg)';
+  widgetDOM.getElementsByClassName('hour-hand')[0].style['-webkit-transform'] = 'rotate(' + hourAngle + 'deg)';
 };

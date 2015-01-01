@@ -12,26 +12,14 @@
   left:50%
 }
 
-.analog-clock img[src*="second"] {
-  transition: transform 600000s linear 0s;
-}
-
 .analog-clock:target img[src*="second"] {
-  transform: rotate(3600000deg);
-}
-
-.analog-clock img[src*="minute"] {
-  transition: transform 360000s linear 0s;
+  -webkit-transform: rotate(3600000deg);
 }
 
 .analog-clock:target img[src*="minute"] {
-  transform: rotate(36000deg);
-}
-
-.analog-clock img[src*="hour"] {
-  transition: transform 216000s linear 0s;
+  -webkit-transform: rotate(36000deg);
 }
 
 .analog-clock:target img[src*="hour"] {
-  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
 }
