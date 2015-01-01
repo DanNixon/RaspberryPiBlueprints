@@ -12,7 +12,3 @@
 .weather-temp-current, .weather-wind-direction {
   font-weight: bold;
 }
-
-.weather-small-detail {
-  font-size: 1.0vw;
-}
