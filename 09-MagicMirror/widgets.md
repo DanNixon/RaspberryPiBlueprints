@@ -42,8 +42,10 @@ The following is a list of all widgets currently added to the framework and thei
 - RSS feed
   - Class name: ```RSSFeed```
   - ```feed_url```: URL for RSS feed
+  - ```num_items```: Number of items to show
 - RSS ticker
   - Class name: ```RSSTicker```
   - ```feed_url```: URL for RSS feed
+  - ```num_items```: Number of items to fetch
   - ```text_type```: Text to be shown (either ```title``` or ```summary```)
   - ```ticker_update_time```: Time (in seconds) to change the shown text after
