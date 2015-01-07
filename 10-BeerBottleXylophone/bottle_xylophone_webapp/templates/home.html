@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>Hello, World!</p>
+  <fieldset>
+    <legend>Playback</legend>
+  </fieldset>
+
+  <fieldset>
+    <legend>MIDI Files</legend>
+  </fieldset>
+
+  <fieldset>
+    <legend>Upload MIDI File</legend>
+
+    <form action="/upload_midi" method="POST" enctype="multipart/form-data">
+      <input type="file" name="uploaded_midi_file" accept=".mid">
+      <input type="submit">
+    </form>
+  </fieldset>
 {% endblock %}
