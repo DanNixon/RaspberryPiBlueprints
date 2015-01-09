@@ -1,21 +1,26 @@
 import logging, time, os, midi
-from threading import Thread
+from threading import Thread, Event
 
 
 class MIDIPlayer(Thread):
+    """
+    Class to handle playing MIDI files on a seperate thread.
+    """
 
     logger = logging.getLogger(__name__)
 
 
     def __init__(self, configuration):
         Thread.__init__(self)
+        self._stop = Event()
+
         self._servos = self._define_servos(configuration)
         self._init_servos()
 
         self._midi_file = None
         self._midi_file_dir = configuration['MIDI_DIRECTORY']
 
-        self._set_bpm(120)
+        self.set_bpm(120)
 
 
     def set_midi_file(self, midi_file):
@@ -31,38 +36,7 @@ class MIDIPlayer(Thread):
             raise RuntimeError('MIDI file not found')
 
 
-    def run(self):
-        """
-        Plays the set MIDI file
-        """
-
-        pattern = midi.read_midifile(self._midi_file)
-
-        self._resolution = pattern.resolution
-        self.logger.info('MIDI file resolution: %d' % self._resolution)
-
-        tick_to_seconds = self._tempo / (self._resolution * 1000000.0)
-        self.logger.info('Tick time: %f seconds' % tick_to_seconds)
-
-        for event in pattern[1]:
-            delay_seconds = event.tick * tick_to_seconds
-            self.logger.debug('Delay before event process: %ds' % delay_seconds)
-            time.sleep(delay_seconds)
-
-            if isinstance(event, midi.NoteOnEvent):
-                midi_note = event.data[0]
-                velocity = event.data[1]
-                is_on = velocity > 0
-                self._set_note(midi_note, is_on)
-
-            elif isinstance(event, midi.NoteOffEvent):
-                midi_note = event.data[0]
-                self._set_note(midi_note, False)
-
-        self.logger.info('End of MIDI file')
-
-
-    def _set_bpm(self, bpm):
+    def set_bpm(self, bpm):
         """
         Sets the tempo of the playback.
 
@@ -71,6 +45,55 @@ class MIDIPlayer(Thread):
 
         self._tempo = 60 * 1000000 / bpm
         self.logger.info('Set tempo %f for BPM %f' % (self._tempo, bpm))
+
+
+    def run(self):
+        """
+        Plays the set MIDI file
+        """
+
+        # Read the MIDI file
+        pattern = midi.read_midifile(self._midi_file)
+
+        # Get thr resolution of the MIDI file
+        self._resolution = pattern.resolution
+        self.logger.info('MIDI file resolution: %d' % self._resolution)
+
+        # Calculate the tick duration
+        tick_to_seconds = self._tempo / (self._resolution * 1000000.0)
+        self.logger.info('Tick time: %f seconds' % tick_to_seconds)
+
+        for event in pattern[1]:
+            # Delay for the required amont of time
+            delay_seconds = event.tick * tick_to_seconds
+            self.logger.debug('Delay before event process: %ds' % delay_seconds)
+            time.sleep(delay_seconds)
+
+            # Check if we should stop playback
+            if self._stop.isSet():
+                return
+
+            # Process a note on message
+            if isinstance(event, midi.NoteOnEvent):
+                midi_note = event.data[0]
+                velocity = event.data[1]
+                is_on = velocity > 0
+                self._set_note(midi_note, is_on)
+
+            # Process a note off message
+            elif isinstance(event, midi.NoteOffEvent):
+                midi_note = event.data[0]
+                self._set_note(midi_note, False)
+
+        self.logger.info('End of MIDI file')
+
+
+    def stop(self):
+        """
+        Stops playback of the MIDI file.
+        """
+
+        self._stop.set()
 
 
     def play_note(self, midi_note, duration):

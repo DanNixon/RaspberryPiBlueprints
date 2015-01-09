@@ -3,10 +3,24 @@
 {% block body %}
   <fieldset>
     <legend>Playback</legend>
+    <a class="stop-link" href="{{ url_for('stop_playback') }}">[stop]</a>
   </fieldset>
 
   <fieldset>
     <legend>MIDI Files</legend>
+    {% if midi_files %}
+      <ul>
+        {% for midi_file in midi_files %}
+          <li>
+            {{ midi_file }}
+            <a class="play-link" href="{{ url_for('play_midi_file', midi_file=midi_file) }}">[play]</a>
+            <a class="delete-link" href="{{ url_for('delete_midi_file', midi_file=midi_file) }}">[delete]</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No MDI files found</p>
+    {% endif %}
   </fieldset>
 
   <fieldset>
