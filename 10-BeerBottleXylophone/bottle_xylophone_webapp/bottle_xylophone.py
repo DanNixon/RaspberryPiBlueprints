@@ -52,13 +52,14 @@ def play_note(midi_note):
 
 @app.route('/play/<midi_file>')
 def play_midi_file(midi_file):
-    # TODO
+    player.set_midi_file(midi_file)
+    player.start()
     flash('Playing MIDI file: %s' % midi_file)
     return redirect(url_for('show_home'))
 
 
 @app.route('/stop')
 def stop_playback():
-    # TODO
+    player.stop()
     flash('Playback stopped')
     return redirect(url_for('show_home'))

@@ -1,4 +1,4 @@
-import logging, time
+import logging, time, os, midi
 from threading import Thread
 
 
@@ -13,6 +13,9 @@ class MIDIPlayer(Thread):
         self._init_servos()
 
         self._midi_file = None
+        self._midi_file_dir = configuration['MIDI_DIRECTORY']
+
+        self._set_bpm(120)
 
 
     def set_midi_file(self, midi_file):
@@ -22,14 +25,52 @@ class MIDIPlayer(Thread):
         @param midi_file MIDI filename
         """
 
-        self._midi_file = midi_file
+        self._midi_file = os.path.join(self._midi_file_dir, midi_file)
+
+        if not os.path.exists(self._midi_file):
+            raise RuntimeError('MIDI file not found')
 
 
     def run(self):
         """
+        Plays the set MIDI file
         """
 
-        pass
+        pattern = midi.read_midifile(self._midi_file)
+
+        self._resolution = pattern.resolution
+        self.logger.info('MIDI file resolution: %d' % self._resolution)
+
+        tick_to_seconds = self._tempo / (self._resolution * 1000000.0)
+        self.logger.info('Tick time: %f seconds' % tick_to_seconds)
+
+        for event in pattern[1]:
+            delay_seconds = event.tick * tick_to_seconds
+            self.logger.debug('Delay before event process: %ds' % delay_seconds)
+            time.sleep(delay_seconds)
+
+            if isinstance(event, midi.NoteOnEvent):
+                midi_note = event.data[0]
+                velocity = event.data[1]
+                is_on = velocity > 0
+                self._set_note(midi_note, is_on)
+
+            elif isinstance(event, midi.NoteOffEvent):
+                midi_note = event.data[0]
+                self._set_note(midi_note, False)
+
+        self.logger.info('End of MIDI file')
+
+
+    def _set_bpm(self, bpm):
+        """
+        Sets the tempo of the playback.
+
+        @param bpm Tempo as beats per minute
+        """
+
+        self._tempo = 60 * 1000000 / bpm
+        self.logger.info('Set tempo %f for BPM %f' % (self._tempo, bpm))
 
 
     def play_note(self, midi_note, duration):
@@ -51,7 +92,7 @@ class MIDIPlayer(Thread):
         Sets the servo for a not into either the hit or reract position.
 
         @param midi_note MIDI note to actuate
-        @param note_on True for hit position, Flase or retract position
+        @param note_on True for hit position, False for retract position
         """
 
         servo = self._servos.get(midi_note, None)
