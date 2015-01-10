@@ -67,6 +67,9 @@ def play_note(midi_note):
     # Use the player to play a single note
     player.play_note(int(midi_note), 50)
 
+    flash('Playing MIDI note: %d' % midi_note)
+    return redirect(url_for('show_home'))
+
 
 @app.route('/play/<path:midi_file>')
 def play_midi_file(midi_file):
