@@ -20,6 +20,7 @@ class MIDIPlayer(Thread):
         self._midi_file = None
         self._midi_file_dir = configuration['MIDI_DIRECTORY']
 
+        self._resolution = None
         self.set_bpm(120)
 
 
@@ -36,6 +37,16 @@ class MIDIPlayer(Thread):
             raise RuntimeError('MIDI file not found')
 
 
+    def get_bpm(self):
+        """
+        Gets the cutent BPM
+
+        @return Tempo as BPM
+        """
+
+        return 60 * 1000000 / self._tempo
+
+
     def set_bpm(self, bpm):
         """
         Sets the tempo of the playback.
@@ -45,6 +56,11 @@ class MIDIPlayer(Thread):
 
         self._tempo = 60 * 1000000 / bpm
         self.logger.info('Set tempo %f for BPM %f' % (self._tempo, bpm))
+
+        if self._resolution is not None:
+            # Calculate the tick duration
+            tick_to_seconds = self._tempo / (self._resolution * 1000000.0)
+            self.logger.info('Tick time: %f seconds' % tick_to_seconds)
 
 
     def run(self):

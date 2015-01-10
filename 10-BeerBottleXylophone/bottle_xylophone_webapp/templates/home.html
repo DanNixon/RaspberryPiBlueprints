@@ -4,6 +4,13 @@
   <fieldset>
     <legend>Playback</legend>
     <a class="stop-link" href="{{ url_for('stop_playback') }}">[stop]</a>
+    <div id="bpm_setting">
+      <form method="GET" action="/set_bpm">
+        <label for="bpm_value">BPM:</label>
+        <input id="bpm_value" type="number" name="bpm_value" value="{{ tempo }}"></input>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </fieldset>
 
   <fieldset>
