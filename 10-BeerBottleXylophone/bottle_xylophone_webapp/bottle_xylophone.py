@@ -14,15 +14,18 @@ app.config.update(dict(
     SECRET_KEY='key',
     LOG_LEVEL='DEBUG',
     LOG_FILE='midi_bottles.log',
-    MIDI_DIRECTORY='/home/dan/midi_temp',
+    MIDI_DIRECTORY='midi_files',
     DEFAULT_BPM=60
 ))
 app.config.from_envvar('BOTTLE_XYLOPHONE_SETTINGS', silent=True)
 
-
+# Configure logging
 log_level = getattr(logging, app.config['LOG_LEVEL'].upper(), None)
 logging.basicConfig(level=log_level, filename=app.config['LOG_FILE'])
 
+# Create the directory for uploaded MIDI files if it does not already exist
+if not os.path.exists(app.config['MIDI_DIRECTORY']):
+    os.makedirs(app.config['MIDI_DIRECTORY'])
 
 player = None
 playback_bpm = app.config['DEFAULT_BPM']
