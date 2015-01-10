@@ -1,5 +1,6 @@
 import logging, time, os, midi
 from threading import Thread, Event
+import RPIO.PWM as pwm
 
 
 class MIDIPlayer(Thread):
@@ -145,7 +146,8 @@ class MIDIPlayer(Thread):
         else:
             position = servo['retract_pos']
 
-        self._output_servo(servo['gpio'], position)
+        self.logger.debug('Setting servo on GPIO %d to %d' % (servo['gpio'], position))
+        servo['servo_object'].set_servo(servo['gpio'], position)
 
 
     def _define_servos(self, configuration):
@@ -181,19 +183,8 @@ class MIDIPlayer(Thread):
         Initilise the servos and set them to theirretracted positions.
         """
 
-        for servo in self._servos.values():
-            gpio = servo['gpio']
-            # TODO: Init servo
-            self._output_servo(gpio, servo['retract_pos'])
-
-
-    def _output_servo(self, gpio, position):
-        """
-        Sets a servo to a given posiion.
-
-        @param gpio GPIO to output on
-        @param position Timing value denoting position
-        """
-
-        self.logger.debug('Setting servo on GPIO %d to %d' % (gpio, position))
-        # TODO: Servo output
+        for note, servo_info in self._servos.items():
+            gpio = servo_info['gpio']
+            servo = pwm.Servo()
+            self._servos[note]['servo_object'] = servo
+            servo.set_servo(gpio, servo_info['retract_pos'])
