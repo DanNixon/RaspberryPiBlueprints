@@ -84,14 +84,67 @@ def run():
         output_file = '%s_modified%s' % (input_file_data[0], input_file_data[1])
     else:
         output_file = params.output_file
-    logger.info('Output file: %s' % output_file)
 
     # Give error if no minimum time was provided
     if params.delay is None:
         logger.error('No minimum time delay was provided')
         exit(1)
 
-    pass
+    # Open the input MIDI file
+    pattern = midi.read_midifile(params.input_file)
+    pattern.make_ticks_abs()
+
+    # Calculate number of ticks in a millisecond and minumum required ticks between noes
+    ticks_per_ms = (pattern.resolution * 1000.0) / (60 * 1000000.0 / params.tempo)
+    logger.info('Ticks per ms for resolution %f and BPM %d = %f' % (pattern.resolution, params.tempo, ticks_per_ms))
+    delta_tick_min = int(params.delay * ticks_per_ms + 1.0)
+    logger.info('Minumum ticks between note on and off = %f' % delta_tick_min)
+
+    # Keep track of the active notes
+    notes_on = dict()
+
+    # Expand note durations
+    for track in pattern:
+        # Keep track of how many note events have been changed
+        changed_notes = 0
+
+        for event in track:
+            # Marker indicating if a note on event has a zero velocity
+            zero_note_on = False
+
+            # Process a note on message
+            if isinstance(event, midi.NoteOnEvent):
+                pitch = event.data[0]
+                if event.data[1] > 0 and pitch not in notes_on:
+                    notes_on[pitch] = event.tick
+                else:
+                    zero_note_on = True
+
+            # Process a note off message
+            if isinstance(event, midi.NoteOffEvent) or zero_note_on:
+                pitch = event.data[0]
+
+                # Check if the note is on
+                if pitch in notes_on:
+                    # See how long it has been on for
+                    note_on_tick = notes_on.pop(pitch)
+                    delta_tick = event.tick - note_on_tick
+                    logger.debug('Tick delta for note %d = %d' % (pitch, delta_tick))
+
+                    # If it was too short then change the note off time
+                    if delta_tick < delta_tick_min:
+                        event.tick = note_on_tick + delta_tick_min
+                        changed_notes += 1
+
+        # MIDI expects the events to be in order
+        track.sort()
+
+        logger.info('Changed %d notes over track' % (changed_notes))
+
+    # Save output MIDI file
+    pattern.make_ticks_rel()
+    midi.write_midifile(output_file, pattern)
+    logger.info('Saved output MIDI file: %s' % output_file)
 
 
 if __name__ == '__main__':
