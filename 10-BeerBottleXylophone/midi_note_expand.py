@@ -59,6 +59,12 @@ def get_parameters():
         metavar='T'
     )
 
+    parser.add_argument(
+        '-s', '--set-delay',
+        action='store_true',
+        help='Sets the note on period to the given delay, regardess of previous value'
+    )
+
     props = parser.parse_args()
     return props
 
@@ -132,7 +138,7 @@ def run():
                     logger.debug('Tick delta for note %d = %d' % (pitch, delta_tick))
 
                     # If it was too short then change the note off time
-                    if delta_tick < delta_tick_min:
+                    if delta_tick < delta_tick_min or params.set_delay:
                         event.tick = note_on_tick + delta_tick_min
                         changed_notes += 1
 

@@ -39,5 +39,4 @@ for track in pattern:
 
 # Output the notes used in MIDI file
 print 'Number of unique notes: %d' % len(notes_used)
-print 'Notes: %s' % str(notes_used)
-print 'Notes: %s' % str([get_midi_note_name(note) for note in notes_used])
+print 'Notes: %s' % str([[note, get_midi_note_name(note)] for note in sorted(notes_used)])
