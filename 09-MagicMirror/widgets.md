@@ -49,3 +49,11 @@ The following is a list of all widgets currently added to the framework and thei
   - ```num_items```: Number of items to fetch
   - ```text_type```: Text to be shown (either ```title``` or ```summary```)
   - ```ticker_update_time```: Time (in seconds) to change the shown text after
+- Twitter search feed
+ - Class name: ```TwitterSearch```
+ - ```query```: Query to search for matching tweets using
+ - ```count```: Number of tweets to return
+ - ```consumer_key```: As per Twitter's [application management]()
+ - ```consumer_secret```: As per Twitter's [application management](https://apps.twitter.com/)
+ - ```access_token```: As per Twitter's [application management](https://apps.twitter.com/)
+ - ```access_secret```: As per Twitter's [application management](https://apps.twitter.com/)
