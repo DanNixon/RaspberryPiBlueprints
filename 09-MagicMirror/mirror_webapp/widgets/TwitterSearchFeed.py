@@ -31,7 +31,7 @@ class TwitterSearchFeed(AbstractWidget):
         # Filter results into more usable format
         for tweet in result[:count]:
             filtered_tweet = dict()
-            filtered_tweet['username'] = tweet['user']['screen_name']
+            filtered_tweet['username'] = '@' + tweet['user']['screen_name']
             filtered_tweet['tweet'] = tweet['text']
             data['tweets'].append(filtered_tweet)
 
