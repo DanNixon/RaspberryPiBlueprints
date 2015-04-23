@@ -1,5 +1,5 @@
-RaspberryPi-Blueprints
-======================
+Raspberry Pi Blueprints
+=======================
 
 Code for the Rasbperry Pi Blueprints book.
 
