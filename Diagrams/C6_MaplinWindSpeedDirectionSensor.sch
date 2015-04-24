@@ -1,0 +1,296 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+EELAYER 24 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L SPST SW3
+U 1 1 5473B124
+P 2600 2100
+F 0 "SW3" H 2600 2200 70  0000 C CNN
+F 1 "SPST" H 2600 2000 70  0000 C CNN
+F 2 "" H 2600 2100 60  0000 C CNN
+F 3 "" H 2600 2100 60  0000 C CNN
+	1    2600 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW4
+U 1 1 5473B131
+P 2600 2500
+F 0 "SW4" H 2600 2600 70  0000 C CNN
+F 1 "SPST" H 2600 2400 70  0000 C CNN
+F 2 "" H 2600 2500 60  0000 C CNN
+F 3 "" H 2600 2500 60  0000 C CNN
+	1    2600 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW6
+U 1 1 5473B137
+P 2600 3300
+F 0 "SW6" H 2600 3400 70  0000 C CNN
+F 1 "SPST" H 2600 3200 70  0000 C CNN
+F 2 "" H 2600 3300 60  0000 C CNN
+F 3 "" H 2600 3300 60  0000 C CNN
+	1    2600 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW2
+U 1 1 5473B143
+P 2600 1700
+F 0 "SW2" H 2600 1800 70  0000 C CNN
+F 1 "SPST" H 2600 1600 70  0000 C CNN
+F 2 "" H 2600 1700 60  0000 C CNN
+F 3 "" H 2600 1700 60  0000 C CNN
+	1    2600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW1
+U 1 1 5473B149
+P 2600 1300
+F 0 "SW1" H 2600 1400 70  0000 C CNN
+F 1 "SPST" H 2600 1200 70  0000 C CNN
+F 2 "" H 2600 1300 60  0000 C CNN
+F 3 "" H 2600 1300 60  0000 C CNN
+	1    2600 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW7
+U 1 1 5473B177
+P 2600 3700
+F 0 "SW7" H 2600 3800 70  0000 C CNN
+F 1 "SPST" H 2600 3600 70  0000 C CNN
+F 2 "" H 2600 3700 60  0000 C CNN
+F 3 "" H 2600 3700 60  0000 C CNN
+	1    2600 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW8
+U 1 1 5473B17D
+P 2600 4100
+F 0 "SW8" H 2600 4200 70  0000 C CNN
+F 1 "SPST" H 2600 4000 70  0000 C CNN
+F 2 "" H 2600 4100 60  0000 C CNN
+F 3 "" H 2600 4100 60  0000 C CNN
+	1    2600 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R8
+U 1 1 5473B185
+P 3550 4100
+F 0 "R8" V 3630 4100 40  0000 C CNN
+F 1 "R" V 3557 4101 40  0000 C CNN
+F 2 "" V 3480 4100 30  0000 C CNN
+F 3 "" H 3550 4100 30  0000 C CNN
+	1    3550 4100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R7
+U 1 1 5473B1A6
+P 3550 3700
+F 0 "R7" V 3630 3700 40  0000 C CNN
+F 1 "R" V 3557 3701 40  0000 C CNN
+F 2 "" V 3480 3700 30  0000 C CNN
+F 3 "" H 3550 3700 30  0000 C CNN
+	1    3550 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R6
+U 1 1 5473B1AC
+P 3550 3300
+F 0 "R6" V 3630 3300 40  0000 C CNN
+F 1 "R" V 3557 3301 40  0000 C CNN
+F 2 "" V 3480 3300 30  0000 C CNN
+F 3 "" H 3550 3300 30  0000 C CNN
+	1    3550 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R5
+U 1 1 5473B1B2
+P 3550 2900
+F 0 "R5" V 3630 2900 40  0000 C CNN
+F 1 "R" V 3557 2901 40  0000 C CNN
+F 2 "" V 3480 2900 30  0000 C CNN
+F 3 "" H 3550 2900 30  0000 C CNN
+	1    3550 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R4
+U 1 1 5473B1B8
+P 3550 2500
+F 0 "R4" V 3630 2500 40  0000 C CNN
+F 1 "R" V 3557 2501 40  0000 C CNN
+F 2 "" V 3480 2500 30  0000 C CNN
+F 3 "" H 3550 2500 30  0000 C CNN
+	1    3550 2500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R3
+U 1 1 5473B1BE
+P 3550 2100
+F 0 "R3" V 3630 2100 40  0000 C CNN
+F 1 "R" V 3557 2101 40  0000 C CNN
+F 2 "" V 3480 2100 30  0000 C CNN
+F 3 "" H 3550 2100 30  0000 C CNN
+	1    3550 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R2
+U 1 1 5473B1CE
+P 3550 1700
+F 0 "R2" V 3630 1700 40  0000 C CNN
+F 1 "R" V 3557 1701 40  0000 C CNN
+F 2 "" V 3480 1700 30  0000 C CNN
+F 3 "" H 3550 1700 30  0000 C CNN
+	1    3550 1700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R1
+U 1 1 5473B1D4
+P 3550 1300
+F 0 "R1" V 3630 1300 40  0000 C CNN
+F 1 "R" V 3557 1301 40  0000 C CNN
+F 2 "" V 3480 1300 30  0000 C CNN
+F 3 "" H 3550 1300 30  0000 C CNN
+	1    3550 1300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3300 1300 3100 1300
+Wire Wire Line
+	3100 1700 3300 1700
+Wire Wire Line
+	3300 2100 3100 2100
+Wire Wire Line
+	3100 2500 3300 2500
+Wire Wire Line
+	3300 2900 3100 2900
+Wire Wire Line
+	3100 3300 3300 3300
+Wire Wire Line
+	3300 3700 3100 3700
+Wire Wire Line
+	3100 4100 3300 4100
+Wire Wire Line
+	3800 4100 4000 4100
+Wire Wire Line
+	4000 4100 4000 1300
+Wire Wire Line
+	4000 1300 3800 1300
+Wire Wire Line
+	3800 1700 4000 1700
+Connection ~ 4000 1700
+Wire Wire Line
+	3800 2100 4000 2100
+Connection ~ 4000 2100
+Wire Wire Line
+	3800 2500 4000 2500
+Connection ~ 4000 2500
+Wire Wire Line
+	3800 2900 4000 2900
+Connection ~ 4000 2900
+Wire Wire Line
+	3800 3300 4000 3300
+Connection ~ 4000 3300
+Wire Wire Line
+	3800 3700 4000 3700
+Connection ~ 4000 3700
+Wire Wire Line
+	2100 1300 1900 1300
+Wire Wire Line
+	1900 1300 1900 4100
+Wire Wire Line
+	1900 4100 2100 4100
+Wire Wire Line
+	2100 3700 1900 3700
+Connection ~ 1900 3700
+Wire Wire Line
+	2100 3300 1900 3300
+Connection ~ 1900 3300
+Wire Wire Line
+	2100 2900 1900 2900
+Connection ~ 1900 2900
+Wire Wire Line
+	1900 2500 2100 2500
+Connection ~ 1900 2500
+Wire Wire Line
+	2100 2100 1900 2100
+Connection ~ 1900 2100
+Wire Wire Line
+	2100 1700 1900 1700
+Connection ~ 1900 1700
+$Comp
+L SPST SW5
+U 1 1 5473B13D
+P 2600 2900
+F 0 "SW5" H 2600 3000 70  0000 C CNN
+F 1 "SPST" H 2600 2800 70  0000 C CNN
+F 2 "" H 2600 2900 60  0000 C CNN
+F 3 "" H 2600 2900 60  0000 C CNN
+	1    2600 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 2700 1900 2700
+Connection ~ 1900 2700
+Wire Wire Line
+	4000 2700 4400 2700
+Connection ~ 4000 2700
+Text Label 4400 2700 0    60   ~ 0
+WIND_DIR_B
+Text Label 1500 2700 2    60   ~ 0
+WIND_DIR_A
+$EndSCHEMATC

@@ -86,10 +86,15 @@ def render_mirror():
 
             widget_data['classname'] = widget.__class__.__name__
             widget_data['id'] = w_id
-            widget_data['data'] = widget.get_data(dict(config.items('widget')))
             widget_data['template_filename'] = widget.get_template_filename()
             widget_data['show_borders'] = config.getboolean('ui', 'show_borders')
             widget_data['position']= config.get('position', 'mode')
+
+            try:
+                widget_data['data'] = widget.get_data(dict(config.items('widget')))
+            except:
+                logging.getLogger(__name__).error('Failed to get data for widget with ID %s' % w_id)
+                widget_data['data'] = []
 
             try:
                 widget_data['name'] = config.get('core', 'title')
